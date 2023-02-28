@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.373, g: 2264.0508, b: 3286.6836, a: 1}
+  m_IndirectSpecularColor: {r: 2158.289, g: 2260.5781, b: 3278.4023, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -482,119 +482,160 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapPartsList:
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
     rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
+  - id: Corner4x4
+    thumbnail: {fileID: 2800000, guid: 2308656a726990f478f68a3e2774e548, type: 3}
+    prefab: {fileID: 8051185868174088552, guid: 95b29d56c07e70a45bd505d6c61409bc,
+      type: 3}
+    rotationY: 0
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 0
+  - id: TWall4x4
+    thumbnail: {fileID: 2800000, guid: 7876e266dd770a4429222f15e5d80c20, type: 3}
+    prefab: {fileID: 2588994269747950929, guid: ba3b854570859614daa7c0d1dad87d67,
+      type: 3}
+    rotationY: 0
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 0
+  - id: UWall4x4
+    thumbnail: {fileID: 2800000, guid: 3ba72fac277cf7e4b84b6a805bac1a9e, type: 3}
+    prefab: {fileID: 7702515810043930117, guid: 41fec81f8b812bb4b9d552fb1c1595d9,
+      type: 3}
     rotationY: 0
   mapSize: {x: 5, y: 5}
-  tileSize: 3
+  tileSize: 4
   mapName: Map1
   startOnAwake: 1
   map:
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
+  - id: Corner4x4
+    thumbnail: {fileID: 2800000, guid: 2308656a726990f478f68a3e2774e548, type: 3}
+    prefab: {fileID: 8051185868174088552, guid: 95b29d56c07e70a45bd505d6c61409bc,
+      type: 3}
     rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
-  - id: 
-    thumbnail: {fileID: 0}
-    prefab: {fileID: 0}
-    rotationY: 0
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 90
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 90
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 90
+  - id: Corner4x4
+    thumbnail: {fileID: 2800000, guid: 2308656a726990f478f68a3e2774e548, type: 3}
+    prefab: {fileID: 8051185868174088552, guid: 95b29d56c07e70a45bd505d6c61409bc,
+      type: 3}
+    rotationY: 180
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 90
+  - id: TWall4x4
+    thumbnail: {fileID: 2800000, guid: 7876e266dd770a4429222f15e5d80c20, type: 3}
+    prefab: {fileID: 2588994269747950929, guid: ba3b854570859614daa7c0d1dad87d67,
+      type: 3}
+    rotationY: 90
+  - id: TWall4x4
+    thumbnail: {fileID: 2800000, guid: 7876e266dd770a4429222f15e5d80c20, type: 3}
+    prefab: {fileID: 2588994269747950929, guid: ba3b854570859614daa7c0d1dad87d67,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 90
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 90
+  - id: UWall4x4
+    thumbnail: {fileID: 2800000, guid: 3ba72fac277cf7e4b84b6a805bac1a9e, type: 3}
+    prefab: {fileID: 7702515810043930117, guid: 41fec81f8b812bb4b9d552fb1c1595d9,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 90
+  - id: Wall4x4
+    thumbnail: {fileID: 2800000, guid: 5a0ea8209c8618f4da1ed0d7c92c1d42, type: 3}
+    prefab: {fileID: 7417459168929184466, guid: d1034554d544a73408fd384834bd8f9f,
+      type: 3}
+    rotationY: 90
+  - id: XWall4x4
+    thumbnail: {fileID: 2800000, guid: 8a4ed9040ee77dd458b984f1b05d8d44, type: 3}
+    prefab: {fileID: 554510505596719885, guid: 1d8b602ea693a6249bd1677c9a4f968c, type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
+  - id: Base4x4
+    thumbnail: {fileID: 2800000, guid: 14ea4035e19caf748b77789f048cd8b7, type: 3}
+    prefab: {fileID: 1407247593025216504, guid: e034d66f73385344d80211991cd35868,
+      type: 3}
+    rotationY: 90
 --- !u!4 &1116643398
 Transform:
   m_ObjectHideFlags: 0

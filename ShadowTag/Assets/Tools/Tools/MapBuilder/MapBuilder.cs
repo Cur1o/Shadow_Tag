@@ -14,6 +14,7 @@ public class MapPart
 public class MapBuilder : MonoBehaviour
 {
     public MapPart[] mapPartsList;
+    public MapPart[]  currentMap;
     public Vector2Int mapSize;
     public float tileSize;
     [SerializeField] string mapName;
@@ -40,6 +41,7 @@ public class MapBuilder : MonoBehaviour
         if (tileSize == 0f) return;
 
         var parent = new GameObject("Map_" + mapName);
+        currentMap = map;
 
         for (int z = 0; z < mapSize.y; z++)
         {
@@ -48,7 +50,7 @@ public class MapBuilder : MonoBehaviour
                 Vector3 position = new Vector3(x*tileSize, 0, z * tileSize);
 
                 int index = x * mapSize.y + z;
-                Debug.Log(index);
+                //Debug.Log(index);
                 
                 var prefab = map[index].prefab;
 

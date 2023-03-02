@@ -21,6 +21,7 @@ public class MapBuilder : MonoBehaviour
 
     [SerializeField] bool startOnAwake;
 
+    [SerializeField] bool randomMaze;
     public MapPart[] map;
 
     // Start is called before the first frame update

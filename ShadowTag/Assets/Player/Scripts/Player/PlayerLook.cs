@@ -14,6 +14,7 @@ namespace Player
     
         public void ManageLook(Vector2 input)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             float mouseX = input.x; //Mouse x input
             float mouseY = input.y; //Mouse Y input
             //Y Rotation

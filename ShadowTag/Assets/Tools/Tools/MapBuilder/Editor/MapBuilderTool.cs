@@ -23,15 +23,15 @@ public class MapBuilderTool : EditorWindow
 
     #region Load/Save Settings
     private void OnEnable()
-    {        
-         var data = EditorPrefs.GetString(saveName, JsonUtility.ToJson(this, false));
-         JsonUtility.FromJsonOverwrite(data, this);
+    {
+        var data = System.IO.File.ReadAllText(Application.dataPath + "/Maps/Map.json");
+        JsonUtility.FromJsonOverwrite(data, this);
     }
 
     private void OnDisable()
     {
-         var data = JsonUtility.ToJson(this, false);
-         EditorPrefs.SetString(saveName, data);
+        var data = JsonUtility.ToJson(this, false);
+        System.IO.File.WriteAllText(Application.dataPath + "/Maps/Map.json", data);
     }
     #endregion
 

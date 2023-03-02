@@ -21,7 +21,7 @@ public class MapBuilder : MonoBehaviour
 
     [SerializeField] bool startOnAwake;
 
-    [SerializeField] bool randomMaze;
+    //[SerializeField] bool randomMaze;
     public MapPart[] map;
 
     // Start is called before the first frame update
@@ -30,13 +30,16 @@ public class MapBuilder : MonoBehaviour
         if(startOnAwake)
              Build();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //private void OnValidate()
+    //{
+    //    var tempmap = map;
+    //    if (map == null || map.Length != mapSize.x * mapSize.y)
+    //        map = new MapPart[mapSize.x * mapSize.y];
+    //    for (int i = 0; i < tempmap.Length; i++)
+    //    {
+    //        map[i] = tempmap[i];
+    //    }  
+    //}
     public void Build()
     {          
         if (tileSize == 0f) return;

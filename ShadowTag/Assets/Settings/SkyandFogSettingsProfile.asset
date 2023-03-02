@@ -149,7 +149,7 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   enabled:
     m_OverrideState: 1
     m_Value: 1
@@ -164,7 +164,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 101.3
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
@@ -176,10 +176,10 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 25.75
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 25.78
   meanFreePath:
     m_OverrideState: 1
     m_Value: 1
@@ -188,13 +188,13 @@ MonoBehaviour:
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.007843138, g: 0.007843138, b: 0.007843138, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 0}
   globalLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 64
+    m_Value: 60.01
   denoisingMode:
     m_OverrideState: 1
     m_Value: 2

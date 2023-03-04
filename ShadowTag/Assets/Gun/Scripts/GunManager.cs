@@ -5,15 +5,22 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
     public enum gunType { pistol = 0, rifle = 1, shotgun = 2, assaultRifle = 3 };
-    
-    
-    [SerializeField] GameObject[] prefab;
-    GameObject[] instanciatedWeapons;
-    GameObject[] activeWeapons;
-    Gun[] guns;
-    GameObject currentActiveWeapon;
+
+    [SerializeField] GameObject[] prefab;   //All the gun prefabs that should be instanciated
+    List<GameObject> instanciatedWeapons;   //To save all instanciated prefabs in a list
+    List<GameObject> unlockedWeapons;         //To save all the weapons that are Unlocked
+    GameObject currentActiveWeapon;         //Saves the current active weapon
+    Gun currentGunScript;                   //Saves the current gun script
+    Camera cam;                             //Gets the camera script
+    public LayerMask mask;                  //Gets the enemy layer mask
+    gunType currentGun;                     //Makes a gunType
+    private bool reloading = false;         //bool to in shure reload is only called once at a time
+    private bool shooting = false;
+    private PlayerUI playerUI;              //Gets the curren player UI
+    private InputManager inputManager;
     private void Start()
     {
+        playerUI = GetComponent<PlayerUI>();
         InstanciateWeapons();
     }
     private void InstanciateWeapons()
@@ -22,20 +29,76 @@ public class GunManager : MonoBehaviour
         {
             Vector3 position = transform.position;
             var obj = Instantiate(weapon, position, Quaternion.identity);
+            instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
-            if (script.weaponActive == true)
+            if (script.weaponActive == true && script.weaponUnlocked == true)
             {
-
+                unlockedWeapons.Add(obj); //Adds a weapon to the active weapon list
+                currentActiveWeapon = unlockedWeapons[0];
+            }else if (script.weaponUnlocked == true)
+            {
+                unlockedWeapons.Add(obj);
             }
+                
         }
     }
     public void Reload()
     {
-
+        if (reloading) return;
+        StartCoroutine(ReloadCorutine());
+    }
+    public IEnumerator ReloadCorutine()
+    {
+        reloading = true;
+        yield return new WaitForSeconds(currentGunScript.realoadTime);
+        currentGunScript.amonition = currentGunScript.amonitionMax;
+        reloading = false;
     }
     public void Shoot()
     {
-
+        if (shooting) return;
+        StartCoroutine(ShootCorutine());
+    }
+    public IEnumerator ShootCorutine()
+    {
+        shooting = true;
+        yield return new WaitForSeconds(currentGunScript.shootCooldown);
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * currentGunScript.range);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, currentGunScript.range, mask))
+        {
+            if (hitInfo.collider.GetComponent<Enemy>() != null)
+            {
+                Enemy interact = hitInfo.collider.GetComponent<Enemy>();
+                playerUI.UpdateText(interact.promptMessage);   //the update Text function from PlayerUI is called
+                if (inputManager.onWeapon.Shoot.triggered)
+                {
+                    interact.BaseInteract();
+                }
+            }
+        }
+        shooting = false;
+    }
+    /// <summary>
+    /// Switches the active weapon to the next or previous one in the list of active weapons, based on the value of change.
+    /// </summary>
+    /// <param name="change">A positive or negative integer indicating the direction of the weapon switch.</param>
+    /// <remarks>
+    /// If the new active weapon is unlocked, sets the weaponActive property of the previous and new weapons accordingly.
+    /// </remarks>
+    public void SwitchWeapon(int change)
+    {
+        var nextGun = ((int)currentGun + change + unlockedWeapons.Count) % unlockedWeapons.Count;
+        currentGunScript = currentActiveWeapon.GetComponent<Gun>();
+        var nextGunScript = unlockedWeapons[nextGun].GetComponent<Gun>();
+        if (nextGunScript.weaponUnlocked)
+        {
+            currentGunScript.weaponActive = false;
+            nextGunScript.weaponActive = true;
+            currentActiveWeapon = unlockedWeapons[nextGun];
+            currentGunScript = currentActiveWeapon.GetComponent<Gun>();
+        }
     }
     public void Aim()
     {

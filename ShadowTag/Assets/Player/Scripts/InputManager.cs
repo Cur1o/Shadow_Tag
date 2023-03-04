@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
     {
         
         gunManager = GunManager.Instance;                //the script GunManager
-        Debug.Log(gunManager);
+        //Debug.Log(gunManager);
         onWeapon.Reload.performed += ctx => gunManager.Reload();//if the player reloads the Reload funtion in GunManager is called
         onWeapon.Shoot.performed += ctx => gunManager.Shoot();  //if the player shoots the Shoot funtion in GunManager is called    
         onWeapon.SwitchWeapon.performed += ctx =>

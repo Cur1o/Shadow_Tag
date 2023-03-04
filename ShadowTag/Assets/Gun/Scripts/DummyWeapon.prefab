@@ -110,15 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de07b5612963b784789fac160b13255c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
   gunVariant: 0
   weaponUnlocked: 1
   weaponActive: 1
+  damage: 25
+  ammunition: 15
+  ammunitionMax: 15
   range: 20
-  amonition: 100
-  amonitionMax: 100
-  realoadTime: 2
+  realoadTime: 1.5
   shootCooldown: 0.2

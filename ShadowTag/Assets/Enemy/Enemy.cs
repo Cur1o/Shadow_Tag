@@ -6,7 +6,7 @@ public class Enemy : Interactable
 {
     private PlayerUI playerUI;
     public int health;
-    public int points;
+    public int points = 50;
     // Start is called before the first frame update
     void Start()
     {

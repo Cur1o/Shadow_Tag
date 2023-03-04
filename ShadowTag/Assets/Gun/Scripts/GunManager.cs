@@ -37,6 +37,7 @@ public class GunManager : MonoBehaviour
         playerUI = PlayerUI.Instance;
         cam = Camera.main;
         InstanciateWeapons();
+        playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
     }
     private void Update()
     {
@@ -73,6 +74,7 @@ public class GunManager : MonoBehaviour
         reloading = true;
         yield return new WaitForSeconds(currentGunScript.realoadTime);
         currentGunScript.ammunition = currentGunScript.ammunitionMax;
+        playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         reloading = false;
     }
     //Shooting

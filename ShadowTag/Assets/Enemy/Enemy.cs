@@ -19,4 +19,8 @@ public class Enemy : Interactable
     {
         Debug.Log("Shot on Enemy : " + gameObject.name);
     }
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
 }

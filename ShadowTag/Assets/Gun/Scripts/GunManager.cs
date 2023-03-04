@@ -59,6 +59,7 @@ public class GunManager : MonoBehaviour
             }else if (script.weaponUnlocked == true)
             {
                 unlockedWeapons.Add(obj);
+                obj.SetActive(false);
             }     
         }
     }

@@ -65,17 +65,20 @@ public class GunManager : MonoBehaviour
     //Reloading
     public void Reload()
     {
-        Debug.Log("Reloading Gun");
+        //Debug.Log("Reloading Gun");
         if (reloading) return;
+        if (currentGunScript.ammunition == currentGunScript.ammunitionMax) return;
         StartCoroutine(ReloadCorutine());
     }
     public IEnumerator ReloadCorutine()
     {
         reloading = true;
+        shooting = true;
         yield return new WaitForSeconds(currentGunScript.realoadTime);
         currentGunScript.ammunition = currentGunScript.ammunitionMax;
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         reloading = false;
+        shooting = false;
     }
     //Shooting
     public void Shoot()

@@ -6,7 +6,10 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     public static PlayerUI Instance { get; private set; }
+    private int currentScore;
     [SerializeField] private TextMeshProUGUI promptText;    //Creates a TMPro text element
+    [SerializeField] private TextMeshProUGUI scoreText;     //Shows the current score
+    [SerializeField] private TextMeshProUGUI ammunitionText;//Shows the current ammunition on screen
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,12 +22,15 @@ public class PlayerUI : MonoBehaviour
             Instance = this;
         }
     }
-    void Start()
+    public void UpdateScore(int newScoreText)
     {
-
+        currentScore += newScoreText;
+        scoreText.text = "Score: "+currentScore; 
     }
-
-    // Update is called once per frame
+    public void UpdateAmmunition(int currentAmmunition,int MaxAmmunition)
+    {
+        ammunitionText.text = currentAmmunition + " / " + MaxAmmunition;
+    }
     public void UpdateText(string promptMessage)
     {
             promptText.text = promptMessage;    //Displays the message on the Screen

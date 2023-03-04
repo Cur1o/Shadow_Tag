@@ -8,10 +8,10 @@ public class Gun : MonoBehaviour
     public bool weaponUnlocked;
     public bool weaponActive;
     //Weapon specs
-    [SerializeField]float damage;
+    public int damage;
+    public int ammunition;
+    public int ammunitionMax;
     public float range;
-    public float amonition;
-    public float amonitionMax;
     public float realoadTime;
     public float shootCooldown;
 

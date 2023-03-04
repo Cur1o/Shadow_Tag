@@ -61,6 +61,7 @@ public class GunManager : MonoBehaviour
             }     
         }
     }
+    //Reloading
     public void Reload()
     {
         Debug.Log("Reloading Gun");
@@ -71,34 +72,32 @@ public class GunManager : MonoBehaviour
     {
         reloading = true;
         yield return new WaitForSeconds(currentGunScript.realoadTime);
-        currentGunScript.amonition = currentGunScript.amonitionMax;
+        currentGunScript.ammunition = currentGunScript.ammunitionMax;
         reloading = false;
     }
+    //Shooting
     public void Shoot()
     {
-        
         if (shooting) return;
-        if (currentGunScript.amonition <= 0) return;
+        if (currentGunScript.ammunition <= 0) return;
         StartCoroutine(ShootCorutine());
     }
     public IEnumerator ShootCorutine()
     {
         shooting = true;
-        currentGunScript.amonition--;
-        Debug.Log("Shoot Gun");
+        currentGunScript.ammunition--;
+        playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
+        //Debug.Log("Shoot Gun");
         var enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
         if (enemy != null)
         {
-            Debug.Log(enemy);
-            playerUI.UpdateText(enemy.promptMessage);   //the update Text function from PlayerUI is called
-            Debug.Log("trigered");
-            enemy.BaseInteract();
-            enemy.Hit();
+            enemy.Hit(currentGunScript.damage);
         }
         shooting = false;
-        Debug.Log("Shoot End");
+        //Debug.Log("Shoot End");
     }
+
     /// <summary>
     /// Switches the active weapon to the next or previous one in the list of active weapons, based on the value of change.
     /// </summary>
@@ -120,6 +119,7 @@ public class GunManager : MonoBehaviour
             currentGunScript = currentActiveWeapon.GetComponent<Gun>();
         }
     }
+    //TODO: Implement the Aim feature when enogth Time left
     public void Aim()
     {
 

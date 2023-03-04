@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class Enemy : Interactable
 {
+    private PlayerUI playerUI;
+    public int health;
+    public int points;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerUI = PlayerUI.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hit(int damage)
     {
-        
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
     }
-    protected override void Interact()
+    private void Die()
     {
-        Debug.Log("Shot on Enemy : " + gameObject.name);
-    }
-    public void Hit()
-    {
+        AddPoints();
         Destroy(gameObject);
     }
+    private void AddPoints()
+    {
+        playerUI.UpdateScore(points);
+    }
+
 }

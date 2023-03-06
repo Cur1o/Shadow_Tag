@@ -15,6 +15,7 @@ public class FileSaveDataHandler
     }
     public SaveData Load()
     {
+        Debug.Log("Loading SaveData");
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         SaveData loadedData = null;
         if (File.Exists(fullPath))
@@ -31,16 +32,19 @@ public class FileSaveDataHandler
                     }
                 }
                 loadedData = JsonUtility.FromJson<SaveData>(dataToLoad);
+                Debug.Log("Sucess Load SaveData");
             }
             catch (Exception e)
             {
                 Debug.Log("Error while loading: " + fullPath + "\n" + e);  
             }
+            
         }
         return loadedData;
     }
     public void Save(SaveData data)
     {
+        Debug.Log("Saving SaveData");
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
@@ -55,10 +59,12 @@ public class FileSaveDataHandler
                     writer.Write(dataToStore);
                 }
             }
+            Debug.Log("sucess Saving SaveData");
         }
         catch (Exception e)
         {
             Debug.Log("Error while saving: "+ fullPath + "\n" + e);
         }
+        
     }
 }

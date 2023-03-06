@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunManager : MonoBehaviour , IDataPersistance
+public class GunManager : MonoBehaviour /*, IDataPersistance*/
 {
     public static GunManager Instance { get; private set; }
     public enum gunType { pistol = 0, rifle = 1, shotgun = 2, assaultRifle = 3 };
     //Variables
     [SerializeField] GameObject[] prefabs;   //All the gun prefabs that should be instanciated
-    List<GameObject> instanciatedWeapons;   //To save all instanciated prefabs in a list
-    List<GameObject> unlockedWeapons;         //To save all the weapons that are Unlocked
+    List<GameObject> instanciatedWeapons = new();//To save all instanciated prefabs in a list
+    List<GameObject> unlockedWeapons = new();//To save all the weapons that are Unlocked
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
     Camera cam;                             //Gets the camera script
@@ -127,14 +127,14 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     
     //Save and Load the weapons
-    public void SaveData(ref SaveData data)
-    {
-        data.unlockedWeapons = this.unlockedWeapons ;
-        data.currentActiveWeapon = this.currentActiveWeapon;
-    }
-    public void LoadData(SaveData data)
-    {
-        this.unlockedWeapons = data.unlockedWeapons;
-        this.currentActiveWeapon = data.currentActiveWeapon ;
-    }
+    //public void SaveData(ref SaveData data)
+    //{
+    //    data.unlockedWeapons = this.unlockedWeapons ;
+    //    data.currentActiveWeapon = this.currentActiveWeapon;
+    //}
+    //public void LoadData(SaveData data)
+    //{
+    //    this.unlockedWeapons = data.unlockedWeapons;
+    //    this.currentActiveWeapon = data.currentActiveWeapon ;
+    //}
 }

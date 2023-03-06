@@ -8,10 +8,6 @@ public class Enemy : Interactable
     public int health;
     public int points = 50;
     // Start is called before the first frame update
-    void Start()
-    {
-        playerUI = PlayerUI.Instance;
-    }
 
     public void Hit(int damage)
     {
@@ -28,7 +24,7 @@ public class Enemy : Interactable
     }
     private void AddPoints()
     {
-        playerUI.UpdateScore(points);
+        PlayerUI.Instance.UpdateScore(points);
     }
 
 }

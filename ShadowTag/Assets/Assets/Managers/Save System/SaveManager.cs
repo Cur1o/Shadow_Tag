@@ -10,8 +10,9 @@ public class SaveManager : MonoBehaviour
     private FileSaveDataHandler dataHandler;
     public static SaveManager Instance { get; private set;}
     //Variables
-    private SaveData gameData;
-    private List<IDataPersistance> dataPersistenceObjects;
+    public SaveData gameData;
+    public List<IDataPersistance> dataPersistenceObjects = new();
+    
     private void Awake()
     {
         if (Instance != null || Instance == this)
@@ -22,12 +23,12 @@ public class SaveManager : MonoBehaviour
         {
             Instance = this;
         }
+        this.dataHandler = new FileSaveDataHandler(Application.persistentDataPath, fileName);
+        LoadGame();
     }
     private void Start()
     {
-        this.dataHandler = new FileSaveDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+       
     }
     public void NewGame()
     {
@@ -36,14 +37,9 @@ public class SaveManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = dataHandler.Load();
-        //TODO: Load saved data
         if (this.gameData == null)
         {
             NewGame();
-        }
-        foreach (IDataPersistance dataPersistenceObj in dataPersistenceObjects)
-        {
-            dataPersistenceObj.LoadData(gameData);
         }
     }
     public void SaveGame()
@@ -54,9 +50,9 @@ public class SaveManager : MonoBehaviour
         }
         dataHandler.Save(gameData);
     }
-    private List<IDataPersistance> FindAllDataPersistenceObjects()
+    private void OnApplicationQuit()
     {
-        IEnumerable<IDataPersistance> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistance>();
-        return new List<IDataPersistance>(dataPersistenceObjects);
+        SaveGame();
     }
+
 }

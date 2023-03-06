@@ -14,7 +14,7 @@ namespace Player
         void Start()
         {
             cam = GetComponent<PlayerLook>().cam;
-            playerUI = GetComponent<PlayerUI>();
+            playerUI = PlayerUI.Instance;
             inputManager = GetComponent<InputManager>();
         }
 

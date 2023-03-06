@@ -24,6 +24,12 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
         {
             Instance = this;
         }
+        
+    }
+    private void Start()
+    {
+        SaveManager.Instance.dataPersistenceObjects.Add(this);
+        LoadData(SaveManager.Instance.gameData);
     }
     public void UpdateScore(int newScoreText)
     {
@@ -52,9 +58,13 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
     }
     public void LoadData(SaveData data)
     {
-        this.currentPoints = data.currentPoints;
-        this.points = data.points;
-        this.currentLabyrinthLevel = data.currentLabyrinthLevel;
+        Debug.Log(data.currentPoints);
+        UpdateScore(data.currentPoints);
+        UpdateLevel(data.currentLabyrinthLevel);
+    }
+    private void OnDisable()
+    {
+        SaveManager.Instance.dataPersistenceObjects.Remove(this);
     }
 
 }

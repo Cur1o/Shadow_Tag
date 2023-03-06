@@ -16,9 +16,14 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
     private bool crouching;
     private bool sprinting;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        SaveManager.Instance.dataPersistenceObjects.Add(this);
+    }
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        LoadData(SaveManager.Instance.gameData);
     }
 
     // Update is called once per frame
@@ -83,6 +88,10 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
     public void LoadData(SaveData data)
     {
         this.transform.position = data.playerPosition;
+    }
+    private void OnDisable()
+    {
+        SaveManager.Instance.dataPersistenceObjects.Remove(this);
     }
 }
 

@@ -23,21 +23,15 @@ public class SaveManager : MonoBehaviour
         {
             Instance = this;
         }
-        this.dataHandler = new FileSaveDataHandler(Application.persistentDataPath, fileName);
-        LoadGame();
+        this.dataHandler = new FileSaveDataHandler(Application.persistentDataPath, fileName);  
+        LoadGame(); //The data is called at the beginning
     }
-    private void Start()
-    {
-       
-    }
-    public void NewGame()
-    {
-        this.gameData = new SaveData();
-    }
+    public void NewGame() =>this.gameData = new SaveData(); //Creates an instance of SaveData
+    
     public void LoadGame()
     {
-        this.gameData = dataHandler.Load();
-        if (this.gameData == null)
+        this.gameData = dataHandler.Load(); //Gets the saved Data from json file
+        if (this.gameData == null)          //If not exist starts a new Game
         {
             NewGame();
         }

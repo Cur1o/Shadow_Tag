@@ -16,38 +16,28 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
     // Start is called before the first frame update
     private void Awake()
     {
-        if (Instance != null || Instance == this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
+        if (Instance != null || Instance == this) 
+            Destroy(gameObject);   
+        else 
             Instance = this;
-        }
-        
     }
     private void Start()
-    {
-        SaveManager.Instance.dataPersistenceObjects.Add(this);
-        LoadData(SaveManager.Instance.gameData);
+    {   //When Ui is created or active, it adds itself to dataPersistenceObjects List in SaveManager.
+        SaveManager.Instance.dataPersistenceObjects.Add(this);  //Using foreach to find every object with IDataPrersistance Interface is bad for performance
+        LoadData(SaveManager.Instance.gameData);    //The Data is Loaded
     }
     public void UpdateScore(int newScoreText)
     {
-        currentPoints += newScoreText;
-        scoreText.text = "Score: "+ currentPoints; 
+        currentPoints += newScoreText;              //The new score is added to current score
+        scoreText.text = "Score: "+ currentPoints;  //Update the text
     }
-    public void UpdateAmmunition(int currentAmmunition,int MaxAmmunition)
-    {
-        ammunitionText.text = currentAmmunition + " / " + MaxAmmunition;
-    }
-    public void UpdateText(string promptMessage)
-    {
-            promptText.text = promptMessage;    //Displays the message on the Screen
-    }
+    public void UpdateAmmunition(int currentAmmunition,int MaxAmmunition) => ammunitionText.text = currentAmmunition + " / " + MaxAmmunition;    //Update the text
+    public void UpdateText(string promptMessage) => promptText.text = promptMessage;  //Displays the message on the Screen
+          
     public void UpdateLevel(int newLevel)
     {
-        currentLabyrinthLevel += newLevel;
-        currentLabyrinthText.text = "Ebene: "+currentLabyrinthLevel;
+        currentLabyrinthLevel += newLevel; 
+        currentLabyrinthText.text = "Ebene: "+currentLabyrinthLevel; //Update the text
     }
     //Save and Load
     public void SaveData(ref SaveData data)
@@ -58,14 +48,9 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
     }
     public void LoadData(SaveData data)
     {
-        Debug.Log(data.currentPoints);
         UpdateScore(data.currentPoints);
         UpdateLevel(data.currentLabyrinthLevel);
     }
-    private void OnDisable()
-    {
-        SaveManager.Instance.dataPersistenceObjects.Remove(this);
-    }
-
+    private void OnDisable() => SaveManager.Instance.dataPersistenceObjects.Remove(this);
 }
 

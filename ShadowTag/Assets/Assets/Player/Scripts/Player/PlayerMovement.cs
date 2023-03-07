@@ -16,10 +16,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
     private bool crouching;
     private bool sprinting;
     // Start is called before the first frame update
-    private void Awake()
-    {
-        SaveManager.Instance.dataPersistenceObjects.Add(this);
-    }
+    private void Awake() => SaveManager.Instance.dataPersistenceObjects.Add(this);
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -31,21 +28,21 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
     {
         isOnGround = controller.isGrounded;
         if(lerpCrouch)
-            {
-                crouchTimer += Time.deltaTime;
-                float p = crouchTimer / 1;
-                p *= p;
-                if (crouching)
-                    controller.height = Mathf.Lerp(controller.height, 1, p);
-                else
-                    controller.height = Mathf.Lerp(controller.height, 2, p);
+        {
+            crouchTimer += Time.deltaTime;
+            float p = crouchTimer / 1;
+            p *= p;
+            if (crouching)
+                controller.height = Mathf.Lerp(controller.height, 1, p);
+            else
+                controller.height = Mathf.Lerp(controller.height, 2, p);
 
-                if (p > 1)
-                {
-                    lerpCrouch = false;
-                    crouchTimer = 0f;
-                }
+            if (p > 1)
+            {
+                lerpCrouch = false;
+                crouchTimer = 0f;
             }
+        }
     }
     //Gets the inputs for the InputManager and applys them to the player character controller
     public void ManageMove(Vector2 input)

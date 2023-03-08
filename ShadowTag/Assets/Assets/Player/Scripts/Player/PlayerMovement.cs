@@ -78,17 +78,9 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
             speed = 5;
     }
     //Save and Load
-    public void SaveData(ref SaveData data)
-    {
-        data.playerPosition = this.transform.position;
-    }
-    public void LoadData(SaveData data)
-    {
-        this.transform.position = data.playerPosition;
-    }
-    private void OnDisable()
-    {
-        SaveManager.Instance.dataPersistenceObjects.Remove(this);
-    }
+    public void SaveData(ref SaveData data) => data.playerPosition = this.transform.position;
+    public void LoadData(SaveData data) => this.transform.position = data.playerPosition;
+    private void OnDisable() => SaveManager.Instance.dataPersistenceObjects.Remove(this);
+    
 }
 

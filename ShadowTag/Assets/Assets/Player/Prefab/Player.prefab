@@ -259,6 +259,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2091760917128351353, guid: ea49d95ec7527454aa827c6fa1c8aa79, type: 3}
   - {fileID: 7570707234972308803, guid: fed07d59c07998348858abce603ad9ce, type: 3}
+  - {fileID: 2091760917128351353, guid: ea49d95ec7527454aa827c6fa1c8aa79, type: 3}
   mask:
     serializedVersion: 2
     m_Bits: 128

@@ -39,10 +39,13 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         InstanciateWeapons();
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
     }
-    private void Update()
-    {
-        Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask);
-    }
+    private void Update() => Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask);
+    //Instanciating Weapons
+    /// <summary>
+    /// Instantiates each weapon prefab in the prefabs list and adds them to the instanciatedWeapons list. If a weapon is active and unlocked,
+    /// it is also added to the unlockedWeapons list and set as the current active weapon with its Gun component stored in currentGunScript.
+    /// Otherwise, the weapon is added to the unlockedWeapons list but remains inactive.
+    /// </summary>
     private void InstanciateWeapons()
     {
         foreach (var weapon in prefabs)
@@ -64,6 +67,9 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         }
     }
     //Reloading
+    /// <summary>
+    /// Triggers reloading the current gun if it is not already reloading and there is not a full clip.
+    /// </summary>
     public void Reload()
     {
         //Debug.Log("Reloading Gun");
@@ -71,6 +77,11 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         if (currentGunScript.ammunition == currentGunScript.ammunitionMax) return;
         StartCoroutine(ReloadCorutine());
     }
+    /// <summary>
+    /// A coroutine that represents reloading the current gun. Sets the reloading and shooting flags, waits for the current gun's
+    /// reload time, refills the current gun's ammunition, updates the player's UI, and resets the reloading and shooting flags.
+    /// </summary>
+    /// <returns>A coroutine that can be yielded in another method.</returns>
     public IEnumerator ReloadCorutine()
     {
         reloading = true;
@@ -82,12 +93,20 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         shooting = false;
     }
     //Shooting
+    /// <summary>
+    /// Triggers shooting the current gun if the player is not already shooting and there is ammunition left.
+    /// </summary>
     public void Shoot()
     {
         if (shooting) return;
         if (currentGunScript.ammunition <= 0) return;
         StartCoroutine(ShootCorutine());
     }
+    /// <summary>
+    /// A coroutine that represents shooting a gun. Decrements the current gun's ammunition, updates the player's UI,
+    /// waits for the current gun's shoot cooldown, and hits an enemy if one is hit by the gun's raycast.
+    /// </summary>
+    /// <returns>A coroutine that can be yielded in another method.</returns>
     public IEnumerator ShootCorutine()
     {
         shooting = true;
@@ -103,7 +122,6 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         shooting = false;
         //Debug.Log("Shoot End");
     }
-
     /// <summary>
     /// Switches the active weapon to the next or previous one in the list of active weapons, based on the value of change.
     /// </summary>
@@ -113,17 +131,23 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </remarks>
     public void SwitchWeapon(int change)
     {
-        Debug.Log("Switch Weapon");
+        //Debug.Log("Switch Weapon");
         var nextGun = ((int)currentGun + change + unlockedWeapons.Count) % unlockedWeapons.Count;
         currentGunScript = currentActiveWeapon.GetComponent<Gun>();
         var nextGunScript = unlockedWeapons[nextGun].GetComponent<Gun>();
         if (nextGunScript.weaponUnlocked)
         {
+            currentGun += change;
             currentGunScript.weaponActive = false;
+            currentActiveWeapon.SetActive(false);
             nextGunScript.weaponActive = true;
             currentActiveWeapon = unlockedWeapons[nextGun];
             currentGunScript = currentActiveWeapon.GetComponent<Gun>();
+            currentActiveWeapon.SetActive(true);
+            playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
+            //Debug.Log("Switching weapon success");
         }
+        
     }
     
     //Save and Load the weapons

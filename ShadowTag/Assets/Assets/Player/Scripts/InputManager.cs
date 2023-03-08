@@ -41,10 +41,10 @@ public class InputManager : MonoBehaviour
         onWeapon.Shoot.performed += ctx => gunManager.Shoot();  //if the player shoots the Shoot funtion in GunManager is called    
         onWeapon.SwitchWeapon.performed += ctx =>
         {
+            float weaponValue = onWeapon.SwitchWeapon.ReadValue<float>();
+            float floatValue = weaponValue; // oder y, abhängig von dem konkreten Control
+            int intValue = Mathf.Clamp((int)floatValue,-1,1); // Konvertiere den float-Wert in einen int-Wert
             
-            Vector2 weaponValue = onWeapon.SwitchWeapon.ReadValue<Vector2>();
-            float floatValue = weaponValue.x; // oder y, abhängig von dem konkreten Control
-            int intValue = (int)floatValue; // Konvertiere den float-Wert in einen int-Wert
             gunManager.SwitchWeapon(intValue);
 
         };

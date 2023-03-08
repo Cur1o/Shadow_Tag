@@ -89,7 +89,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 8
   groundTint:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 0.122641504, g: 0.1043775, b: 0.09313812, a: 1}
   groundColorTexture:
     m_OverrideState: 0
@@ -176,10 +176,10 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 25.75
+    m_Value: 26.34
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 25.78
+    m_Value: 28.71
   meanFreePath:
     m_OverrideState: 1
     m_Value: 1
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+    m_Value: {r: 0.007843138, g: 0.007843138, b: 0.007843138, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
     m_Value: 0
   skyAmbientMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   windOrientation:
     m_OverrideState: 0
     m_Value: 0

@@ -51,6 +51,7 @@ public class InputManager : MonoBehaviour
     }
     void FixedUpdate()
     {
+        
         movement.ManageMove(onWalk.Move.ReadValue<Vector2>());  //sends the movement information to PlayerMovement to move the player
     }
     private void LateUpdate()

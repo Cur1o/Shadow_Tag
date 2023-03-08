@@ -147,9 +147,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
             //Debug.Log("Switching weapon success");
         }
-        
     }
-    
     //Save and Load the weapons
     //public void SaveData(ref SaveData data)
     //{

@@ -51,7 +51,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         foreach (var weapon in prefabs)
         {
             Vector3 position = transform.position;
-            var obj = Instantiate(weapon, position, Quaternion.identity,transform);
+            var obj = Instantiate(weapon, position, weapon.transform.rotation, transform);
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
             if (script.weaponActive == true && script.weaponUnlocked == true)

@@ -197,6 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.save
+  gameData:
+    currentPoints: 0
+    points: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+    currentLabyrinthLevel: 1
+    playerPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1285718856
 Transform:
   m_ObjectHideFlags: 0

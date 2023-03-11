@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   enableVolumetricFog:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   albedo:
     m_OverrideState: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
   - {fileID: 1142777632297148762}
   - {fileID: -7724654706381055090}
   - {fileID: -4151792930034644520}
-  - {fileID: 7642060734654139733}
+  - {fileID: 8924530869230002761}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -270,7 +270,7 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 1
     m_Value: 0
---- !u!114 &7642060734654139733
+--- !u!114 &8924530869230002761
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +287,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 4
   meteringMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
   luminanceSource:
     m_OverrideState: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   limitMax:
     m_OverrideState: 1
     m_Value: 14
@@ -411,7 +411,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   proceduralRadii:
     m_OverrideState: 0
-    m_Value: {x: 0.15, y: 0.15}
+    m_Value: {x: 0.3, y: 0.3}
   maskMinIntensity:
     m_OverrideState: 0
     m_Value: -30

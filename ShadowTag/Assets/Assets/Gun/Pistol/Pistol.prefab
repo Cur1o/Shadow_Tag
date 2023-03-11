@@ -144,7 +144,7 @@ MonoBehaviour:
   ammunition: 20
   ammunitionMax: 20
   range: 25
-  realoadTime: 0.5
+  realoadTime: 2
   shootCooldown: 1
 --- !u!320 &756944043906187274
 PlayableDirector:
@@ -181,7 +181,7 @@ Animator:
   m_GameObject: {fileID: 2441123104212435738}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3b950ffa9c3b6a44ae813345d33dfef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

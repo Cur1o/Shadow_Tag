@@ -20,7 +20,7 @@ namespace spawner
             if (isPlayer)
                 StartCoroutine(SpawnEnumerator(prefab,position));
             else
-                Instantiate(prefab, position, Quaternion.identity);
+                Instantiate(prefab, position, transform.rotation);
         }
         private IEnumerator SpawnEnumerator(GameObject prefab, Vector3 position)
         {

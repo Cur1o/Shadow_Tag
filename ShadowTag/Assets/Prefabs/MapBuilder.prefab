@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7291754712318036041
 MonoBehaviour:
@@ -83,6 +83,10 @@ MonoBehaviour:
     thumbnail: {fileID: 2800000, guid: 3c6f067369dff7e4d946bd227e67bfdc, type: 3}
     prefab: {fileID: 1082188586007650414, guid: 840ace6f31be5724d8fd3c00a1174691,
       type: 3}
+    rotationY: 0
+  - id: GhostStation
+    thumbnail: {fileID: 2800000, guid: c2fb58c03ccc6d14dbc5566dc0c3ca1e, type: 3}
+    prefab: {fileID: 100000, guid: fdad9d952ae84cafb74c63f2e694d042, type: 3}
     rotationY: 0
   currentMap: []
   mapSize: {x: 10, y: 10}

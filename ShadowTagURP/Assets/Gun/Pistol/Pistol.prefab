@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5547825865796390800}
   - component: {fileID: 5588691337658682640}
   - component: {fileID: 390819420568023811}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 756944043906187274}
   - component: {fileID: 8284607196140031714}
   - component: {fileID: 3430243785147975293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pistol
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 8446164213887120664}
   - component: {fileID: 1659640464849207111}
   - component: {fileID: 8893272559806471510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 1947496730351731453}
   - component: {fileID: 3997000030324805328}
   - component: {fileID: 8379473140652016714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Energy.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 6549020844755756910}
   - component: {fileID: 1425994192315450561}
   - component: {fileID: 263582352335814880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 386494208974544753}
   - component: {fileID: 6475613779491810886}
   - component: {fileID: 8710046185270831526}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 6915611001679989654}
   - component: {fileID: 1793216163032847342}
   - component: {fileID: 6483201183138078748}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 2106490410616917919}
   - component: {fileID: 6619418731692928337}
   - component: {fileID: 3307803687337284884}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Energy.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 6314529179692420927}
   - component: {fileID: 3775827976667881025}
   - component: {fileID: 3239022040209117171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GlowHammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

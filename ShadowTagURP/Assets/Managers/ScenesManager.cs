@@ -14,13 +14,11 @@ public class ScenesManager : MonoBehaviour
     }
     public enum Scene
     {
-        Managment,
         Menu,
         Start,
         Map1,
         Map2,
         Map3,
-        Map4
     }
     public void LoadScene(Scene scene)
     {
@@ -28,7 +26,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void LoadNewGame()
     {
-        SceneManager.LoadScene(Scene.Start.ToString());
+        SceneManager.LoadScene(Scene.Map1.ToString());
     }
     public void LoadNextScene()
     {

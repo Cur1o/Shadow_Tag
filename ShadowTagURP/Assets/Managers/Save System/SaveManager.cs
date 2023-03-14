@@ -24,7 +24,6 @@ public class SaveManager : MonoBehaviour
             Instance = this;
         }
         this.dataHandler = new FileSaveDataHandler(Application.persistentDataPath, fileName);  
-        LoadGame(); //The data is called at the beginning
     }
     public void NewGame() =>this.gameData = new SaveData(); //Creates an instance of SaveData
     

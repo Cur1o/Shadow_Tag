@@ -36,8 +36,11 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
           
     public void UpdateLevel(int newLevel)
     {
-        currentLabyrinthLevel += newLevel; 
-        currentLabyrinthText.text = "Ebene: "+currentLabyrinthLevel; //Update the text
+        currentLabyrinthLevel += newLevel;
+        if (currentLabyrinthLevel == 0)
+            currentLabyrinthText.text = "";
+        else
+            currentLabyrinthText.text = "Ebene: "+currentLabyrinthLevel; //Update the text
     }
     //Save and Load
     public void SaveData(ref SaveData data)

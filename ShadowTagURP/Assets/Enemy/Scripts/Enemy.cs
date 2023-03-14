@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Enemy : Interactable
 {
-    private PlayerUI playerUI;
     public int health;
     public int points = 50;
     // Start is called before the first frame update
     public void Hit(int damage)
     {
         health -= damage;
+        Debug.Log("Hit");
         if (health <= 0)
             Die();
     }

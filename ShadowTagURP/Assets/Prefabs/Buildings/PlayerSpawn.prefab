@@ -9338,6 +9338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8932929338939477091, guid: 7d8e4b15c392bc04d8e720be8a90a343, type: 3}
+  spawnTimer: 0.5
+  isPlayer: 1
 --- !u!1001 &4110471095269849384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9346,6 +9348,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 8266749253058258420}
     m_Modifications:
+    - target: {fileID: 3146678127113132406, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6114458745970115886, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
         type: 3}
       propertyPath: m_RootOrder

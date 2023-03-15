@@ -98,9 +98,11 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </summary>
     public void Shoot()
     {
+        Debug.Log("Shooting");
         if (shooting) return;
         if (currentGunScript.ammunition <= 0) return;
         StartCoroutine(ShootCorutine());
+        Debug.Log("Shooting End");
     }
     /// <summary>
     /// A coroutine that represents shooting a gun. Decrements the current gun's ammunition, updates the player's UI,
@@ -112,7 +114,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         shooting = true;
         currentGunScript.ammunition--;
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
-        //Debug.Log("Shoot Gun");
+        Debug.Log("Shoot Gun");
         var enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
         if (enemy != null)
@@ -120,7 +122,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
             enemy.Hit(currentGunScript.damage);
         }
         shooting = false;
-        //Debug.Log("Shoot End");
+        Debug.Log("Shoot End");
     }
     /// <summary>
     /// Switches the active weapon to the next or previous one in the list of active weapons, based on the value of change.

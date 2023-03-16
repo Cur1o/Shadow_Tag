@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : Interactable
 {
-    public int health;
-    public int points = 50;
+    [SerializeField] int health;
+    [SerializeField] int points = 50;
     // Start is called before the first frame update
     public void Hit(int damage)
     {

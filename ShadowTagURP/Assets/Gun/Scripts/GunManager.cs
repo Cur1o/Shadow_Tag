@@ -8,7 +8,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     public enum gunType { pistol = 0, rifle = 1, shotgun = 2, assaultRifle = 3 };
     //Variables
     [SerializeField] GameObject[] prefabs;   //All the gun prefabs that should be instanciated
-    List<GameObject> instanciatedWeapons = new();//To save all instanciated prefabs in a list
+    public List<GameObject> instanciatedWeapons = new();//To save all instanciated prefabs in a list
     List<GameObject> unlockedWeapons = new();//To save all the weapons that are Unlocked
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
@@ -69,8 +69,19 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
             }    
         }
     }
+    public void FindObjectToUnlock(Gun scriptWeaponToCompare)
+    {
+        foreach (var gun in GunManager.Instance.instanciatedWeapons)
+        {
+            var scriptInstanciatedWeapon = gun.GetComponent<Gun>();
+            if (currentGun == scriptInstanciatedWeapon.gunVariant)
+            {
+                UnlockWeapon(gun);
+            }
+        }
+    }
     //Order Weapons
-    private void UnlockWeapon(GameObject newWeapon)
+    public void UnlockWeapon(GameObject newWeapon)
     {
         var script = newWeapon.GetComponent<Gun>();
         unlockedWeapons.Add(newWeapon);

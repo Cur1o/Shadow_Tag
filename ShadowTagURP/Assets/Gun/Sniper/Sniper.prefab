@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunVariant: 1
-  weaponUnlocked: 1
+  weaponUnlocked: 0
   weaponActive: 0
   damage: 100
   ammunition: 15

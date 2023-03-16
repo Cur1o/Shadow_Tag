@@ -63,8 +63,18 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
             {
                 unlockedWeapons.Add(obj);
                 obj.SetActive(false);
-            }     
+            }else if (script.weaponUnlocked == false)
+            {
+                obj.SetActive(false);
+            }    
         }
+    }
+    //Order Weapons
+    private void UnlockWeapon(GameObject newWeapon)
+    {
+        var script = newWeapon.GetComponent<Gun>();
+        unlockedWeapons.Add(newWeapon);
+        newWeapon.SetActive(false);
     }
     //Reloading
     /// <summary>

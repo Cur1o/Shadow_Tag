@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunVariant: 0
   weaponUnlocked: 1
-  weaponActive: 1
+  weaponActive: 0
   damage: 50
   ammunition: 20
   ammunitionMax: 20

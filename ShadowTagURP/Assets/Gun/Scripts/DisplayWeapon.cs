@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class DisplayWeapon : Interactable
 {
-    [SerializeField] GameObject prefab;
-    Gun script;
-    GunManager.gunType currentGun;
-
-    private void Start()
+    [SerializeField] GunManager.gunType currentGun;
+    private void UnlockWeapon() => GunManager.Instance.FindObjectToUnlock(currentGun);
+    protected override void Interact() 
     {
-        script = prefab.GetComponent<Gun>();
-        currentGun = script.gunVariant;
+        Debug.Log("Interacted width : " + gameObject.name);
+        UnlockWeapon(); 
+        Debug.Log("Unlocked Weapon : " + gameObject.name); 
     }
-    private void UnlockWeapon() => GunManager.Instance.FindObjectToUnlock(script);
-    
-    protected override void Interact() => Debug.Log("Unlocked Weapon : " + gameObject.name);
-
-
 }

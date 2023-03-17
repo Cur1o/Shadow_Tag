@@ -14,7 +14,7 @@ namespace spawner
         void Start()
         {
             position = transform.position;
-            loadedPosition = SaveManager.Instance.gameData.playerPosition + new Vector3(0, 1, 0);
+            loadedPosition = SaveManager.Instance.gameData.playerPosition;
             Spawn(prefab, position);
         }
         private void Spawn(GameObject prefab, Vector3 position)
@@ -27,8 +27,8 @@ namespace spawner
         private IEnumerator SpawnEnumerator(GameObject prefab, Vector3 position)
         {
             yield return new WaitForSeconds(spawnTimer);
-            if (loadedPosition != position )
-                Instantiate(prefab, loadedPosition , Quaternion.identity);
+            if (loadedPosition != Vector3.zero)
+                Instantiate(prefab, loadedPosition + new Vector3(0, 0.25f, 0) , Quaternion.identity);
             else
                 Instantiate(prefab, position, Quaternion.identity);
         }

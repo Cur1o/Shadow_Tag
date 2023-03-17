@@ -9340,6 +9340,7 @@ MonoBehaviour:
   prefab: {fileID: 8932929338939477091, guid: 7d8e4b15c392bc04d8e720be8a90a343, type: 3}
   spawnTimer: 0.5
   isPlayer: 1
+  loadedPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &4110471095269849384
 PrefabInstance:
   m_ObjectHideFlags: 0

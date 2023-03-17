@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunManager : MonoBehaviour /*, IDataPersistance*/
+public class GunManager : MonoBehaviour , IDataPersistance
 {
     public static GunManager Instance { get; private set; }
     public enum gunType { pistol = 0, rifle = 1, shotgun = 2, assaultRifle = 3 };
     //Variables
     [SerializeField] GameObject[] prefabs;   //All the gun prefabs that should be instanciated
     public List<GameObject> instanciatedWeapons = new();//To save all instanciated prefabs in a list
+    [SerializeField] List<bool> weaponUnlockSave = new();
     List<GameObject> unlockedWeapons = new();//To save all the weapons that are Unlocked
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
@@ -20,6 +21,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     private PlayerUI playerUI;              //Gets the curren player UI
     private InputManager inputManager;
     private RaycastHit gunHit;
+    private bool noWeapon;
     private void Awake()
     {
         if (Instance != null || Instance == this)
@@ -36,10 +38,17 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         inputManager = InputManager.Instance;
         playerUI = PlayerUI.Instance;
         cam = Camera.main;
+        Debug.Log("1111111111111111111111111111111111111111111111111111111");
         InstanciateWeapons();
-        playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
+        noWeapon = unlockedWeapons.Count == 0;
+        if (!noWeapon)
+            playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
     }
-    private void Update() => Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask);
+    private void Update()
+    {
+        if(!noWeapon)
+            Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask);
+    }
     //Instanciating Weapons
     /// <summary>
     /// Instantiates each weapon prefab in the prefabs list and adds them to the instanciatedWeapons list. If a weapon is active and unlocked,
@@ -48,36 +57,43 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </summary>
     private void InstanciateWeapons()
     {
-        foreach (var weapon in prefabs)
+        for (int i = 0; i < prefabs.Length; i++)
         {
+            GameObject weapon = prefabs[i];
             Vector3 position = transform.position;
             var obj = Instantiate(weapon, position, weapon.transform.rotation, transform);
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
-            if (script.weaponActive == true && script.weaponUnlocked == true)
+
+            if (script.weaponActive == true && script?.weaponUnlocked == true)
             {
                 unlockedWeapons.Add(obj); //Adds a weapon to the active weapon list
-                currentActiveWeapon = unlockedWeapons[0];
-                currentGunScript = script;
+                weaponUnlockSave[i] = true;
+                if (unlockedWeapons[0] != null)
+                {
+                    currentActiveWeapon = unlockedWeapons[0];
+                    currentGunScript = script;
+                } 
             }else if (script.weaponUnlocked == true)
             {
                 unlockedWeapons.Add(obj);
+                weaponUnlockSave[i] = true;
                 obj.SetActive(false);
             }else if (script.weaponUnlocked == false)
             {
                 obj.SetActive(false);
+                weaponUnlockSave[i] = false;
             }    
         }
     }
-    public void FindObjectToUnlock(Gun scriptWeaponToCompare)
+    public void FindObjectToUnlock(gunType gunTypeToCompare)
     {
         foreach (var gun in GunManager.Instance.instanciatedWeapons)
         {
             var scriptInstanciatedWeapon = gun.GetComponent<Gun>();
-            if (currentGun == scriptInstanciatedWeapon.gunVariant)
-            {
-                UnlockWeapon(gun);
-            }
+            if (gunTypeToCompare == scriptInstanciatedWeapon.gunVariant && 
+                !unlockedWeapons.Find(weapon => weapon.GetComponent<Gun>() == scriptInstanciatedWeapon))
+                    UnlockWeapon(gun);
         }
     }
     //Order Weapons
@@ -85,7 +101,20 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     {
         var script = newWeapon.GetComponent<Gun>();
         unlockedWeapons.Add(newWeapon);
-        newWeapon.SetActive(false);
+        script.weaponUnlocked = true;
+        if (newWeapon == unlockedWeapons[0])
+        {
+            noWeapon = false;
+            newWeapon.SetActive(true);
+            currentGunScript = script;
+            currentGunScript.weaponActive = true;
+            playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
+        }
+        else
+        { 
+            newWeapon.SetActive(false);
+            noWeapon = false;
+        }   
     }
     //Reloading
     /// <summary>
@@ -93,7 +122,8 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </summary>
     public void Reload()
     {
-        //Debug.Log("Reloading Gun");
+        if (noWeapon) return;
+            //Debug.Log("Reloading Gun");
         if (reloading) return;
         if (currentGunScript.ammunition == currentGunScript.ammunitionMax) return;
         StartCoroutine(ReloadCorutine());
@@ -119,6 +149,7 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </summary>
     public void Shoot()
     {
+        if (noWeapon) return;
         //Debug.Log("Shooting");
         if (shooting) return;
         if (currentGunScript.ammunition <= 0) return;
@@ -154,6 +185,8 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
     /// </remarks>
     public void SwitchWeapon(int change)
     {
+        if (noWeapon) return;
+        if (unlockedWeapons.Count == 1)return ;
         //Debug.Log("Switch Weapon");
         var nextGun = ((int)currentGun + change + unlockedWeapons.Count) % unlockedWeapons.Count;
         currentGunScript = currentActiveWeapon.GetComponent<Gun>();
@@ -172,14 +205,6 @@ public class GunManager : MonoBehaviour /*, IDataPersistance*/
         }
     }
     //Save and Load the weapons
-    //public void SaveData(ref SaveData data)
-    //{
-    //    data.unlockedWeapons = this.unlockedWeapons ;
-    //    data.currentActiveWeapon = this.currentActiveWeapon;
-    //}
-    //public void LoadData(SaveData data)
-    //{
-    //    this.unlockedWeapons = data.unlockedWeapons;
-    //    this.currentActiveWeapon = data.currentActiveWeapon ;
-    //}
+    public void SaveData(ref SaveData data) => data.unlockedWeapons = this.weaponUnlockSave;
+    public void LoadData(SaveData data) { this.weaponUnlockSave = data.unlockedWeapons;Debug.Log("2222222222222222222222222222222222222222222222222222"); }
 }

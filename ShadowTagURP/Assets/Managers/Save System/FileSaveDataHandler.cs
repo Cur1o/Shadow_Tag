@@ -15,7 +15,7 @@ public class FileSaveDataHandler
     }
     public SaveData Load()
     {
-        Debug.Log("Loading SaveData");
+        //Debug.Log("Loading SaveData");
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         SaveData loadedData = null;
         if (File.Exists(fullPath))

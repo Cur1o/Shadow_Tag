@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3148873094676608618}
   - component: {fileID: 5221029014845089556}
   - component: {fileID: 5828199780619089574}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: GlowHammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7001263907780867786}
   - component: {fileID: 2868331115264054276}
   - component: {fileID: 5905644481069935681}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Energy.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2588323080924787395}
   - component: {fileID: 7273442218744212155}
   - component: {fileID: 2732075908437006665}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 8741389979515643428}
   - component: {fileID: 2723760629267027731}
   - component: {fileID: 356612765597323507}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 2805872803001638459}
   - component: {fileID: 8059362616912887188}
   - component: {fileID: 9203901270460856757}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 7427658739089783720}
   - component: {fileID: 5434314133734455173}
   - component: {fileID: 602184775970700575}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Energy.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,11 +550,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6249291606524469493}
-  - component: {fileID: 8776880968115975989}
   - component: {fileID: 8544323726676359519}
   - component: {fileID: 1074790112909227959}
   - component: {fileID: 6019079852703924008}
-  m_Layer: 3
+  - component: {fileID: -6471846191161896730}
+  - component: {fileID: 2124117560191539675}
+  m_Layer: 6
   m_Name: PistolDisplay
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -579,27 +580,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &8776880968115975989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769509713119345231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de07b5612963b784789fac160b13255c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunVariant: 0
-  weaponUnlocked: 0
-  weaponActive: 0
-  damage: 50
-  ammunition: 20
-  ammunitionMax: 20
-  range: 25
-  realoadTime: 2
-  shootCooldown: 1
 --- !u!320 &8544323726676359519
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -635,7 +615,7 @@ Animator:
   m_GameObject: {fileID: 6769509713119345231}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d3b950ffa9c3b6a44ae813345d33dfef, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -661,6 +641,33 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-6471846191161896730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769509713119345231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8e737297e52d74f818cf82c546d8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptMessage: Press E to pick up
+  currentGun: 0
+--- !u!65 &2124117560191539675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769509713119345231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00676977, y: 0.04823562, z: 0.032518726}
+  m_Center: {x: -0.0005893359, y: -0.011434275, z: -0.0038523015}
 --- !u!1 &6849359308249831641
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +679,7 @@ GameObject:
   - component: {fileID: 658774773320879181}
   - component: {fileID: 7717629919029577234}
   - component: {fileID: 538740865135436803}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +762,7 @@ GameObject:
   - component: {fileID: 3526155278453618373}
   - component: {fileID: 3575216648517252165}
   - component: {fileID: 8754651883829447254}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Handel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

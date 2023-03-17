@@ -5,11 +5,14 @@ namespace spawner
 {
     public class Spawner : MonoBehaviour
     {
+        [Header("Game Object")]
         [SerializeField] private GameObject prefab;
         private Vector3 position;
+        [Header("Special Cases")]
         [SerializeField] private float spawnTimer = 0.5f;
+        [SerializeField] private bool isGhostStation;
         [SerializeField] private bool isPlayer;
-        [SerializeField] Vector3 loadedPosition;
+        Vector3 loadedPosition;
         // Start is called before the first frame update
         void Start()
         {
@@ -21,7 +24,7 @@ namespace spawner
         {
             if (isPlayer)
                 StartCoroutine(SpawnEnumerator(prefab,position));
-            else
+            else if(!isGhostStation)
                 Instantiate(prefab, position, transform.rotation);
         }
         private IEnumerator SpawnEnumerator(GameObject prefab, Vector3 position)
@@ -31,6 +34,10 @@ namespace spawner
                 Instantiate(prefab, loadedPosition + new Vector3(0, 0.25f, 0) , Quaternion.identity);
             else
                 Instantiate(prefab, position, Quaternion.identity);
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            Instantiate(prefab, position, transform.rotation);
         }
     }
 }

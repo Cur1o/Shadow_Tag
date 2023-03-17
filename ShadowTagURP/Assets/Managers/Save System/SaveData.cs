@@ -20,6 +20,6 @@ public class SaveData
         this.points = new int[] {0,0,0,0,0,0,0,0,0,0};
         this.currentLabyrinthLevel = 1;
         this.playerPosition = Vector3.zero;  
-        this.unlockedWeapons = new List<bool>(4);
+        this.unlockedWeapons = new List<bool> {false,false,false,false};
     }
 }

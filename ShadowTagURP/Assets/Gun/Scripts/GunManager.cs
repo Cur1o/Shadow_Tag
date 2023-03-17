@@ -35,10 +35,13 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     private void Start()
     {
+        //LoadData
+        SaveManager.Instance.dataPersistenceObjects.Add(this);
+        LoadData(SaveManager.Instance.gameData);
+
         inputManager = InputManager.Instance;
         playerUI = PlayerUI.Instance;
         cam = Camera.main;
-        Debug.Log("1111111111111111111111111111111111111111111111111111111");
         InstanciateWeapons();
         noWeapon = unlockedWeapons.Count == 0;
         if (!noWeapon)
@@ -64,8 +67,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
             var obj = Instantiate(weapon, position, weapon.transform.rotation, transform);
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
-
-            if (script.weaponActive == true && script?.weaponUnlocked == true)
+            script.weaponUnlocked = weaponUnlockSave[i];
+            if (script?.weaponActive == true && script?.weaponUnlocked == true)
             {
                 unlockedWeapons.Add(obj); //Adds a weapon to the active weapon list
                 weaponUnlockSave[i] = true;
@@ -74,11 +77,20 @@ public class GunManager : MonoBehaviour , IDataPersistance
                     currentActiveWeapon = unlockedWeapons[0];
                     currentGunScript = script;
                 } 
-            }else if (script.weaponUnlocked == true)
+            }else if (script?.weaponUnlocked == true)
             {
                 unlockedWeapons.Add(obj);
                 weaponUnlockSave[i] = true;
-                obj.SetActive(false);
+                if (unlockedWeapons[0] == obj) //in case the admin forgets to set one weapon active or it activates the first weapon in the List
+                { 
+                    script.weaponActive = true;
+                    currentActiveWeapon = unlockedWeapons[0];
+                    currentGunScript = script;
+                }
+                else
+                {
+                    obj.SetActive(false);
+                }
             }else if (script.weaponUnlocked == false)
             {
                 obj.SetActive(false);
@@ -88,12 +100,16 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     public void FindObjectToUnlock(gunType gunTypeToCompare)
     {
-        foreach (var gun in GunManager.Instance.instanciatedWeapons)
+        for (int i = 0; i < Instance.instanciatedWeapons.Count; i++)
         {
+            GameObject gun = GunManager.Instance.instanciatedWeapons[i];
             var scriptInstanciatedWeapon = gun.GetComponent<Gun>();
             if (gunTypeToCompare == scriptInstanciatedWeapon.gunVariant && 
                 !unlockedWeapons.Find(weapon => weapon.GetComponent<Gun>() == scriptInstanciatedWeapon))
-                    UnlockWeapon(gun);
+            {
+                weaponUnlockSave[i] = true;
+                UnlockWeapon(gun);
+            }        
         }
     }
     //Order Weapons
@@ -206,5 +222,5 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     //Save and Load the weapons
     public void SaveData(ref SaveData data) => data.unlockedWeapons = this.weaponUnlockSave;
-    public void LoadData(SaveData data) { this.weaponUnlockSave = data.unlockedWeapons;Debug.Log("2222222222222222222222222222222222222222222222222222"); }
+    public void LoadData(SaveData data) => this.weaponUnlockSave = data.unlockedWeapons;
 }

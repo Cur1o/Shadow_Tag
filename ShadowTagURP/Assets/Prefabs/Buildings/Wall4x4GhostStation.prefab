@@ -4122,6 +4122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8915818094834538975}
   - component: {fileID: 2119264494935312148}
+  - component: {fileID: 3182684894096896807}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -4158,4 +4159,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5598755641461231847, guid: 12ccc8f9297e74944958a94beed4271b, type: 3}
   spawnTimer: 0.5
+  isGhostStation: 1
   isPlayer: 0
+--- !u!65 &3182684894096896807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769654634142896000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4, z: 4}
+  m_Center: {x: 0, y: 1, z: 0}

@@ -7,6 +7,7 @@ namespace Player
     public class PlayerInteract : MonoBehaviour
     {
         private Camera cam;
+        [Header("Interaction Settings")]
         [SerializeField] private float distance = 3f;
         [SerializeField] private LayerMask mask;
         private PlayerUI playerUI;

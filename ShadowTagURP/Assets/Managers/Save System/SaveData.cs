@@ -17,7 +17,7 @@ public class SaveData
     {
         
         this.currentPoints = 0;
-        this.points = new int[] {0,0,0,0,0,0,0,0,0,0};
+        this.points = new int[] {0,0,0,0,0};
         this.currentLabyrinthLevel = 0;
         this.playerPosition = Vector3.zero;  
         this.unlockedWeapons = new List<bool> {false,false,false,false};

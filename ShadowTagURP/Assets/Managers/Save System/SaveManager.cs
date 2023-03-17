@@ -12,7 +12,6 @@ public class SaveManager : MonoBehaviour
     //Variables
     public SaveData gameData;
     public List<IDataPersistance> dataPersistenceObjects = new();
-    
     private void Awake()
     {
         if (Instance != null || Instance == this)
@@ -37,6 +36,7 @@ public class SaveManager : MonoBehaviour
     }
     public void SaveGame()
     {
+        SaveManager.Instance.gameData.points[SaveManager.Instance.gameData.currentLabyrinthLevel] = SaveManager.Instance.gameData.currentPoints;
         foreach (IDataPersistance dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);

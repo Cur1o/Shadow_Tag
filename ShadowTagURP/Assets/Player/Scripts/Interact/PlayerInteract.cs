@@ -18,7 +18,6 @@ namespace Player
             playerUI = PlayerUI.Instance;
             inputManager = GetComponent<InputManager>();
         }
-
         // Update is called once per frame
         void Update()
         {
@@ -33,9 +32,7 @@ namespace Player
                     Interactable interact = hitInfo.collider.GetComponent<Interactable>();
                     playerUI.UpdateText(interact.promptMessage);   //the update Text function from PlayerUI is called
                     if (inputManager.onWalk.Interact.triggered)
-                    {
                         interact.BaseInteract();
-                    }
                 }
             }
         }

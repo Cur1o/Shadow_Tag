@@ -1422,6 +1422,7 @@ MonoBehaviour:
     points: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
     currentLabyrinthLevel: 1
     playerPosition: {x: 0, y: 0, z: 0}
+    unlockedWeapons: 00000000
 --- !u!1 &1812266669
 GameObject:
   m_ObjectHideFlags: 0

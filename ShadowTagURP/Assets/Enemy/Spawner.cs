@@ -12,6 +12,7 @@ namespace spawner
         [SerializeField] private float spawnTimer = 0.5f;
         [SerializeField] private bool isGhostStation;
         [SerializeField] private bool isPlayer;
+        private bool isFirst = true;
         Vector3 loadedPosition;
         // Start is called before the first frame update
         void Start()
@@ -37,7 +38,12 @@ namespace spawner
         }
         private void OnTriggerEnter(Collider other)
         {
-            Instantiate(prefab, position, transform.rotation);
+            if (isFirst)
+            {
+                isFirst = false;
+                Instantiate(prefab, position, transform.rotation);
+            }
+            
         }
     }
 }

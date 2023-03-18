@@ -271,6 +271,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _newGame: {fileID: 299285111}
   _loadGame: {fileID: 1061749198}
+  _settings: {fileID: 0}
+  _exitGame: {fileID: 0}
+  _credits: {fileID: 0}
+  ingameMenu: {fileID: 0}
+  options: {fileID: 0}
+  credits: {fileID: 0}
 --- !u!1 &234361704
 GameObject:
   m_ObjectHideFlags: 0

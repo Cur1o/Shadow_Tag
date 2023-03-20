@@ -10,12 +10,9 @@ public class SaveData
     public int[] points;                //The Points from all levels
     public int currentLabyrinthLevel;   //The current Labyrinth level
     public Vector3 playerPosition;      //The current player Position
-
-    
     public List<bool> unlockedWeapons;       //To save all the weapons that are Unlocked
     public SaveData()   //The variables are set to this numbers at a new game
     {
-        
         this.currentPoints = 0;
         this.points = new int[] {0,0,0,0,0};
         this.currentLabyrinthLevel = 0;

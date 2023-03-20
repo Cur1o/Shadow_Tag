@@ -179,8 +179,6 @@ GameObject:
   - component: {fileID: 6338201791533940307}
   - component: {fileID: 521812611151620424}
   - component: {fileID: 3927951799474334849}
-  - component: {fileID: 1662240342313066561}
-  - component: {fileID: 127260260282836956}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -294,34 +292,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5273605855520333666, guid: 87990e5266d5a6045ac8786f95d66f66, type: 3}
---- !u!64 &1662240342313066561
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5545387455411150726}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 246704432729413991, guid: 87990e5266d5a6045ac8786f95d66f66, type: 3}
---- !u!64 &127260260282836956
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5545387455411150726}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5929705153881533546, guid: 87990e5266d5a6045ac8786f95d66f66, type: 3}
 --- !u!1 &6170737161989375618
 GameObject:
   m_ObjectHideFlags: 0

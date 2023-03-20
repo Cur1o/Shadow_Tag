@@ -9,6 +9,7 @@ public class Portal : MonoBehaviour
         SaveManager.Instance.gameData.points[SaveManager.Instance.gameData.currentLabyrinthLevel] = SaveManager.Instance.gameData.currentPoints;
         SaveManager.Instance.gameData.currentLabyrinthLevel++;
         SaveManager.Instance.gameData.playerPosition = Vector3.zero;
+        PlayerUI.Instance.UpdateLevel();
         ScenesManager.Instance.LoadNextScene();
     }
 }

@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
-    
+    [SerializeField] private GameObject playerUI;
     private void Awake()
     {
         Instance = this;
-
+    }
+    private void LateUpdate()
+    {
+        ChangePlayerUI();
     }
     public enum Scene
     {
@@ -27,5 +30,18 @@ public class ScenesManager : MonoBehaviour
         SaveManager.Instance.SaveGame();
         SceneManager.LoadScene(Scene.Menu.ToString());
     }
+    private void ChangePlayerUI()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName != "Menu")
+        {
+            playerUI.SetActive(true);
+        }
+        else
+        {
+            playerUI.SetActive(false);
+        }
+            
+    } 
 
 }

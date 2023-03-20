@@ -38,6 +38,7 @@ public class UIMainMenu : MonoBehaviour
         SaveManager.Instance.LoadGame();
         ScenesManager.Scene currentScene = (ScenesManager.Scene)(SaveManager.Instance.gameData.currentLabyrinthLevel + 1);
         ScenesManager.Instance.LoadScene(currentScene);
+        PlayerUI.Instance.UpdateLevel();
     }
     private void Settings()
     {

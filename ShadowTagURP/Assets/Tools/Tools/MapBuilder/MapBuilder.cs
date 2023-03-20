@@ -45,7 +45,15 @@ public class MapBuilder : MonoBehaviour
         if (tileSize == 0f) return;
 
         var parent = new GameObject("Map_" + mapName);
-        currentMap = map;
+
+        if (map.Length == 0)
+        {
+            map = currentMap;
+        }
+        else
+        {
+            currentMap = map;
+        }
 
         for (int z = 0; z < mapSize.y; z++)
         {
@@ -60,11 +68,8 @@ public class MapBuilder : MonoBehaviour
 
                 if(prefab != null)
                 {
-                     var obj = Instantiate(prefab, position, Quaternion.Euler(0, map[index].rotationY, 0f));
-
-                   
+                    var obj = Instantiate(prefab, position, Quaternion.Euler(0, map[index].rotationY, 0f));
                     obj.transform.SetParent(parent.transform);
-                   
                 }              
             }
         }

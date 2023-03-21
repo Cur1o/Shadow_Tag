@@ -17,7 +17,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject ingameMenu;
     bool switcher = false;
     [Header("Settings")]
-    [SerializeField] private GameObject options;
+    [SerializeField] private GameObject settings;
     [Header("Credits")]
     [SerializeField] private GameObject credits;
     void Start()
@@ -27,6 +27,9 @@ public class UIMainMenu : MonoBehaviour
         _settings.onClick.AddListener(Settings);
         _exitGame.onClick.AddListener(Exit);
         _credits.onClick.AddListener(Credits);
+        ingameMenu.SetActive(false);
+        settings.SetActive(false);
+        credits.SetActive(false);
     }
     private void StartNewGame()
     {
@@ -42,7 +45,7 @@ public class UIMainMenu : MonoBehaviour
     }
     private void Settings()
     {
-
+        settings.SetActive(true);
     }
     private void Exit()
     {
@@ -50,15 +53,18 @@ public class UIMainMenu : MonoBehaviour
     }
     private void Credits()
     {
-
+        credits.SetActive(true);
     }
     public void LoadIngameMenu()
     {
+#if UNITY_EDITOR
         if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
         {
             switcher = !switcher;
             ingameMenu.SetActive(switcher);
         }
+#endif
     }
 }
+
 //ScenesManager.Instance.LoadScene(ScenesManager.Scene.Map1); to load a scene from outside

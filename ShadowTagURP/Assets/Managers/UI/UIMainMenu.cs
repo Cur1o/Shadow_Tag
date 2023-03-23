@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class UIMainMenu : MonoBehaviour
 {
+    public static UIMainMenu Instance { get; private set; }
     [Header("Menu Buttons")]
     [SerializeField] Button _newGame;
     [SerializeField] Button _loadGame;
@@ -20,6 +21,10 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject settings;
     [Header("Credits")]
     [SerializeField] private GameObject credits;
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         _newGame.onClick.AddListener(StartNewGame);
@@ -35,6 +40,7 @@ public class UIMainMenu : MonoBehaviour
     {
         SaveManager.Instance.NewGame();
         ScenesManager.Instance.LoadNewGame();
+        gameObject.SetActive(false);
     }
     private void LoadGame()
     {
@@ -42,8 +48,9 @@ public class UIMainMenu : MonoBehaviour
         ScenesManager.Scene currentScene = (ScenesManager.Scene)(SaveManager.Instance.gameData.currentLabyrinthLevel + 1);
         ScenesManager.Instance.LoadScene(currentScene);
         PlayerUI.Instance.UpdateLevel();
+        gameObject.SetActive(false);
     }
-    private void Settings()
+    public void Settings()
     {
         settings.SetActive(true);
     }
@@ -51,19 +58,18 @@ public class UIMainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    private void Credits()
+    public void Credits()
     {
         credits.SetActive(true);
     }
     public void LoadIngameMenu()
     {
-#if UNITY_EDITOR
-        if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
-        {
+        //if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
+        //{
             switcher = !switcher;
             ingameMenu.SetActive(switcher);
-        }
-#endif
+            
+        //}
     }
 }
 

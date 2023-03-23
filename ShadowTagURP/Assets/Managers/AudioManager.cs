@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixer mixer;
     private void Start()
     {
-        mixer.SetFloat("master",GameManager.Instance.masterVolume);
+        SetAudio();
     }
     public void SetAudio()
     {

@@ -19,16 +19,27 @@ public class GameManager : MonoBehaviour
     public float effectVolume;
     public float ambienceVolume;
     public float dialougeVolume;
+    [Header("Menu")]
+    [SerializeField] private GameObject ingameMenu;
+    public bool switcher = false;
     // Start is called before the first frame update
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null || Instance == this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
         GetSensitivity();
         GetVolume();
+        ingameMenu.SetActive(false);
     }
     public void GetSensitivity()
     {
@@ -45,5 +56,12 @@ public class GameManager : MonoBehaviour
         effectVolume = Settings.Instance.effectVolume.value;
         ambienceVolume = Settings.Instance.ambienceVolume.value;
         dialougeVolume = Settings.Instance.dialougeVolume.value;
+    }
+    public void OpenMenu()
+    {
+        switcher = !switcher;
+        if(switcher)Cursor.lockState = CursorLockMode.None;
+        if(!switcher)Cursor.lockState = CursorLockMode.Locked;
+        ingameMenu.SetActive(switcher);
     }
 }

@@ -50,7 +50,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 479aa2093ceb70840ada36378383ff5f
-    name: ambieance
+    name: ambience
   - guid: f6727c773efafed479775d44116d36f4
     name: dialouge
   - guid: d8f3e2a34b5b2cd4e864840cc5c80a4c
@@ -116,6 +116,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 8010db8da25709f489ab59799b622b71
   m_FloatValues:
+    d8f3e2a34b5b2cd4e864840cc5c80a4c: 0
     f6727c773efafed479775d44116d36f4: 0.0024241172
   m_TransitionOverrides: {}
 --- !u!243 &502035523246748568

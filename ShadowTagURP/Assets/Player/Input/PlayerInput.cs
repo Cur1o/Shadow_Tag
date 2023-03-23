@@ -80,6 +80,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""265525ad-d4fc-42e7-b8f7-7a76d5cd6690"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc3c72bb-f774-45b4-baec-c0e23aef61bc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""380e47a4-51ba-4721-9e52-e67be402a4d4"",
+                    ""path"": ""<NimbusGamepadHid>/homeButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -931,6 +962,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_PlayerWalk_Crouch = m_PlayerWalk.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerWalk_Sprint = m_PlayerWalk.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerWalk_Interact = m_PlayerWalk.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerWalk_Menu = m_PlayerWalk.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1014,6 +1046,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerWalk_Crouch;
     private readonly InputAction m_PlayerWalk_Sprint;
     private readonly InputAction m_PlayerWalk_Interact;
+    private readonly InputAction m_PlayerWalk_Menu;
     public struct PlayerWalkActions
     {
         private @PlayerInput m_Wrapper;
@@ -1024,6 +1057,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_PlayerWalk_Crouch;
         public InputAction @Sprint => m_Wrapper.m_PlayerWalk_Sprint;
         public InputAction @Interact => m_Wrapper.m_PlayerWalk_Interact;
+        public InputAction @Menu => m_Wrapper.m_PlayerWalk_Menu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerWalk; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1051,6 +1085,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnInteract;
+                @Menu.started -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayerWalkActionsCallbackInterface = instance;
             if (instance != null)
@@ -1073,6 +1110,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -1247,6 +1287,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

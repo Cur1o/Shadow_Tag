@@ -11,8 +11,8 @@ public class InputManager : MonoBehaviour
     public PlayerInput.WeaponActions onWeapon;      //The Player Action while holding a gun
     private PlayerMovement movement;                //The Player Movement
     private PlayerLook look;                        //The Player Look
-    private GunManager gunManager;                                
-                                                        
+    private GunManager gunManager;
+
     void Awake()
     {
         if (Instance != null || Instance == this)
@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
         onWalk.Jump.performed += ctx => movement.Jump();        //if the player jumps the jump function in PlayerMovement is called
         onWalk.Crouch.performed += ctx => movement.Crouch();    //if the player crouches the crouch function in PlayerMovement is called
         onWalk.Sprint.performed += ctx => movement.Sprint();    //if the player sprints the sprint funtion in PlayerMovement is caslled
+        onWalk.Menu.performed += ctx => GameManager.Instance.OpenMenu(); 
 
     }
     private void Start()
@@ -56,7 +57,7 @@ public class InputManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        look.ManageLook(onWalk.Look.ReadValue<Vector2>());
+        if(GameManager.Instance.switcher == false) look.ManageLook(onWalk.Look.ReadValue<Vector2>());
     }
     private void OnEnable()
     {

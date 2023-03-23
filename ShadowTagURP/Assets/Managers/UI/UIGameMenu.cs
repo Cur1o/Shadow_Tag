@@ -29,7 +29,7 @@ public class UIGameMenu : MonoBehaviour
     }
     private void CloseMenu()
     {
-        gameObject.SetActive(false);
+        GameManager.Instance.OpenMenu();
     }
     private void SaveGame()
     {

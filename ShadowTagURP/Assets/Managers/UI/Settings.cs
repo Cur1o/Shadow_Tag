@@ -19,6 +19,7 @@ public class Settings : MonoBehaviour
     public Slider effectVolume;
     public Slider ambienceVolume;
     public Slider dialougeVolume;
+    public Button backButton;
     private void Awake()
     {
         Instance = this;
@@ -32,8 +33,8 @@ public class Settings : MonoBehaviour
         effectVolume.value = 0f;
         ambienceVolume.value = 0f;
         dialougeVolume.value = 0f;
-
-    ChangeSensitivity();
+        backButton.onClick.AddListener(deactivate);
+        ChangeSensitivity();
         ChangeVolume();
     }
     public void ChangeSensitivity()
@@ -43,6 +44,10 @@ public class Settings : MonoBehaviour
     public void ChangeVolume()
     {
         GameManager.Instance.GetVolume();
+    }
+    private void deactivate()
+    {
+        SetWindowInactive(gameObject);
     }
     public void SetWindowInactive(GameObject obj)
     {

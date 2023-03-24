@@ -21,6 +21,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject settings;
     [Header("Credits")]
     [SerializeField] private GameObject credits;
+    private Credits scriptCredits;
     private void Awake()
     {
         Instance = this;
@@ -32,6 +33,7 @@ public class UIMainMenu : MonoBehaviour
         _settings.onClick.AddListener(Settings);
         _exitGame.onClick.AddListener(Exit);
         _credits.onClick.AddListener(Credits);
+        scriptCredits = credits.GetComponent<Credits>();
         ingameMenu.SetActive(false);
         settings.SetActive(false);
         credits.SetActive(false);
@@ -61,6 +63,7 @@ public class UIMainMenu : MonoBehaviour
     public void Credits()
     {
         credits.SetActive(true);
+        scriptCredits.StartAnimation();
     }
     public void LoadIngameMenu()
     {

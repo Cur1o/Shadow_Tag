@@ -121,7 +121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4704501639877894723}
   m_HandleRect: {fileID: 5052831766007463423}
   m_Direction: 3
-  m_Value: 1
+  m_Value: 0.20200007
   m_Size: 0.1776822
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9723,8 +9723,6 @@ GameObject:
   - component: {fileID: 8175414793066889979}
   - component: {fileID: 8175414793066889972}
   - component: {fileID: 8175414793066889973}
-  - component: {fileID: 7855613621929594027}
-  - component: {fileID: 6825430746259223150}
   m_Layer: 8
   m_Name: Credits
   m_TagString: Untagged
@@ -9829,45 +9827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 4793605836948041894}
---- !u!320 &7855613621929594027
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8175414793066889975}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 0605d55630cac724f838abdc2ea47701, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 8137349409453670227, guid: 0605d55630cac724f838abdc2ea47701, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
---- !u!95 &6825430746259223150
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8175414793066889975}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  scrollVertical: {fileID: 7012318308849412607}
 --- !u!1 &8175414793082672467
 GameObject:
   m_ObjectHideFlags: 0
@@ -11565,7 +11525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3988.6174}
   m_SizeDelta: {x: -0.000015258789, y: 6078.2676}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8459527157579575787

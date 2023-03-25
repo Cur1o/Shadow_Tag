@@ -73,7 +73,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2441123104212435738, guid: 29f8dc008075aeb4a98d51603cbb17a5, type: 3}
   - {fileID: 2350693205001950916, guid: 86374c75d2e0f8f48854061b7b7666ab, type: 3}
+  - {fileID: 3148161753959811444, guid: c70b2bae706d84943a370501d4743812, type: 3}
   instanciatedWeapons: []
   weaponUnlockSave: 
   mask:
@@ -543,11 +544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1665554374972279836}
-  WeaponCam: {fileID: 7659449639776057451}
   xSensitivity: 30
   ySensitivity: 30
-  xControllerSensitivity: 0
-  yControllerSensitivity: 0
   cFOV: 0
 --- !u!114 &3508168111606789832
 MonoBehaviour:

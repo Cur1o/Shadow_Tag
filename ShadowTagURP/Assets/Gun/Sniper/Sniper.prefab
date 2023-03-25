@@ -48,6 +48,7 @@ MonoBehaviour:
   gunVariant: 1
   weaponUnlocked: 0
   weaponActive: 0
+  Neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
   damage: 100
   ammunition: 15
   ammunitionMax: 15

@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
     public GunManager.gunType gunVariant;
     public bool weaponUnlocked;
     public bool weaponActive;
+    public Material Neon;
+    private Color currentColor;
     //Weapon specs
     public int damage;
     public int ammunition;
@@ -14,8 +16,13 @@ public class Gun : MonoBehaviour
     public float range;
     public float realoadTime;
     public float shootCooldown;
-
-
-
+    private void Start() => ChangeColor();
+    
+    public void ChangeColor()
+    {
+        float transitionValue = (float)ammunition / ammunitionMax;
+        currentColor =new Color((int)(255 * (1 - transitionValue*2)), (int)(255 * transitionValue), 0);
+        Neon.SetColor("_EmissionColor", currentColor);
+    }
 }
 

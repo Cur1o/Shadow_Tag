@@ -12,6 +12,7 @@ namespace spawner
         [SerializeField] private float spawnTimer = 0.5f;
         [SerializeField] private bool isGhostStation;
         [SerializeField] private bool isPlayer;
+        [SerializeField] private bool isWeaponDisplay;
         private bool isFirst = true;
         Vector3 loadedPosition;
         // Start is called before the first frame update
@@ -25,8 +26,11 @@ namespace spawner
         {
             if (isPlayer)
                 StartCoroutine(SpawnEnumerator(prefab,position));
+            else if (isWeaponDisplay)
+                Instantiate(prefab, position, prefab.transform.rotation , transform);
             else if(!isGhostStation)
-                Instantiate(prefab, position, transform.rotation);
+                Instantiate(prefab, position, transform.rotation,transform);
+            
         }
         private IEnumerator SpawnEnumerator(GameObject prefab, Vector3 position)
         {

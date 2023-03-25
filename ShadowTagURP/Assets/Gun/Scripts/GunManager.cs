@@ -13,6 +13,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     List<GameObject> unlockedWeapons = new();//To save all the weapons that are Unlocked
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
+    Animator currentAnimator;
     Camera cam;                             //Gets the camera script
     public LayerMask mask;                  //Gets the enemy layer mask
     gunType currentGun;                     //Makes a gunType
@@ -67,6 +68,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             var obj = Instantiate(weapon, position, weapon.transform.rotation, transform);
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
+            var animator = obj.GetComponent<Animator>();
             script.weaponUnlocked = weaponUnlockSave[i];
             if (script?.weaponActive == true && script?.weaponUnlocked == true)
             {
@@ -76,6 +78,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
                 {
                     currentActiveWeapon = unlockedWeapons[0];
                     currentGunScript = script;
+                    currentAnimator = animator;
                 } 
             }else if (script?.weaponUnlocked == true)
             {
@@ -86,6 +89,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
                     script.weaponActive = true;
                     currentActiveWeapon = unlockedWeapons[0];
                     currentGunScript = script;
+                    currentAnimator = animator;
                 }
                 else
                 {
@@ -116,6 +120,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     public void UnlockWeapon(GameObject newWeapon)
     {
         var script = newWeapon.GetComponent<Gun>();
+        var animator = newWeapon.GetComponent<Animator>();
         unlockedWeapons.Add(newWeapon);
         script.weaponUnlocked = true;
         if (newWeapon == unlockedWeapons[0])
@@ -124,6 +129,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             newWeapon.SetActive(true);
             currentGunScript = script;
             currentGunScript.weaponActive = true;
+            currentAnimator = animator;
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         }
         else
@@ -139,7 +145,6 @@ public class GunManager : MonoBehaviour , IDataPersistance
     public void Reload()
     {
         if (noWeapon) return;
-            //Debug.Log("Reloading Gun");
         if (reloading) return;
         if (currentGunScript.ammunition == currentGunScript.ammunitionMax) return;
         StartCoroutine(ReloadCorutine());
@@ -153,11 +158,15 @@ public class GunManager : MonoBehaviour , IDataPersistance
     {
         reloading = true;
         shooting = true;
+        currentAnimator.SetTrigger("reloading");
         yield return new WaitForSeconds(currentGunScript.realoadTime);
         currentGunScript.ammunition = currentGunScript.ammunitionMax;
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
+        currentGunScript.ChangeColor();
         reloading = false;
         shooting = false;
+        currentAnimator.ResetTrigger("reloading");
+        currentAnimator.ResetTrigger("emptyWeapon");
     }
     //Shooting
     /// <summary>
@@ -168,7 +177,13 @@ public class GunManager : MonoBehaviour , IDataPersistance
         if (noWeapon) return;
         //Debug.Log("Shooting");
         if (shooting) return;
-        if (currentGunScript.ammunition <= 0) return;
+        if (currentGunScript.ammunition <= 0)
+        {
+            currentAnimator.SetTrigger("emptyWeapon");
+            currentAnimator.SetTrigger("shooting");
+            StartCoroutine(PlayEmptyAnimation());
+            return;
+        }
         StartCoroutine(ShootCorutine());
         //Debug.Log("Shooting End");
     }
@@ -177,10 +192,13 @@ public class GunManager : MonoBehaviour , IDataPersistance
     /// waits for the current gun's shoot cooldown, and hits an enemy if one is hit by the gun's raycast.
     /// </summary>
     /// <returns>A coroutine that can be yielded in another method.</returns>
-    public IEnumerator ShootCorutine()
+    private IEnumerator ShootCorutine()
     {
         shooting = true;
+        currentAnimator.SetTrigger("shooting");
         currentGunScript.ammunition--;
+        if(currentGunScript.ammunition == 0) currentAnimator.SetTrigger("emptyWeapon");
+        currentGunScript.ChangeColor();
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         //Debug.Log("Shoot Gun");
         var enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
@@ -190,7 +208,14 @@ public class GunManager : MonoBehaviour , IDataPersistance
             enemy.Hit(currentGunScript.damage);
         }
         shooting = false;
+        currentAnimator.ResetTrigger("shooting");
+        currentAnimator.ResetTrigger("emptyWeapon");
         //Debug.Log("Shoot End");
+    }
+    private IEnumerator PlayEmptyAnimation()
+    {
+        yield return new WaitForSeconds(1.0f);
+        currentAnimator.ResetTrigger("shooting");
     }
     /// <summary>
     /// Switches the active weapon to the next or previous one in the list of active weapons, based on the value of change.
@@ -215,6 +240,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             nextGunScript.weaponActive = true;
             currentActiveWeapon = unlockedWeapons[nextGun];
             currentGunScript = currentActiveWeapon.GetComponent<Gun>();
+            currentAnimator = currentActiveWeapon.GetComponent<Animator>(); ;
             currentActiveWeapon.SetActive(true);
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
             //Debug.Log("Switching weapon success");

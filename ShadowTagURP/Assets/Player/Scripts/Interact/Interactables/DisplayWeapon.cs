@@ -9,8 +9,9 @@ public class DisplayWeapon : Interactable
     private void UnlockWeapon() => GunManager.Instance.FindObjectToUnlock(currentGun);
     protected override void Interact() 
     {
-        Debug.Log("Interacted width : " + gameObject.name);
-        UnlockWeapon(); 
-        Debug.Log("Unlocked Weapon : " + gameObject.name); 
+        //Debug.Log("Interacted width : " + gameObject.name);
+        UnlockWeapon();
+        Destroy(gameObject);
+        //.Log("Unlocked Weapon : " + gameObject.name); 
     }
 }

@@ -26,6 +26,7 @@ public class UIGameMenu : MonoBehaviour
         SaveGame();
         ScenesManager.Instance.LoadMainMenu();
         MainMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
     private void CloseMenu()
     {

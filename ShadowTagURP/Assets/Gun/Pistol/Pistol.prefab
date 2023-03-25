@@ -97,9 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3074634918398302624}
   - component: {fileID: 423060245337362016}
-  - component: {fileID: 756944043906187274}
   - component: {fileID: 8284607196140031714}
-  - component: {fileID: 3430243785147975293}
   m_Layer: 3
   m_Name: Pistol
   m_TagString: Gun
@@ -140,37 +138,13 @@ MonoBehaviour:
   gunVariant: 0
   weaponUnlocked: 1
   weaponActive: 0
+  Neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
   damage: 50
   ammunition: 20
   ammunitionMax: 20
   range: 25
   realoadTime: 2
   shootCooldown: 1
---- !u!320 &756944043906187274
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2441123104212435738}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 2e5a884e035e9e74cbf840c6838f52f3, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 1
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 6483201183138078748}
-  - key: {fileID: 0}
-    value: {fileID: 8710046185270831526}
-  - key: {fileID: 2630307011757054250, guid: 2e5a884e035e9e74cbf840c6838f52f3, type: 2}
-    value: {fileID: 6483201183138078748}
-  - key: {fileID: -5811881253656412362, guid: 2e5a884e035e9e74cbf840c6838f52f3, type: 2}
-    value: {fileID: 8710046185270831526}
-  m_ExposedReferences:
-    m_References: []
 --- !u!95 &8284607196140031714
 Animator:
   serializedVersion: 4
@@ -191,22 +165,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &3430243785147975293
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2441123104212435738}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: -8020780683480175656, guid: 2e5a884e035e9e74cbf840c6838f52f3,
-    type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &2530862120277582220
 GameObject:
   m_ObjectHideFlags: 0

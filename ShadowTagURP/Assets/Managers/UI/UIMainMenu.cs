@@ -50,6 +50,7 @@ public class UIMainMenu : MonoBehaviour
         ScenesManager.Scene currentScene = (ScenesManager.Scene)(SaveManager.Instance.gameData.currentLabyrinthLevel + 1);
         ScenesManager.Instance.LoadScene(currentScene);
         PlayerUI.Instance.UpdateLevel();
+        if (switcher) Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }
     public void Settings()
@@ -67,13 +68,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void LoadIngameMenu()
     {
-        //if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
-        //{
             switcher = !switcher;
             ingameMenu.SetActive(switcher);
-            
-        //}
     }
 }
-
-//ScenesManager.Instance.LoadScene(ScenesManager.Scene.Map1); to load a scene from outside

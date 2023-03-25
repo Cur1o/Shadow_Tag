@@ -49,6 +49,7 @@ MonoBehaviour:
   spawnTimer: 0.5
   isGhostStation: 1
   isPlayer: 0
+  isWeaponDisplay: 0
 --- !u!65 &6861037544333727388
 BoxCollider:
   m_ObjectHideFlags: 0

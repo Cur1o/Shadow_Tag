@@ -89,6 +89,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e1c4d3e-b9eb-49e3-b278-fec1c718ec08"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -287,6 +296,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f34edd23-a522-4a78-9fa9-4365120da197"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d266c4c0-f44c-4389-84d7-c8a55a4de71a"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -963,6 +994,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_PlayerWalk_Sprint = m_PlayerWalk.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerWalk_Interact = m_PlayerWalk.FindAction("Interact", throwIfNotFound: true);
         m_PlayerWalk_Menu = m_PlayerWalk.FindAction("Menu", throwIfNotFound: true);
+        m_PlayerWalk_Flashlight = m_PlayerWalk.FindAction("Flashlight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1047,6 +1079,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerWalk_Sprint;
     private readonly InputAction m_PlayerWalk_Interact;
     private readonly InputAction m_PlayerWalk_Menu;
+    private readonly InputAction m_PlayerWalk_Flashlight;
     public struct PlayerWalkActions
     {
         private @PlayerInput m_Wrapper;
@@ -1058,6 +1091,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerWalk_Sprint;
         public InputAction @Interact => m_Wrapper.m_PlayerWalk_Interact;
         public InputAction @Menu => m_Wrapper.m_PlayerWalk_Menu;
+        public InputAction @Flashlight => m_Wrapper.m_PlayerWalk_Flashlight;
         public InputActionMap Get() { return m_Wrapper.m_PlayerWalk; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1088,6 +1122,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnMenu;
+                @Flashlight.started -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnFlashlight;
+                @Flashlight.performed -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnFlashlight;
+                @Flashlight.canceled -= m_Wrapper.m_PlayerWalkActionsCallbackInterface.OnFlashlight;
             }
             m_Wrapper.m_PlayerWalkActionsCallbackInterface = instance;
             if (instance != null)
@@ -1113,6 +1150,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Flashlight.started += instance.OnFlashlight;
+                @Flashlight.performed += instance.OnFlashlight;
+                @Flashlight.canceled += instance.OnFlashlight;
             }
         }
     }
@@ -1288,6 +1328,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnFlashlight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

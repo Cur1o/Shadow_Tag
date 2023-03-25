@@ -127,6 +127,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
         {
             noWeapon = false;
             newWeapon.SetActive(true);
+            currentActiveWeapon = newWeapon;
             currentGunScript = script;
             currentGunScript.weaponActive = true;
             currentAnimator = animator;
@@ -228,7 +229,6 @@ public class GunManager : MonoBehaviour , IDataPersistance
     {
         if (noWeapon) return;
         if (unlockedWeapons.Count == 1)return ;
-        //Debug.Log("Switch Weapon");
         var nextGun = ((int)currentGun + change + unlockedWeapons.Count) % unlockedWeapons.Count;
         currentGunScript = currentActiveWeapon.GetComponent<Gun>();
         var nextGunScript = unlockedWeapons[nextGun].GetComponent<Gun>();
@@ -243,7 +243,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             currentAnimator = currentActiveWeapon.GetComponent<Animator>(); ;
             currentActiveWeapon.SetActive(true);
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
-            //Debug.Log("Switching weapon success");
+            currentGunScript.ChangeColor();
         }
     }
     //Save and Load the weapons

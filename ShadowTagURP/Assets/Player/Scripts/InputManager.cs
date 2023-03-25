@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     private PlayerMovement movement;                //The Player Movement
     private PlayerLook look;                        //The Player Look
     private GunManager gunManager;
+    [SerializeField] GameObject flashlight;
+    private bool switcher = false;
 
     void Awake()
     {
@@ -31,7 +33,8 @@ public class InputManager : MonoBehaviour
         onWalk.Jump.performed += ctx => movement.Jump();        //if the player jumps the jump function in PlayerMovement is called
         onWalk.Crouch.performed += ctx => movement.Crouch();    //if the player crouches the crouch function in PlayerMovement is called
         onWalk.Sprint.performed += ctx => movement.Sprint();    //if the player sprints the sprint funtion in PlayerMovement is caslled
-        onWalk.Menu.performed += ctx => GameManager.Instance.OpenMenu(); 
+        onWalk.Menu.performed += ctx => GameManager.Instance.OpenMenu();
+        onWalk.Flashlight.performed += ctx => TurnOnFlashlight();
 
     }
     private void Start()
@@ -49,6 +52,7 @@ public class InputManager : MonoBehaviour
             gunManager.SwitchWeapon(intValue);
 
         };
+        flashlight.SetActive(false);
     }
     void FixedUpdate()
     {
@@ -58,6 +62,13 @@ public class InputManager : MonoBehaviour
     private void LateUpdate()
     {
         if(GameManager.Instance.switcher == false) look.ManageLook(onWalk.Look.ReadValue<Vector2>());
+    }
+    private void TurnOnFlashlight()
+    {
+        switcher = !switcher;
+        if (switcher) flashlight.SetActive(switcher);
+        if (!switcher) flashlight.SetActive(switcher);
+
     }
     private void OnEnable()
     {

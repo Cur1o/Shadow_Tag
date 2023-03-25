@@ -1,0 +1,12 @@
+Build in assets:
+
+-TextMeshPro
+-ProBuilder
+-Timeline
+
+Externe Texturen
+
+-SkyTexture: https://polyhaven.com/a/kloppenheim_02
+House Texture stone: https://polyhaven.com/a/japanese_stone_wall
+Forest Ground : https://polyhaven.com/a/coast_sand_rocks_02
+Forest Ground 2 : https://polyhaven.com/a/forrest_ground_01

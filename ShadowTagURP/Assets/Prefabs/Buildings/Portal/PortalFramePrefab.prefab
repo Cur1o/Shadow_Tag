@@ -556,3 +556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3103088c057fada4882ce75d0bc13ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHub: 1
+  isUnlocked: 1
+  level: 4

@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &7325114080723066103
 Transform:
@@ -2538,7 +2538,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2343236034592123014
 Transform:
@@ -9310,6 +9310,16 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3136230675762275029, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729183513714921140, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6114458745970115886, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
         type: 3}
       propertyPath: m_RootOrder
@@ -9365,15 +9375,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6403046801178038433, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6886350700161539988, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
         type: 3}
       propertyPath: m_Name
       value: PortalFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 6886350700161539988, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7950684485837757112, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
         type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950684485837757112, guid: 4b0b8dbf92da7e24b9fff5276adf23b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -30,12 +30,28 @@ public class ScenesManager : MonoBehaviour
         Map2,
         Map3,
     }
-    public void LoadScene(Scene scene) => SceneManager.LoadScene(scene.ToString());
-    public void LoadNewGame() => SceneManager.LoadScene(Scene.Start.ToString());
+    public void LoadNewGame() => LoadScene(Scene.Start);
     public void LoadNextScene()
     {
         StartCoroutine(LoadNextSceneAsync());
     }
+    public void LoadScene(Scene scene)
+    {
+        Debug.Log("Loaded Scene : "+scene);
+        StartCoroutine(LoadSceneAsync(scene));
+    }
+    public IEnumerator LoadSceneAsync(Scene scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene.ToString());
+        loadingScreen.SetActive(true);
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+            progressBar.value = progressValue;
+            yield return null;
+        }
+        loadingScreen.SetActive(false);
+    }  
     public IEnumerator LoadNextSceneAsync()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
@@ -67,9 +83,4 @@ public class ScenesManager : MonoBehaviour
         }
             
     }
-    public void LoadIngameMenu()
-    {
-
-    }
-
 }

@@ -6,12 +6,16 @@ public class Portal : MonoBehaviour , IDataPersistance
 {
     [SerializeField] private bool isHub;
     [SerializeField] public bool isUnlocked;
-    [SerializeField] ScenesManager.Scene level;
-    [SerializeField] ScenesManager.Scene currentLevel;
+    [SerializeField] ScenesManager.Scenes level;
+    [SerializeField] ScenesManager.Scenes currentLevel;
     private void Start()
     {
         SaveManager.Instance.dataPersistenceObjects.Add(this);
         LoadData(SaveManager.Instance.gameData);
+        if (!isUnlocked)
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -30,9 +34,6 @@ public class Portal : MonoBehaviour , IDataPersistance
             SaveManager.Instance.gameData.playerPosition = Vector3.zero;
             PlayerUI.Instance.UpdateLevel();
             ScenesManager.Instance.LoadScene(level);
-        }else if (!isUnlocked)
-        {
-            gameObject.SetActive(false);
         }
     }
     public void SaveData(ref SaveData data) => data.unlockedLevels[(int)currentLevel] = this.isUnlocked;

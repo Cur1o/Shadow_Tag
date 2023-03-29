@@ -28,13 +28,5 @@ public class Door : Interactable
             currentAnimator.ResetTrigger("OpenDoor");
             //handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        //if (handel.transform.localRotation == Quaternion.Euler(0, 0, 0) && isRight == true)
-        //{
-        //    handel.transform.localRotation = Quaternion.Euler(0, 0, 120);
-        //}
-        //else if (handel.transform.localRotation == Quaternion.Euler(0, 0, 120) && isRight == true)
-        //{
-        //    handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        //}
     }
 }

@@ -11,8 +11,6 @@ public class UIGameMenu : MonoBehaviour
     [SerializeField] Button _SaveGame;
     [SerializeField] Button _settings;
     [SerializeField] Button _credits;
-   
-
     [SerializeField] GameObject MainMenu;
     void Start()
     {
@@ -31,7 +29,6 @@ public class UIGameMenu : MonoBehaviour
     }
     private void CloseMenu()
     {
-
         GameManager.Instance.OpenMenu();
     }
     private void SaveGame()

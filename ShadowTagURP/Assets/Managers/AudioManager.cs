@@ -18,5 +18,4 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat("ambience", GameManager.Instance.ambienceVolume);
         mixer.SetFloat("dialouge", GameManager.Instance.dialougeVolume);
     }
-    
 }

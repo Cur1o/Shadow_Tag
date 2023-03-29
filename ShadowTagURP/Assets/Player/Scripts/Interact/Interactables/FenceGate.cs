@@ -35,9 +35,4 @@ public class FenceGate : Interactable
             handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
-        // Update is called once per frame
-        void Update()
-    {
-        
-    }
 }

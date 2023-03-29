@@ -70,9 +70,4 @@ public class UIMainMenu : MonoBehaviour
         credits.SetActive(true);
         scriptCredits.StartAnimation();
     }
-    //public void LoadIngameMenu()
-    //{
-    //        switcher = !switcher;
-    //        ingameMenu.SetActive(switcher);
-    //}
 }

@@ -56,6 +56,7 @@ public class UIMainMenu : MonoBehaviour
     public void Settings()
     {
         Time.timeScale = 0.1f;
+        GameManager.Instance.inMenu = true;
         settings.SetActive(true);
     }
     private void Exit()
@@ -65,6 +66,7 @@ public class UIMainMenu : MonoBehaviour
     public void Credits()
     {
         Time.timeScale = 1;
+        GameManager.Instance.inMenu = true;
         credits.SetActive(true);
         scriptCredits.StartAnimation();
     }

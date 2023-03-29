@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("Menu")]
     [SerializeField] private GameObject ingameMenu;
     public bool switcher = false;
+    public bool inMenu;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         GetSensitivity();
         GetVolume();
+        UpdateVolumeGamma();
         ingameMenu.SetActive(false);
     }
     public void GetSensitivity()
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
     }
     public void OpenMenu()
     {
+        if (inMenu)return;
         switcher = !switcher;
         if (switcher)
         {

@@ -53,8 +53,9 @@ public class Settings : MonoBehaviour
     }
     public void SetWindowInactive(GameObject obj)
     {
-        obj.SetActive(false);
         Time.timeScale = 0;
+        GameManager.Instance.inMenu = false;
+        obj.SetActive(false);
     }
 
 }

@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     public Slider yCSlider;
     [Header("Video Values")]
     public Slider cFOV;
+    public Slider gamma;
     [Header("Audio Values")]
     public Slider masterVolume;
     public Slider musicVolume;
@@ -28,6 +29,7 @@ public class Settings : MonoBehaviour
         xCSlider.value = 160f;
         yCSlider.value = 160f;
         cFOV.value = 60f;
+        gamma.value = 1f;
         masterVolume.value = 0f;
         musicVolume.value = 0f;
         effectVolume.value = 0f;
@@ -52,6 +54,7 @@ public class Settings : MonoBehaviour
     public void SetWindowInactive(GameObject obj)
     {
         obj.SetActive(false);
+        Time.timeScale = 0;
     }
 
 }

@@ -55,6 +55,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void Settings()
     {
+        Time.timeScale = 0.1f;
         settings.SetActive(true);
     }
     private void Exit()
@@ -63,12 +64,13 @@ public class UIMainMenu : MonoBehaviour
     }
     public void Credits()
     {
+        Time.timeScale = 1;
         credits.SetActive(true);
         scriptCredits.StartAnimation();
     }
-    public void LoadIngameMenu()
-    {
-            switcher = !switcher;
-            ingameMenu.SetActive(switcher);
-    }
+    //public void LoadIngameMenu()
+    //{
+    //        switcher = !switcher;
+    //        ingameMenu.SetActive(switcher);
+    //}
 }

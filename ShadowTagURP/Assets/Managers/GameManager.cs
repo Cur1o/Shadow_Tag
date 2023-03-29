@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class GameManager : MonoBehaviour
     public float yCSliderValue;
     [Header("Video Values")]
     public int cFOV;
+    public float gamma;
+    private LiftGammaGain liftGammaGain;
     [Header("Audio Values")]
     public float masterVolume;
     public float musicVolume;
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour
     public void GetSensitivity()
     {
         cFOV = (int)Settings.Instance.cFOV.value;
+        gamma = (int)Settings.Instance.gamma.value;
         xSliderValue = Settings.Instance.xSlider.value;
         ySliderValue = Settings.Instance.ySlider.value;
         xCSliderValue = Settings.Instance.xCSlider.value;
@@ -60,8 +65,24 @@ public class GameManager : MonoBehaviour
     public void OpenMenu()
     {
         switcher = !switcher;
-        if(switcher)Cursor.lockState = CursorLockMode.None;
-        if(!switcher)Cursor.lockState = CursorLockMode.Locked;
+        if (switcher)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }
+        if (!switcher)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1; 
+        }
         ingameMenu.SetActive(switcher);
+    }
+    private void UpdateVolumeGamma()
+    {
+        var volumeComponentObj = GameObject.FindGameObjectWithTag("Volume");
+        if (volumeComponentObj == null) return;
+        volumeComponentObj.TryGetComponent<Volume>(out Volume volume);
+        volume.profile.TryGet(out liftGammaGain);
+        liftGammaGain.gamma.value = new Vector4 (gamma,gamma,gamma,gamma);
     }
 }

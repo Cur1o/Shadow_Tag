@@ -32,6 +32,7 @@ public class Credits : MonoBehaviour
     }
     public void SetWindowInactive(GameObject obj)
     {
+        Time.timeScale = 0;
         obj.SetActive(false);
     }
     

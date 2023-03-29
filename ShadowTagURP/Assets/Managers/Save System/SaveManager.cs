@@ -36,10 +36,6 @@ public class SaveManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        Debug.Log(gameData.points);
-        Debug.Log(gameData.points.Length);
-        Debug.Log(dataPersistenceObjects.Count);
-        gameData.points[gameData.currentLabyrinthLevel] = gameData.currentPoints;
         foreach (IDataPersistance dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);

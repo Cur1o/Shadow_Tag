@@ -7,7 +7,6 @@ public class FenceGate : Interactable
     [SerializeField] GameObject handel;
     [SerializeField] private bool isLeft;
     [SerializeField] private bool isRight;
-    private bool switcher = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,22 +14,22 @@ public class FenceGate : Interactable
     }
     protected override void Interact()
     {
-        if (isLeft && switcher == true) 
+        if (gameObject.transform.localRotation == Quaternion.Euler(0, 0, 0) && isLeft == true) 
         { 
             gameObject.transform.localRotation = Quaternion.Euler(0, 0,-120);
             handel.transform.localRotation = Quaternion.Euler(0, 0, 120);
         }
-        else if (isLeft && switcher == false)
+        else if (gameObject.transform.localRotation == Quaternion.Euler(0, 0, -120) && isLeft == true)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
             handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        if (isRight && switcher == true)
+        if (gameObject.transform.localRotation == Quaternion.Euler(0, 0, 0) && isRight == true)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0, 0, 120);
             handel.transform.localRotation = Quaternion.Euler(0, 0, -120);
         }
-        else if (isRight && switcher == false)
+        else if (gameObject.transform.localRotation == Quaternion.Euler(0, 0, 120) && isRight == true)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
             handel.transform.localRotation = Quaternion.Euler(0, 0, 0);

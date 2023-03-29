@@ -19,11 +19,7 @@ public class ScenesManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += ChangePlayerUI;
-        loadingScreen.SetActive(false);
-        
-    }
-    private void LateUpdate()
-    {
+        loadingScreen.SetActive(false);   
     }
     public enum Scenes
     {
@@ -40,7 +36,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void LoadScene(Scenes scene)
     {
-        Debug.Log("Loaded Scene : "+scene);
+        Time.timeScale = 1;
         StartCoroutine(LoadSceneAsync(scene));
     }
     public IEnumerator LoadSceneAsync(Scenes scene)
@@ -57,6 +53,7 @@ public class ScenesManager : MonoBehaviour
     }  
     public IEnumerator LoadNextSceneAsync()
     {
+        Time.timeScale = 1;
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         loadingScreen.SetActive(true);
         while (!operation.isDone)
@@ -70,6 +67,7 @@ public class ScenesManager : MonoBehaviour
     public void LoadMainMenu()
     {
         SaveManager.Instance.SaveGame();
+        Time.timeScale = 1;
         SceneManager.LoadScene(Scenes.Menu.ToString());
     }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)
@@ -77,6 +75,7 @@ public class ScenesManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName != "Menu")
         {
+            
             playerUI.SetActive(true);
         }
         else

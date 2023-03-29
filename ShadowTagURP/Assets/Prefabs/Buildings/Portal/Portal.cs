@@ -21,7 +21,6 @@ public class Portal : MonoBehaviour , IDataPersistance
     {
         if (!isHub)
         {
-            SaveManager.Instance.gameData.points[SaveManager.Instance.gameData.currentLabyrinthLevel] = SaveManager.Instance.gameData.currentPoints;
             isUnlocked = true;
             SaveManager.Instance.gameData.currentLabyrinthLevel++;
             SaveManager.Instance.gameData.playerPosition = Vector3.zero;

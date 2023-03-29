@@ -12,9 +12,7 @@ public class PlayerLook : MonoBehaviour
     public int cFOV; 
     private void Start()
     {
-        cFOV = GameManager.Instance.cFOV;
-        //Debug.Log(cFOV);
-        cam.fieldOfView = cFOV;
+        UpdateFOV();
     }
     public void ManageLook(Vector2 input)
     {
@@ -30,5 +28,10 @@ public class PlayerLook : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(xRotation , 0 , 0);  //The Y rotation is applyed to the Camera
         //Rotate the Player
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+    }
+    public void UpdateFOV()
+    {
+        cFOV = GameManager.Instance.cFOV;
+        cam.fieldOfView = cFOV;
     }
 }

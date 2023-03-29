@@ -7,7 +7,6 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
 {
     public static PlayerUI Instance { get; private set; }
     private int currentPoints;          //The current points in this Labyrinth
-    private int[] points;               //The Points from all levels
     private int currentLabyrinthLevel = 0;  //The current Labyrinth level
     [SerializeField] private TextMeshProUGUI promptText;    //Creates a TMPro text element
     [SerializeField] private TextMeshProUGUI scoreText;     //Shows the current score
@@ -47,13 +46,9 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
     public void SaveData(ref SaveData data)
     {
         data.currentPoints = this.currentPoints;
-        data.points = this.points;
         data.currentLabyrinthLevel = this.currentLabyrinthLevel;
     }
-    public void LoadData(SaveData data)
-    {
-        UpdateScore(data.currentPoints);
-    }
+    public void LoadData(SaveData data) => UpdateScore(data.currentPoints);
     private void OnDisable() => SaveManager.Instance.dataPersistenceObjects.Remove(this);
 }
 

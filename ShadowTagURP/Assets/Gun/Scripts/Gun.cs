@@ -16,6 +16,11 @@ public class Gun : MonoBehaviour
     public float range;
     public float realoadTime;
     public float shootCooldown;
+    [Header("Audio Clips")]
+    public AudioClip reloading;
+    public AudioClip shooting;
+    public AudioClip empty;
+
     private void Start() => ChangeColor();
     
     public void ChangeColor()

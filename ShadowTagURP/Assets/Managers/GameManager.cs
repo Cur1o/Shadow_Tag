@@ -82,10 +82,12 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateVolumeGamma()
     {
-        var volumeComponentObj = GameObject.FindGameObjectWithTag("Volume");
-        if (volumeComponentObj == null) return;
-        volumeComponentObj.TryGetComponent<Volume>(out Volume volume);
-        volume.profile.TryGet(out liftGammaGain);
-        liftGammaGain.gamma.value = new Vector4 (gamma,gamma,gamma,gamma);
+        GameObject volumeComponentObj;
+        if (volumeComponentObj = GameObject.FindGameObjectWithTag("Volume"))
+        {
+            volumeComponentObj.TryGetComponent<Volume>(out Volume volume);
+            volume.profile.TryGet(out liftGammaGain);
+            liftGammaGain.gamma.value = new Vector4(gamma, gamma, gamma, gamma);
+        }
     }
 }

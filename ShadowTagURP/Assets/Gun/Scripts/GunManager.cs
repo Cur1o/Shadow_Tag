@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GunManager : MonoBehaviour , IDataPersistance
 {
@@ -14,13 +15,13 @@ public class GunManager : MonoBehaviour , IDataPersistance
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
     Animator currentAnimator;
+    AudioSource currentAudioSource;
     Camera cam;                             //Gets the camera script
     public LayerMask mask;                  //Gets the enemy layer mask
     gunType currentGun;                     //Makes a gunType
     private bool reloading = false;         //bool to in shure reload is only called once at a time
     private bool shooting = false;
     private PlayerUI playerUI;              //Gets the curren player UI
-    private InputManager inputManager;
     private RaycastHit gunHit;
     private bool noWeapon;
     private void Awake()
@@ -39,8 +40,6 @@ public class GunManager : MonoBehaviour , IDataPersistance
         //LoadData
         SaveManager.Instance.dataPersistenceObjects.Add(this);
         LoadData(SaveManager.Instance.gameData);
-
-        inputManager = InputManager.Instance;
         playerUI = PlayerUI.Instance;
         cam = Camera.main;
         InstanciateWeapons();
@@ -69,6 +68,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
             var animator = obj.GetComponent<Animator>();
+            var audioSouce = obj.GetComponent<AudioSource>();
             script.weaponUnlocked = weaponUnlockSave[i];
             if (script?.weaponActive == true && script?.weaponUnlocked == true)
             {
@@ -79,6 +79,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
                     currentActiveWeapon = unlockedWeapons[0];
                     currentGunScript = script;
                     currentAnimator = animator;
+                    currentAudioSource = audioSouce;
                 } 
             }else if (script?.weaponUnlocked == true)
             {
@@ -90,6 +91,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
                     currentActiveWeapon = unlockedWeapons[0];
                     currentGunScript = script;
                     currentAnimator = animator;
+                    currentAudioSource = audioSouce;
                 }
                 else
                 {
@@ -121,6 +123,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     {
         var script = newWeapon.GetComponent<Gun>();
         var animator = newWeapon.GetComponent<Animator>();
+        var audioSouce = newWeapon.GetComponent<AudioSource>();
         unlockedWeapons.Add(newWeapon);
         script.weaponUnlocked = true;
         if (newWeapon == unlockedWeapons[0])
@@ -131,6 +134,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             currentGunScript = script;
             currentGunScript.weaponActive = true;
             currentAnimator = animator;
+            currentAudioSource = audioSouce;
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         }
         else
@@ -160,6 +164,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
         reloading = true;
         shooting = true;
         currentAnimator.SetTrigger("reloading");
+        AudioClip reloadAudio = currentGunScript.reloading;
+        currentAudioSource.PlayOneShot(reloadAudio);
         yield return new WaitForSeconds(currentGunScript.realoadTime);
         currentGunScript.ammunition = currentGunScript.ammunitionMax;
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
@@ -197,6 +203,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     {
         shooting = true;
         currentAnimator.SetTrigger("shooting");
+        AudioClip shootingAudio = currentGunScript.shooting;
+        currentAudioSource.PlayOneShot(shootingAudio);
         currentGunScript.ammunition--;
         if(currentGunScript.ammunition == 0) currentAnimator.SetTrigger("emptyWeapon");
         currentGunScript.ChangeColor();
@@ -215,6 +223,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     private IEnumerator PlayEmptyAnimation()
     {
+        AudioClip emptyAudio = currentGunScript.empty;
+        currentAudioSource.PlayOneShot(emptyAudio);
         yield return new WaitForSeconds(1.0f);
         currentAnimator.ResetTrigger("shooting");
     }

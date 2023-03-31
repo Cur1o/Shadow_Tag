@@ -17,7 +17,7 @@ public class UIGameMenu : MonoBehaviour
         _mainMenu.onClick.AddListener(LoadMainMenu);
         _continue.onClick.AddListener(CloseMenu);
         _SaveGame.onClick.AddListener(SaveGame);;
-        _settings.onClick.AddListener(UIMainMenu.Instance.Settings);
+        _settings.onClick.AddListener(UIMainMenu.Instance.SettingsUI);
         _credits.onClick.AddListener(UIMainMenu.Instance.Credits);
     }
     private void LoadMainMenu()

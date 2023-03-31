@@ -30,10 +30,11 @@ public class UIMainMenu : MonoBehaviour
     {
         _newGame.onClick.AddListener(StartNewGame);
         _loadGame.onClick.AddListener(LoadGame);
-        _settings.onClick.AddListener(Settings);
+        _settings.onClick.AddListener(SettingsUI);
         _exitGame.onClick.AddListener(Exit);
         _credits.onClick.AddListener(Credits);
         scriptCredits = credits.GetComponent<Credits>();
+        AudioManager.Instance.SetAudio();
         ingameMenu.SetActive(false);
         settings.SetActive(false);
         credits.SetActive(false);
@@ -53,7 +54,7 @@ public class UIMainMenu : MonoBehaviour
         if (switcher) Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }
-    public void Settings()
+    public void SettingsUI()
     {
         Time.timeScale = 0.1f;
         GameManager.Instance.inMenu = true;

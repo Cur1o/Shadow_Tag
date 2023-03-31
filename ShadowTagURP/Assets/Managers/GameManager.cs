@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -16,13 +18,9 @@ public class GameManager : MonoBehaviour
     [Header("Video Values")]
     public int cFOV;
     public float gamma;
-    private LiftGammaGain liftGammaGain;
-    [Header("Audio Values")]
-    public float masterVolume;
-    public float musicVolume;
-    public float effectVolume;
-    public float ambienceVolume;
-    public float dialougeVolume;
+    public GameObject currentVolumeObj;
+    private Volume currentVolume;
+    [SerializeField] private Vector4 controuls;
     [Header("Menu")]
     [SerializeField] private GameObject ingameMenu;
     public bool switcher = false;
@@ -43,26 +41,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetSensitivity();
-        GetVolume();
-        UpdateVolumeGamma();
+
         ingameMenu.SetActive(false);
     }
     public void GetSensitivity()
     {
         cFOV = (int)Settings.Instance.cFOV.value;
-        gamma = (int)Settings.Instance.gamma.value;
         xSliderValue = Settings.Instance.xSlider.value;
         ySliderValue = Settings.Instance.ySlider.value;
         xCSliderValue = Settings.Instance.xCSlider.value;
         yCSliderValue = Settings.Instance.yCSlider.value;
-    }
-    public void GetVolume()
-    {
-        masterVolume = Settings.Instance.masterVolume.value;;
-        musicVolume = Settings.Instance.musicVolume.value;
-        effectVolume = Settings.Instance.effectVolume.value;
-        ambienceVolume = Settings.Instance.ambienceVolume.value;
-        dialougeVolume = Settings.Instance.dialougeVolume.value;
     }
     public void OpenMenu()
     {
@@ -80,14 +68,19 @@ public class GameManager : MonoBehaviour
         }
         ingameMenu.SetActive(switcher);
     }
-    private void UpdateVolumeGamma()
+    public void UpdateVolumeGamma()
     {
-        GameObject volumeComponentObj;
-        if (volumeComponentObj = GameObject.FindGameObjectWithTag("Volume"))
+        gamma = (float)Settings.Instance.gamma.value;
+        Debug.Log("Gamma = "+gamma);
+        controuls.w = gamma;
+        Debug.Log("Vector4 = "+controuls.w);
+        currentVolumeObj = GameObject.FindWithTag("Volume");
+        if (currentVolumeObj != null)
         {
-            volumeComponentObj.TryGetComponent<Volume>(out Volume volume);
-            volume.profile.TryGet(out liftGammaGain);
-            liftGammaGain.gamma.value = new Vector4(gamma, gamma, gamma, gamma);
+            currentVolumeObj.TryGetComponent<Volume>(out currentVolume);
+            currentVolume.profile.TryGet(out LiftGammaGain liftGammaGain);
+            //Debug.Log(liftGammaGain);
+            liftGammaGain.gamma.value = controuls;
         }
     }
 }

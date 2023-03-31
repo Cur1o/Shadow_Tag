@@ -29,7 +29,6 @@ public class Settings : MonoBehaviour
         xCSlider.value = 160f;
         yCSlider.value = 160f;
         cFOV.value = 60f;
-        gamma.value = 1f;
         masterVolume.value = 0f;
         musicVolume.value = 0f;
         effectVolume.value = 0f;
@@ -37,7 +36,7 @@ public class Settings : MonoBehaviour
         dialougeVolume.value = 0f;
         backButton.onClick.AddListener(deactivate);
         ChangeSensitivity();
-        ChangeVolume();
+        
     }
     public void ChangeSensitivity()
     {
@@ -45,7 +44,11 @@ public class Settings : MonoBehaviour
     }
     public void ChangeVolume()
     {
-        GameManager.Instance.GetVolume();
+        AudioManager.Instance.SetAudio();
+    }
+    public void ChangeGamma()
+    {
+        GameManager.Instance.UpdateVolumeGamma();
     }
     private void deactivate()
     {
@@ -53,6 +56,7 @@ public class Settings : MonoBehaviour
     }
     public void SetWindowInactive(GameObject obj)
     {
+        GameManager.Instance.UpdateVolumeGamma();
         Time.timeScale = 0;
         GameManager.Instance.inMenu = false;
         obj.SetActive(false);

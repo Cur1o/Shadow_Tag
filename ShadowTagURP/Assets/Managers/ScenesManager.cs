@@ -50,6 +50,7 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
         loadingScreen.SetActive(false);
+        GameManager.Instance.UpdateVolumeGamma();
     }  
     public IEnumerator LoadNextSceneAsync()
     {
@@ -63,6 +64,7 @@ public class ScenesManager : MonoBehaviour
             yield return null;
         }
         loadingScreen.SetActive(false);
+        GameManager.Instance.UpdateVolumeGamma();
     }
     public void LoadMainMenu()
     {
@@ -75,7 +77,6 @@ public class ScenesManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName != "Menu")
         {
-            
             playerUI.SetActive(true);
         }
         else

@@ -121,8 +121,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4704501639877894723}
   m_HandleRect: {fileID: 5052831766007463423}
   m_Direction: 3
-  m_Value: 0
-  m_Size: 0.17767377
+  m_Value: -0.0000004884505
+  m_Size: 0.1776822
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -727,13 +727,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 2
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8175414791933539775}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: ChangeSensitivity
+        m_MethodName: ChangeGamma
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3959,12 +3959,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7834327823164120101}
-  - {fileID: 8175414791820770739}
-  - {fileID: 8175414792624055263}
   - {fileID: 8175414793139048073}
   - {fileID: 8175414792336994874}
   - {fileID: 8175414792817684808}
+  - {fileID: 7834327823164120101}
+  - {fileID: 8175414791820770739}
+  - {fileID: 8175414792624055263}
   - {fileID: 8175414792652933542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3987,11 +3987,8 @@ MonoBehaviour:
   yCSliderValue: 0
   cFOV: 0
   gamma: 0
-  masterVolume: 0
-  musicVolume: 0
-  effectVolume: 0
-  ambienceVolume: 0
-  dialougeVolume: 0
+  currentVolumeObj: {fileID: 0}
+  controuls: {x: 0, y: 0, z: 0, w: 0}
   ingameMenu: {fileID: 8175414793184159129}
   switcher: 0
   inMenu: 0
@@ -5806,7 +5803,7 @@ MonoBehaviour:
   m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: -80
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9929,7 +9926,7 @@ MonoBehaviour:
   m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: -80
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -10032,7 +10029,7 @@ MonoBehaviour:
   m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: -80
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -10866,7 +10863,7 @@ MonoBehaviour:
   m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: -80
+  m_Value: -0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -12140,7 +12137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4998.2676}
+  m_AnchoredPosition: {x: 0, y: 4998.27}
   m_SizeDelta: {x: -0.000015258789, y: 6078.2676}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8459527157579575787

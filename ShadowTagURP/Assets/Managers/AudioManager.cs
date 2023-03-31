@@ -5,17 +5,19 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     [SerializeField] AudioMixer mixer;
-    private void Start()
+    private void Awake()
     {
-        SetAudio();
+        Instance = this;
     }
     public void SetAudio()
     {
-        mixer.SetFloat("master", GameManager.Instance.masterVolume);
-        mixer.SetFloat("music", GameManager.Instance.musicVolume);
-        mixer.SetFloat("sfx", GameManager.Instance.effectVolume);
-        mixer.SetFloat("ambience", GameManager.Instance.ambienceVolume);
-        mixer.SetFloat("dialouge", GameManager.Instance.dialougeVolume);
+        //Debug.Log("Start setting Audio "+ mixer);
+        mixer.SetFloat("master", Settings.Instance.masterVolume.value);
+        mixer.SetFloat("music", Settings.Instance.musicVolume.value);
+        mixer.SetFloat("sfx", Settings.Instance.effectVolume.value);
+        mixer.SetFloat("ambience", Settings.Instance.ambienceVolume.value);
+        mixer.SetFloat("dialouge", Settings.Instance.dialougeVolume.value);
     }
 }

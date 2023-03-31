@@ -364,7 +364,7 @@ MonoBehaviour:
   shootCooldown: 2
   reloading: {fileID: 8300000, guid: c15b12fc5adcf6240819fee38dc048d0, type: 3}
   shooting: {fileID: 8300000, guid: 43e48f0296969db42a602b013545dbb7, type: 3}
-  empty: {fileID: 0}
+  empty: {fileID: 8300000, guid: f7db0263b9833d942bb0115ef354893c, type: 3}
 --- !u!95 &7687125333381215715
 Animator:
   serializedVersion: 4

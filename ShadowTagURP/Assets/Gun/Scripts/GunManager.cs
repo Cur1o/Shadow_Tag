@@ -251,6 +251,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
             currentActiveWeapon = unlockedWeapons[nextGun];
             currentGunScript = currentActiveWeapon.GetComponent<Gun>();
             currentAnimator = currentActiveWeapon.GetComponent<Animator>(); ;
+            currentAudioSource = currentActiveWeapon.GetComponent<AudioSource>();
             currentActiveWeapon.SetActive(true);
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
             currentGunScript.ChangeColor();

@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-
-
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -25,23 +22,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ingameMenu;
     public bool switcher = false;
     public bool inMenu;
-    // Start is called before the first frame update
+    [Header("Cinema Camera")]
+    public Camera cinemaCamera;
     private void Awake()
     {
-        if (Instance != null || Instance == this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        if (Instance != null || Instance == this) Destroy(gameObject);
+        else Instance = this;
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
         GetSensitivity();
-
         ingameMenu.SetActive(false);
     }
     public void GetSensitivity()
@@ -71,15 +62,12 @@ public class GameManager : MonoBehaviour
     public void UpdateVolumeGamma()
     {
         gamma = (float)Settings.Instance.gamma.value;
-        Debug.Log("Gamma = "+gamma);
         controuls.w = gamma;
-        Debug.Log("Vector4 = "+controuls.w);
         currentVolumeObj = GameObject.FindWithTag("Volume");
         if (currentVolumeObj != null)
         {
             currentVolumeObj.TryGetComponent<Volume>(out currentVolume);
             currentVolume.profile.TryGet(out LiftGammaGain liftGammaGain);
-            //Debug.Log(liftGammaGain);
             liftGammaGain.gamma.value = controuls;
         }
     }

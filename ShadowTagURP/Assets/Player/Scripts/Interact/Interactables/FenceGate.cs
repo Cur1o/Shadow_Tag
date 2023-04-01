@@ -9,6 +9,8 @@ public class FenceGate : Interactable
     [SerializeField] private bool isRight;
     [SerializeField] private GameObject Fence;
     private Animator currentAnimator;
+    bool switcher = true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,17 +18,17 @@ public class FenceGate : Interactable
     }
     protected override void Interact()
     {
-        if (handel.transform.localRotation == Quaternion.Euler(0, 0, 0) && isLeft == true)
+        if (handel.transform.localRotation == Quaternion.Euler(0, 0, 0) && switcher == true)
         {
+            switcher = !switcher;
             currentAnimator.SetTrigger("OpenFence");
             currentAnimator.ResetTrigger("CloseFence");
-            //handel.transform.localRotation = Quaternion.Euler(0, 0, -120);
         }
-        else if (handel.transform.localRotation == Quaternion.Euler(0, 0, -120) && isLeft == true)
+        else if (handel.transform.localRotation == Quaternion.Euler(0, 0, 120) && switcher == false)
         {
+            switcher = !switcher;
             currentAnimator.SetTrigger("CloseFence");
             currentAnimator.ResetTrigger("OpenFence");
-            //handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

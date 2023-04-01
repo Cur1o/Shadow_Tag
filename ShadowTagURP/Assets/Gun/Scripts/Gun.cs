@@ -20,9 +20,7 @@ public class Gun : MonoBehaviour
     public AudioClip reloading;
     public AudioClip shooting;
     public AudioClip empty;
-
     private void Start() => ChangeColor();
-    
     public void ChangeColor()
     {
         float transitionValue = (float)ammunition / ammunitionMax;

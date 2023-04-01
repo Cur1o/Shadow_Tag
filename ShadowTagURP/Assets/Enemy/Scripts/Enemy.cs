@@ -15,8 +15,12 @@ public class Enemy : Interactable
     [SerializeField] private variantSlime variant;
     [SerializeField] private List<Texture2D> textures;
     private Material material;
-    
-    
+    [Header("Audio")]
+    [SerializeField] bool hasAudio;
+    [SerializeField] AudioClip triggerAudio;
+    [SerializeField] AudioClip hitAudio;
+    [SerializeField] AudioClip dieAudio;
+    AudioSource source;
     // Start is called before the first frame update
     private void Start()
     {
@@ -24,14 +28,15 @@ public class Enemy : Interactable
         {
             if(isRandom) RandomSlime();
             SetSlimeTextures();
-            if ((int)variant == 2)
-                points *= 2;
-            else if ((int)variant == 3)
-                points *= 4;
-            else if ((int)variant == 4)
-                points *= 8;
+            if ((int)variant == 2) points *= 2;
+            else if ((int)variant == 3) points *= 4;
+            else if ((int)variant == 4) points *= 8;
         }
-
+        if (hasAudio)
+        {
+            source = GetComponent<AudioSource>();
+            TriggerAudio(triggerAudio);
+        }
         StartCoroutine(Live());
     }
     private void RandomSlime()
@@ -50,24 +55,21 @@ public class Enemy : Interactable
     }    
     public void Hit(int damage)
     {
+        if (hasAudio)TriggerAudio(hitAudio);
         health -= damage;
-        
         if (health <= 0)
         {
             AddPoints();
+            TriggerAudio(dieAudio);
             Die();
-        }
-            
+        }   
     }
     private IEnumerator Live()
     {
         yield return new WaitForSeconds(livetime);
         Die();
     }
-    private void Die()
-    {
-        
-        Destroy(gameObject);
-    }
+    private void Die() => Destroy(gameObject);
     private void AddPoints() => PlayerUI.Instance.UpdateScore(points);
+    private void TriggerAudio(AudioClip clip) => source.PlayOneShot(clip);
 }

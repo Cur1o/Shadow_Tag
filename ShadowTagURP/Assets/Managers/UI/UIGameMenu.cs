@@ -27,12 +27,6 @@ public class UIGameMenu : MonoBehaviour
         MainMenu.SetActive(true);
         gameObject.SetActive(false);
     }
-    private void CloseMenu()
-    {
-        GameManager.Instance.OpenMenu();
-    }
-    private void SaveGame()
-    {
-        SaveManager.Instance.SaveGame();
-    }
+    private void CloseMenu() => GameManager.Instance.OpenMenu();
+    private void SaveGame() => SaveManager.Instance.SaveGame();
 }

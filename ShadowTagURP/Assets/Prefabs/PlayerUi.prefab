@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 880046762698113454}
   - component: {fileID: 2352047668708947457}
   - component: {fileID: 2616169339698098929}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: LabyrinthLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ebene: 5'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2147645094034380179}
   - component: {fileID: 2147645094034380181}
   - component: {fileID: 2147645094034380180}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PromptText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 2147645094791745479}
   - component: {fileID: 2147645094791745481}
   - component: {fileID: 2147645094791745480}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,9 +359,9 @@ GameObject:
   - component: {fileID: 2147645095772111334}
   - component: {fileID: 2147645095772111333}
   - component: {fileID: 610085938}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PlayerUi
-  m_TagString: Untagged
+  m_TagString: PlayerUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +384,7 @@ RectTransform:
   - {fileID: 2937260411683023425}
   - {fileID: 880046762698113454}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 2937260411683023425}
   - component: {fileID: 4739648157192869616}
   - component: {fileID: 1176734164035818517}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Ammonition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 7695438157508310137}
   - component: {fileID: 8081031192990845662}
   - component: {fileID: 4210629460414100775}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}

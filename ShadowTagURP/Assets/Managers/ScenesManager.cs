@@ -8,32 +8,25 @@ using UnityEngine.InputSystem;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
-    [SerializeField] private GameObject playerUI;
+    public GameObject playerUI;
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider progressBar;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null || Instance == this)
+            Destroy(gameObject);
+        else
+            Instance = this;
     }
     private void Start()
     {
         SceneManager.sceneLoaded += ChangePlayerUI;
         loadingScreen.SetActive(false);   
     }
-    public enum Scenes
-    {
-        Menu,
-        Start,
-        Map1,
-        Map2,
-        Map3,
-    }
+    public enum Scenes{ Menu, Start, Map1, Map2, Map3}
     public void LoadNewGame() => LoadScene(Scenes.Start);
-    public void LoadNextScene()
-    {
-        StartCoroutine(LoadNextSceneAsync());
-    }
+    public void LoadNextScene() => StartCoroutine(LoadNextSceneAsync());
     public void LoadScene(Scenes scene)
     {
         Time.timeScale = 1;
@@ -76,12 +69,8 @@ public class ScenesManager : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName != "Menu")
-        {
             playerUI.SetActive(true);
-        }
         else
-        {
-            playerUI.SetActive(false);
-        }  
+            playerUI.SetActive(false); 
     }
 }

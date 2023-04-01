@@ -26,14 +26,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     private bool noWeapon;
     private void Awake()
     {
-        if (Instance != null || Instance == this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        if (Instance != null || Instance == this) Destroy(gameObject);
+        else Instance = this;
     }
     private void Start()
     {
@@ -209,17 +203,12 @@ public class GunManager : MonoBehaviour , IDataPersistance
         if(currentGunScript.ammunition == 0) currentAnimator.SetTrigger("emptyWeapon");
         currentGunScript.ChangeColor();
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
-        //Debug.Log("Shoot Gun");
         var enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
-        if (enemy != null)
-        {
-            enemy.Hit(currentGunScript.damage);
-        }
+        if (enemy != null) enemy.Hit(currentGunScript.damage);    
         shooting = false;
         currentAnimator.ResetTrigger("shooting");
         currentAnimator.ResetTrigger("emptyWeapon");
-        //Debug.Log("Shoot End");
     }
     private IEnumerator PlayEmptyAnimation()
     {

@@ -24,7 +24,8 @@ public class UIMainMenu : MonoBehaviour
     private Credits scriptCredits;
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null || Instance == this) Destroy(gameObject);
+        else Instance = this;
     }
     void Start()
     {
@@ -60,13 +61,10 @@ public class UIMainMenu : MonoBehaviour
         GameManager.Instance.inMenu = true;
         settings.SetActive(true);
     }
-    private void Exit()
-    {
-        Application.Quit();
-    }
+    private void Exit() => Application.Quit();
     public void Credits()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0.1f;
         GameManager.Instance.inMenu = true;
         credits.SetActive(true);
         scriptCredits.StartAnimation();

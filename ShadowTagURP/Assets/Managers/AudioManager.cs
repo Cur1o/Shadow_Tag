@@ -13,7 +13,6 @@ public class AudioManager : MonoBehaviour
     }
     public void SetAudio()
     {
-        //Debug.Log("Start setting Audio "+ mixer);
         mixer.SetFloat("master", Settings.Instance.masterVolume.value);
         mixer.SetFloat("music", Settings.Instance.musicVolume.value);
         mixer.SetFloat("sfx", Settings.Instance.effectVolume.value);

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerUi;
     public bool switcher = false;
     public bool inMenu;
+    public bool isPaused;
     [Header("Cinema Camera")]
     public Camera cinemaCamera;
     private void Awake()
@@ -52,11 +53,13 @@ public class GameManager : MonoBehaviour
         switcher = !switcher;
         if (switcher)
         {
+            isPaused = true;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
         if (!switcher)
         {
+            isPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1; 
         }

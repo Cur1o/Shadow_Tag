@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Gun : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Gun : MonoBehaviour
     public AudioClip reloading;
     public AudioClip shooting;
     public AudioClip empty;
+    public VisualEffect effect;
     private void Start() => ChangeColor();
     public void ChangeColor()
     {

@@ -57,14 +57,14 @@ public class UIMainMenu : MonoBehaviour
     }
     public void SettingsUI()
     {
-        Time.timeScale = 0.1f;
+        Time.timeScale = 1f;
         GameManager.Instance.inMenu = true;
         settings.SetActive(true);
     }
     private void Exit() => Application.Quit();
     public void Credits()
     {
-        Time.timeScale = 0.1f;
+        Time.timeScale = 1f;
         GameManager.Instance.inMenu = true;
         credits.SetActive(true);
         //scriptCredits.StartAnimation();

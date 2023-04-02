@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.VFX;
 
 public class GunManager : MonoBehaviour , IDataPersistance
 {
@@ -86,8 +86,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
                     currentGunScript = script;
                     currentAnimator = animator;
                     currentAudioSource = audioSouce;
-                }
-                else
+                }else
                 {
                     obj.SetActive(false);
                 }
@@ -143,6 +142,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     /// </summary>
     public void Reload()
     {
+        if (GameManager.Instance.inMenu == true || GameManager.Instance.isPaused == true) return;
         if (noWeapon) return;
         if (reloading) return;
         if (currentGunScript.ammunition == currentGunScript.ammunitionMax) return;
@@ -175,8 +175,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     /// </summary>
     public void Shoot()
     {
+        if (GameManager.Instance.inMenu == true || GameManager.Instance.isPaused == true) return;
         if (noWeapon) return;
-        //Debug.Log("Shooting");
         if (shooting) return;
         if (currentGunScript.ammunition <= 0)
         {
@@ -186,7 +186,6 @@ public class GunManager : MonoBehaviour , IDataPersistance
             return;
         }
         StartCoroutine(ShootCorutine());
-        //Debug.Log("Shooting End");
     }
     /// <summary>
     /// A coroutine that represents shooting a gun. Decrements the current gun's ammunition, updates the player's UI,
@@ -197,6 +196,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     {
         shooting = true;
         currentAnimator.SetTrigger("shooting");
+        currentGunScript.effect.Play();
+
         AudioClip shootingAudio = currentGunScript.shooting;
         currentAudioSource.PlayOneShot(shootingAudio);
         currentGunScript.ammunition--;

@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
-using UnityEngine.InputSystem;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector4 controuls;
     [Header("Menu")]
     [SerializeField] private GameObject ingameMenu;
+    [SerializeField] private GameObject playerUi;
     public bool switcher = false;
     public bool inMenu;
     [Header("Cinema Camera")]
@@ -33,7 +34,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetSensitivity();
+
         ingameMenu.SetActive(false);
+        playerUi.SetActive(false);
     }
     public void GetSensitivity()
     {

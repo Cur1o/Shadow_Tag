@@ -122,7 +122,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5052831766007463423}
   m_Direction: 3
   m_Value: 0
-  m_Size: 0.1776822
+  m_Size: 0.17767441
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3990,6 +3990,7 @@ MonoBehaviour:
   currentVolumeObj: {fileID: 0}
   controuls: {x: 0, y: 0, z: 0, w: 0}
   ingameMenu: {fileID: 8175414793184159129}
+  playerUi: {fileID: 7834327823164120105}
   switcher: 0
   inMenu: 0
   cinemaCamera: {fileID: 0}
@@ -10297,6 +10298,7 @@ GameObject:
   - component: {fileID: 8175414793066889979}
   - component: {fileID: 8175414793066889972}
   - component: {fileID: 8175414793066889973}
+  - component: {fileID: 8265181816642956691}
   m_Layer: 8
   m_Name: Credits
   m_TagString: Untagged
@@ -10402,6 +10404,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 4793605836948041894}
   scrollVertical: {fileID: 7012318308849412607}
+--- !u!95 &8265181816642956691
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175414793066889975}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8256d756ec8c92c429a9b5d6d43459bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8175414793082672467
 GameObject:
   m_ObjectHideFlags: 0
@@ -12442,6 +12464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147645095772111332, guid: f3f25c8b24f028c4bb473bc66fb91da1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2147645095772111336, guid: f3f25c8b24f028c4bb473bc66fb91da1,
         type: 3}

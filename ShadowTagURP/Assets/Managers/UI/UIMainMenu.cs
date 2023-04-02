@@ -67,6 +67,6 @@ public class UIMainMenu : MonoBehaviour
         Time.timeScale = 0.1f;
         GameManager.Instance.inMenu = true;
         credits.SetActive(true);
-        scriptCredits.StartAnimation();
+        //scriptCredits.StartAnimation();
     }
 }

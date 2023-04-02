@@ -12,20 +12,20 @@ public class Credits : MonoBehaviour
     {
         backButton.onClick.AddListener(deactivate);
     }
-    public void StartAnimation()
-    {
-        scrollVertical.value = 1f;
-        StartCoroutine(AnimationCorutine());
-    }
-    private IEnumerator AnimationCorutine()
-    {
-        yield return new WaitForSeconds(0.2f);
-        while (scrollVertical.value >= 0.2f)
-        {
-            yield return new WaitForSeconds(0.1f);
-            scrollVertical.value -= 0.001f;
-        }
-    }
+    //public void StartAnimation()
+    //{
+    //    scrollVertical.value = 1f;
+    //    StartCoroutine(AnimationCorutine());
+    //}
+    //private IEnumerator AnimationCorutine()
+    //{
+    //    yield return new WaitForSeconds(0.2f);
+    //    while (scrollVertical.value >= 0.2f)
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        scrollVertical.value -= 0.001f;
+    //    }
+    //}
     private void deactivate()
     {
         SetWindowInactive(gameObject);

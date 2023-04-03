@@ -140,7 +140,7 @@ MonoBehaviour:
   weaponUnlocked: 1
   weaponActive: 0
   Neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
-  damage: 25
+  damage: 50
   ammunition: 20
   ammunitionMax: 20
   range: 25

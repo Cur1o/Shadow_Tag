@@ -15,17 +15,16 @@ public class GunManager : MonoBehaviour , IDataPersistance
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
     Animator currentAnimator;               //The current Animater from the current gun
-    AudioSource currentAudioSource;
+    AudioSource currentAudioSource;         //The current gun Audio Source
     Camera cam;                             //Gets the camera script
     public LayerMask mask;                  //Gets the enemy layer mask
     gunType currentGun;                     //Makes a gunType
-    private bool reloading = false;         //bool to in shure reload is only called once at a time
-    private bool shooting = false;
+    private bool reloading = false;         //bool to inshure reload is only called once at a time
+    private bool shooting = false;          //bool to inshure shoot is only called once at a time
     private PlayerUI playerUI;              //Gets the curren player UI
-    private RaycastHit gunHit;
-    private bool noWeapon;
-    [SerializeField] GameObject gunHitVFX;
-    [SerializeField] float rotationAngle;
+    private RaycastHit gunHit;              //The hit from the Gun
+    private bool noWeapon;                  //bool to check if the player has no weapon
+    [SerializeField] GameObject gunHitVFX;  //The Hit effect to spawn when you hit an object
     private void Awake()
     {
         if (Instance != null || Instance == this) Destroy(gameObject);
@@ -42,10 +41,6 @@ public class GunManager : MonoBehaviour , IDataPersistance
         noWeapon = unlockedWeapons.Count == 0;
         if (!noWeapon)
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
-    }
-    private void Update()
-    {
-   
     }
     //Instanciating Weapons
     /// <summary>

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -26,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     [Header("Cinema Camera")]
     public Camera cinemaCamera;
+    public GameObject player;
     private void Awake()
     {
         if (Instance != null || Instance == this) Destroy(gameObject);
@@ -76,5 +75,22 @@ public class GameManager : MonoBehaviour
             currentVolume.profile.TryGet(out LiftGammaGain liftGammaGain);
             liftGammaGain.gamma.value = controuls;
         }
+    }
+    public void GetPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player);
+        if (SceneManager.GetActiveScene().buildIndex == 1) 
+        {
+            player.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    public void SkipIntro()
+    {
+        Debug.Log(player);
+        player.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Destroy(cinemaCamera);
     }
 }

@@ -60,7 +60,7 @@ public class Enemy : Interactable
         if (health <= 0)
         {
             AddPoints();
-            TriggerAudio(dieAudio);
+            if (hasAudio) TriggerAudio(dieAudio);
             Die();
         }   
     }

@@ -53,10 +53,10 @@ public class InputManager : MonoBehaviour
 
         };
         flashlight.SetActive(false);
+        GameManager.Instance.GetPlayer();
     }
     void FixedUpdate()
     {
-        
         movement.ManageMove(onWalk.Move.ReadValue<Vector2>());  //sends the movement information to PlayerMovement to move the player
     }
     private void LateUpdate()

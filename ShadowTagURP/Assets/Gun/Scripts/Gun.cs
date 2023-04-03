@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     public bool weaponActive;
     public Material Neon;
     private Color currentColor;
-    //Weapon specs
+    [Header("Weapon Specs")]
     public int damage;
     public int ammunition;
     public int ammunitionMax;
@@ -21,7 +21,10 @@ public class Gun : MonoBehaviour
     public AudioClip reloading;
     public AudioClip shooting;
     public AudioClip empty;
+    [Header("Components")]
     public VisualEffect effect;
+    public AudioSource audioSource;
+    public Animator animator;
     private void Start() => ChangeColor();
     public void ChangeColor()
     {

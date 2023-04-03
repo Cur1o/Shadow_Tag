@@ -166,6 +166,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 128
+  gunHitVFX: {fileID: 7645064358544441784, guid: d60dd7452eced4448b949f3a9d879987,
+    type: 3}
 --- !u!1 &4148651513211606445
 GameObject:
   m_ObjectHideFlags: 0

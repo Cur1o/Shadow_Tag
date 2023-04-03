@@ -10,11 +10,11 @@ public class GunManager : MonoBehaviour , IDataPersistance
     //Variables
     [SerializeField] GameObject[] prefabs;   //All the gun prefabs that should be instanciated
     public List<GameObject> instanciatedWeapons = new();//To save all instanciated prefabs in a list
-    [SerializeField] List<bool> weaponUnlockSave = new();
+    [SerializeField] List<bool> weaponUnlockSave = new();//To save all unlocked Weapons to save them 
     List<GameObject> unlockedWeapons = new();//To save all the weapons that are Unlocked
     GameObject currentActiveWeapon;         //Saves the current active weapon
     Gun currentGunScript;                   //Saves the current gun script
-    Animator currentAnimator;
+    Animator currentAnimator;               //The current Animater from the current gun
     AudioSource currentAudioSource;
     Camera cam;                             //Gets the camera script
     public LayerMask mask;                  //Gets the enemy layer mask
@@ -24,6 +24,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     private PlayerUI playerUI;              //Gets the curren player UI
     private RaycastHit gunHit;
     private bool noWeapon;
+    [SerializeField] GameObject gunHitVFX;
+    [SerializeField] float rotationAngle;
     private void Awake()
     {
         if (Instance != null || Instance == this) Destroy(gameObject);
@@ -43,8 +45,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     }
     private void Update()
     {
-        if(!noWeapon)
-            Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask);
+   
     }
     //Instanciating Weapons
     /// <summary>
@@ -61,8 +62,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
             var obj = Instantiate(weapon, position, weapon.transform.rotation, transform);
             instanciatedWeapons.Add(obj);
             var script = obj.GetComponent<Gun>();
-            var animator = obj.GetComponent<Animator>();
-            var audioSouce = obj.GetComponent<AudioSource>();
+            Animator animator = script.animator;
+            AudioSource audioSouce = script.audioSource;
             script.weaponUnlocked = weaponUnlockSave[i];
             if (script?.weaponActive == true && script?.weaponUnlocked == true)
             {
@@ -115,8 +116,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
     public void UnlockWeapon(GameObject newWeapon)
     {
         var script = newWeapon.GetComponent<Gun>();
-        var animator = newWeapon.GetComponent<Animator>();
-        var audioSouce = newWeapon.GetComponent<AudioSource>();
+        Animator animator = script.animator;
+        AudioSource audioSouce = script.audioSource;
         unlockedWeapons.Add(newWeapon);
         script.weaponUnlocked = true;
         if (newWeapon == unlockedWeapons[0])
@@ -204,7 +205,24 @@ public class GunManager : MonoBehaviour , IDataPersistance
         if(currentGunScript.ammunition == 0) currentAnimator.SetTrigger("emptyWeapon");
         currentGunScript.ChangeColor();
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
-        var enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
+        Enemy enemy = null;
+        Vector3 hitPosition = Vector3.zero;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask))
+        {
+            enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
+            hitPosition = gunHit.point;
+        }
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range))
+        {
+            hitPosition = gunHit.point;
+        }
+        Debug.Log(gunHit.normal);
+        if (gunHit.normal == Vector3.up || gunHit.normal == Vector3.down)
+            Instantiate(gunHitVFX, hitPosition, Quaternion.identity);
+        else if(gunHit.normal == Vector3.left || gunHit.normal == Vector3.right)
+            Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(0,0,-90)));
+        else
+            Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(-90, 0, 0)));
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
         if (enemy != null) enemy.Hit(currentGunScript.damage);    
         shooting = false;

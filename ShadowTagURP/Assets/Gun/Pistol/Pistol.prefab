@@ -150,6 +150,8 @@ MonoBehaviour:
   shooting: {fileID: 8300000, guid: 3a8f42583c6851f419d37e725de48368, type: 3}
   empty: {fileID: 8300000, guid: 8b597f3ce71c4cc46be296a1ae95fd04, type: 3}
   effect: {fileID: 6169511732986255392}
+  audioSource: {fileID: 5068951734598884856}
+  animator: {fileID: 8284607196140031714}
 --- !u!95 &8284607196140031714
 Animator:
   serializedVersion: 4

@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     [Header("Menu")]
     [SerializeField] private GameObject ingameMenu;
     [SerializeField] private GameObject playerUi;
-    public bool switcher = false;
-    public bool inMenu;
-    public bool isPaused;
+    [HideInInspector]public bool switcher = false;
+    [HideInInspector] public bool inMenu;
+    [HideInInspector] public bool isPaused;
     [Header("Cinema Camera")]
     GameObject cinemaCameraObj;
     GameObject player;
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     }
     public void GetPlayer()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 1) return;
         player = GameObject.FindGameObjectWithTag("Player");
         skipButtonObj = GameObject.FindGameObjectWithTag("Skip");
         cinemaCameraObj = GameObject.FindGameObjectWithTag("CinemaCamera");

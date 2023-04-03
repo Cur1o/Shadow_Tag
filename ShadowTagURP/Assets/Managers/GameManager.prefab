@@ -3716,7 +3716,7 @@ MonoBehaviour:
   playerUi: {fileID: 7834327823164120105}
   switcher: 0
   inMenu: 0
-  cinemaCamera: {fileID: 0}
+  isPaused: 0
 --- !u!1 &8175414791880248318
 GameObject:
   m_ObjectHideFlags: 0
@@ -10609,7 +10609,7 @@ MonoBehaviour:
   m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: -0
+  m_Value: -10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

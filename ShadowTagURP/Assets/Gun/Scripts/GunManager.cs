@@ -201,17 +201,25 @@ public class GunManager : MonoBehaviour , IDataPersistance
         currentGunScript.ChangeColor();
         playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
         Enemy enemy = null;
+        Dummy dummy = null;
         Vector3 hitPosition = Vector3.zero;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range, mask))
         {
             enemy = gunHit.collider?.gameObject.GetComponent<Enemy>();
-            hitPosition = gunHit.point;
+            if (enemy == null)
+            {
+                dummy = gunHit.collider?.gameObject.GetComponent<Dummy>();
+                hitPosition = gunHit.point;
+            }
+            else
+            {
+                hitPosition = gunHit.point;
+            }
         }
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range))
         {
             hitPosition = gunHit.point;
         }
-        Debug.Log(gunHit.normal);
         if (gunHit.normal == Vector3.up || gunHit.normal == Vector3.down)
             Instantiate(gunHitVFX, hitPosition, Quaternion.identity);
         else if(gunHit.normal == Vector3.left || gunHit.normal == Vector3.right)
@@ -219,7 +227,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
         else
             Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(-90, 0, 0)));
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
-        if (enemy != null) enemy.Hit(currentGunScript.damage);    
+        if (enemy != null) enemy.Hit(currentGunScript.damage);
+        if (dummy != null) dummy.Hit(currentGunScript.damage);
         shooting = false;
         currentAnimator.ResetTrigger("shooting");
         currentAnimator.ResetTrigger("emptyWeapon");

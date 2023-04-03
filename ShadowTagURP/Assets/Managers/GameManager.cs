@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -23,8 +24,11 @@ public class GameManager : MonoBehaviour
     public bool inMenu;
     public bool isPaused;
     [Header("Cinema Camera")]
-    public Camera cinemaCamera;
-    public GameObject player;
+    GameObject cinemaCameraObj;
+    GameObject player;
+    GameObject skipButtonObj;
+    Button skipButton;
+    
     private void Awake()
     {
         if (Instance != null || Instance == this) Destroy(gameObject);
@@ -79,6 +83,10 @@ public class GameManager : MonoBehaviour
     public void GetPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        skipButtonObj = GameObject.FindGameObjectWithTag("Skip");
+        cinemaCameraObj = GameObject.FindGameObjectWithTag("CinemaCamera");
+        skipButton = skipButtonObj.GetComponent<Button>();
+        skipButton.onClick.AddListener(SkipIntro);
         Debug.Log(player);
         if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
@@ -88,9 +96,10 @@ public class GameManager : MonoBehaviour
     }
     public void SkipIntro()
     {
+        Destroy(cinemaCameraObj);
         Debug.Log(player);
         player.SetActive(true);
+        playerUi.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
-        Destroy(cinemaCamera);
     }
 }

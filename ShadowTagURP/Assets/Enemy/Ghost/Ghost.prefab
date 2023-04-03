@@ -100,6 +100,15 @@ MonoBehaviour:
   promptMessage: 
   health: 100
   points: 100
+  livetime: 3
+  isSlime: 0
+  isRandom: 0
+  variant: 0
+  textures: []
+  hasAudio: 0
+  triggerAudio: {fileID: 0}
+  hitAudio: {fileID: 0}
+  dieAudio: {fileID: 0}
 --- !u!64 &-8295703570256045141
 MeshCollider:
   m_ObjectHideFlags: 0

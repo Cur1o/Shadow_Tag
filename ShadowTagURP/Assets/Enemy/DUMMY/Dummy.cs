@@ -8,7 +8,7 @@ public class Dummy : Interactable
     [SerializeField] int health;
     [SerializeField] int maxHealth;
     [SerializeField] float deathTime;
-    [SerializeField] GameObject pivot;
+    [SerializeField] Animator animator;
     [Header("Audio")]
     [SerializeField] bool hasAudio;
     [SerializeField] AudioClip triggerAudio;
@@ -31,15 +31,14 @@ public class Dummy : Interactable
         if (health <= 0)
         {
             if (hasAudio) TriggerAudio(dieAudio);
-            Die();
+            StartCoroutine(DieCorutine());
         }
     }
-    private void Die() => StartCoroutine(DieCorutine());
     private IEnumerator DieCorutine()
     {
-        pivot.transform.rotation = Quaternion.Euler(-90f,0,0);
+        animator.SetTrigger("Dead");
         yield return new WaitForSeconds(deathTime);
-        pivot.transform.rotation = Quaternion.Euler(0, 0, 0);
+        animator.ResetTrigger("Dead");
         health = maxHealth;
     }
     private void TriggerAudio(AudioClip clip) => source.PlayOneShot(clip);

@@ -1,0 +1,28 @@
+Sounds/Effects
+
+Skeleton:
+Scare: pending
+Hit: pending
+Death: pending
+
+Ghost:
+Scare: pending
+Hit: pending
+Death: pending
+
+Slime:
+Scare: pending
+Hit: pending
+Death: pending
+
+Portal:
+Ambient: pending
+Enter: pending
+
+Weapons:
+Ambient: pending
+PickUp: pending
+Change: pending
+
+Points:
+Earned: pending (Evt Enemy Die)

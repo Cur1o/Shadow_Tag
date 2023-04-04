@@ -8,6 +8,7 @@ public class FenceGate : Interactable
     [SerializeField] private bool isLeft;
     [SerializeField] private bool isRight;
     [SerializeField] private GameObject Fence;
+    [SerializeField] AudioTrigger audioTrigger;
     private Animator currentAnimator;
     bool switcher = true;
     
@@ -23,12 +24,14 @@ public class FenceGate : Interactable
             switcher = !switcher;
             currentAnimator.SetTrigger("OpenFence");
             currentAnimator.ResetTrigger("CloseFence");
+            audioTrigger.TriggerAudio();
         }
         else if (handel.transform.localRotation == Quaternion.Euler(0, 0, 120) && switcher == false)
         {
             switcher = !switcher;
             currentAnimator.SetTrigger("CloseFence");
             currentAnimator.ResetTrigger("OpenFence");
+            audioTrigger.TriggerAudio();
         }
     }
 }

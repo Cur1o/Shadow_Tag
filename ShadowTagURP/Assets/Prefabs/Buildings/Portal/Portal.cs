@@ -5,11 +5,14 @@ using UnityEngine;
 public class Portal : MonoBehaviour , IDataPersistance
 {
     [SerializeField] private bool isHub;
+    [SerializeField] private bool isEnterPortal;
     [SerializeField] public bool isUnlocked;
     [SerializeField] ScenesManager.Scenes level;
     [SerializeField] ScenesManager.Scenes currentLevel;
+    ScenesManager.Scenes hub;
     private void Start()
     {
+        hub = ScenesManager.Scenes.Start;
         SaveManager.Instance.dataPersistenceObjects.Add(this);
         LoadData(SaveManager.Instance.gameData);
         if (!isUnlocked)
@@ -19,7 +22,12 @@ public class Portal : MonoBehaviour , IDataPersistance
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!isHub)
+        if (isEnterPortal)
+        {
+            SaveManager.Instance.gameData.playerPosition = Vector3.zero;
+            ScenesManager.Instance.LoadScene(hub);
+        }
+        if (!isHub && !isEnterPortal)
         {
             isUnlocked = true;
             SaveManager.Instance.gameData.currentLabyrinthLevel++;
@@ -27,7 +35,7 @@ public class Portal : MonoBehaviour , IDataPersistance
             PlayerUI.Instance.UpdateLevel();
             ScenesManager.Instance.LoadNextScene();
         }
-        else if(isHub && isUnlocked)
+        else if(isHub && isUnlocked && !isEnterPortal)
         {
             SaveManager.Instance.gameData.currentLabyrinthLevel = (int)level;
             SaveManager.Instance.gameData.playerPosition = Vector3.zero;

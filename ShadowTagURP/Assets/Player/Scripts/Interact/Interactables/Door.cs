@@ -9,6 +9,7 @@ public class Door : Interactable
     [SerializeField] private bool isRight;
     [SerializeField] private GameObject house;
     private Animator currentAnimator;
+    [SerializeField] AudioTrigger audioTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,13 @@ public class Door : Interactable
         {
             currentAnimator.SetTrigger("OpenDoor");
             currentAnimator.ResetTrigger("CloseDoor");
-            //handel.transform.localRotation = Quaternion.Euler(0, 0, -120);
+            audioTrigger.TriggerAudio();
         }
         else if (handel.transform.localRotation == Quaternion.Euler(0, 0, -120) && isLeft == true)
         {
             currentAnimator.SetTrigger("CloseDoor");
             currentAnimator.ResetTrigger("OpenDoor");
-            //handel.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            audioTrigger.TriggerAudio();
         }
     }
 }

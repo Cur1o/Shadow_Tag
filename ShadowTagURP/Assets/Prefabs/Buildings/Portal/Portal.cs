@@ -26,6 +26,7 @@ public class Portal : MonoBehaviour , IDataPersistance
         {
             SaveManager.Instance.gameData.playerPosition = Vector3.zero;
             ScenesManager.Instance.LoadScene(hub);
+            GameManager.Instance.GetPlayer();
         }
         if (!isHub && !isEnterPortal)
         {

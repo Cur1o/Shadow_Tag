@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
     public void SkipIntro()
     {
         Destroy(cinemaCameraObj);
-        Debug.Log(player);
         player.SetActive(true);
         playerUi.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;

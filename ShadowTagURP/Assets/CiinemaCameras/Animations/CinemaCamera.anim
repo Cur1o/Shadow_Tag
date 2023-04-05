@@ -97,7 +97,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 25
+    m_StopTime: 25.066668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -314,4 +314,12 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 25.066668
+    functionName: DeactivateCamera
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 3a7401f2252d3854a8577445f36bccdc,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

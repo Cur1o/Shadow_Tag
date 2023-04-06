@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-    public abstract class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
+{
+    public string promptMessage;   //Message that can be displayed to the player
+    public void BaseInteract()
     {
-        public string promptMessage;   //Message that can be displayed to the player
-        public void BaseInteract()
-        {
-            Interact();
-        }
-        protected virtual void Interact()
-        {
-
-        }
+        Interact();
     }
+    protected virtual void Interact()
+    {
+
+    }
+}
 
 

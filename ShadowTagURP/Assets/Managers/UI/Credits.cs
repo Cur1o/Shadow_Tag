@@ -6,26 +6,10 @@ using UnityEngine.UI;
 public class Credits : MonoBehaviour
 {
     public Button backButton;
-    [SerializeField] Scrollbar scrollVertical;
-    
     private void Awake()
     {
         backButton.onClick.AddListener(deactivate);
     }
-    //public void StartAnimation()
-    //{
-    //    scrollVertical.value = 1f;
-    //    StartCoroutine(AnimationCorutine());
-    //}
-    //private IEnumerator AnimationCorutine()
-    //{
-    //    yield return new WaitForSeconds(0.2f);
-    //    while (scrollVertical.value >= 0.2f)
-    //    {
-    //        yield return new WaitForSeconds(0.1f);
-    //        scrollVertical.value -= 0.001f;
-    //    }
-    //}
     private void deactivate()
     {
         SetWindowInactive(gameObject);
@@ -36,5 +20,4 @@ public class Credits : MonoBehaviour
         GameManager.Instance.inMenu = false;
         obj.SetActive(false);
     }
-    
 }

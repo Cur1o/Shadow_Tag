@@ -8,7 +8,7 @@ public class Enemy : Interactable
     [Header("Stats")]
     [SerializeField] int health;
     [SerializeField] int points = 50;
-    [SerializeField] float livetime = 3f;
+    [SerializeField] float lifeTime = 3f;
     [Header("Slime Variant")]
     [SerializeField] private bool isSlime;
     [SerializeField] private bool isRandom;
@@ -66,7 +66,7 @@ public class Enemy : Interactable
     }
     private IEnumerator Live()
     {
-        yield return new WaitForSeconds(livetime);
+        yield return new WaitForSeconds(lifeTime);
         Die();
     }
     private void Die() => Destroy(gameObject);

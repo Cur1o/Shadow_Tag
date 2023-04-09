@@ -62,6 +62,13 @@ public class ScenesManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(Scenes.Menu.ToString());
     }
+    public void LoadHub()
+    {
+        SaveManager.Instance.SaveGame();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(Scenes.Start.ToString());
+        GameManager.Instance.SkipIntro();
+    }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)
     {
         string sceneName = SceneManager.GetActiveScene().name;

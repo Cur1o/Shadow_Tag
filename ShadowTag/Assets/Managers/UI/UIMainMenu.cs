@@ -9,6 +9,8 @@ public class UIMainMenu : MonoBehaviour
 {
     public static UIMainMenu Instance { get; private set; }
     [Header("Menu Buttons")]
+    [SerializeField] Button _popupWarning;
+    [SerializeField] Button _closePopup;
     [SerializeField] Button _newGame;
     [SerializeField] Button _loadGame;
     [SerializeField] Button _settings;
@@ -21,7 +23,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject settings;
     [Header("Credits")]
     [SerializeField] private GameObject credits;
-    private Credits scriptCredits;
+    [Header("Popup OBJ")]
+    [SerializeField] private GameObject popupWindow;
+    bool isPopup = false;
     private void Awake()
     {
         if (Instance != null || Instance == this) Destroy(gameObject);
@@ -29,22 +33,31 @@ public class UIMainMenu : MonoBehaviour
     }
     void Start()
     {
+        _popupWarning.onClick.AddListener(SchowPopup);
+        _closePopup.onClick.AddListener(SchowPopup);
         _newGame.onClick.AddListener(StartNewGame);
         _loadGame.onClick.AddListener(LoadGame);
         _settings.onClick.AddListener(SettingsUI);
         _exitGame.onClick.AddListener(Exit);
         _credits.onClick.AddListener(Credits);
-        scriptCredits = credits.GetComponent<Credits>();
         AudioManager.Instance.SetAudio();
         ingameMenu.SetActive(false);
         settings.SetActive(false);
         credits.SetActive(false);
+        popupWindow.SetActive(false);
+
     }
     private void StartNewGame()
     {
         SaveManager.Instance.NewGame();
         ScenesManager.Instance.LoadNewGame();
         gameObject.SetActive(false);
+        SchowPopup();
+    }
+    private void SchowPopup()
+    {
+        isPopup = !isPopup;
+        popupWindow.SetActive(isPopup);
     }
     private void LoadGame()
     {

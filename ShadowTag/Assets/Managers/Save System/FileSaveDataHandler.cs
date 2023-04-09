@@ -44,7 +44,7 @@ public class FileSaveDataHandler
     }
     public void Save(SaveData data)
     {
-        Debug.Log("Saving SaveData");
+        //Debug.Log("Saving SaveData");
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {

@@ -5,16 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gun
+  - GameManager
+  - Volume
+  - PlayerUI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Interactable
+  - Weapon
   - Water
   - UI
-  - Gun
+  - Interactable
   - Enemy
-  - 
+  - PlayerUI
   - 
   - 
   - 
@@ -41,7 +44,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Gun
-    uniqueID: 3133027649
     locked: 0

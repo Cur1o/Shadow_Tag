@@ -32,7 +32,7 @@ public class SaveManager : MonoBehaviour
     public void SaveGame()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName != "Menu" && sceneName != "Start")
+        if (sceneName != "Menu")
         {
             foreach (IDataPersistance dataPersistenceObj in dataPersistenceObjects)
             {

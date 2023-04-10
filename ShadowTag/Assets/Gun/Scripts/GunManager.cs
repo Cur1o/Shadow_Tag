@@ -171,9 +171,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     /// </summary>
     public void Shoot()
     {
-        if (GameManager.Instance.inMenu == true || GameManager.Instance.isPaused == true) return;
-        if (noWeapon) return;
-        if (shooting) return;
+        if (GameManager.Instance.inMenu == true || GameManager.Instance.isPaused == true || noWeapon || shooting) return;
         if (currentGunScript.ammunition <= 0)
         {
             currentAnimator.SetTrigger("emptyWeapon");
@@ -210,25 +208,29 @@ public class GunManager : MonoBehaviour , IDataPersistance
             {
                 dummy = gunHit.collider?.gameObject.GetComponent<Dummy>();
                 hitPosition = gunHit.point;
+                if (dummy != null) dummy.Hit(currentGunScript.damage);
             }
             else
             {
                 hitPosition = gunHit.point;
+                if (enemy != null) enemy.Hit(currentGunScript.damage); 
             }
         }
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out gunHit, currentGunScript.range))
         {
             hitPosition = gunHit.point;
         }
-        if (gunHit.normal == Vector3.up || gunHit.normal == Vector3.down)
-            Instantiate(gunHitVFX, hitPosition, Quaternion.identity);
-        else if(gunHit.normal == Vector3.left || gunHit.normal == Vector3.right)
-            Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(0,0,-90)));
-        else
-            Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(-90, 0, 0)));
+        Debug.Log(gunHit.collider.isTrigger);
+        if (!gunHit.collider.isTrigger)
+        {
+            if (gunHit.normal == Vector3.up || gunHit.normal == Vector3.down)
+                Instantiate(gunHitVFX, hitPosition, Quaternion.identity);
+            else if (gunHit.normal == Vector3.left || gunHit.normal == Vector3.right)
+                Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(0, 0, -90)));
+            else
+                Instantiate(gunHitVFX, hitPosition, Quaternion.Euler(new Vector3(-90, 0, 0)));
+        }
         yield return new WaitForSeconds(currentGunScript.shootCooldown);
-        if (enemy != null) enemy.Hit(currentGunScript.damage);
-        if (dummy != null) dummy.Hit(currentGunScript.damage);
         shooting = false;
         currentAnimator.ResetTrigger("shooting");
         currentAnimator.ResetTrigger("emptyWeapon");

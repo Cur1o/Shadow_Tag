@@ -11,6 +11,7 @@ namespace spawner
         [Header("Special Cases")]
         [SerializeField] private float spawnTimer = 0.5f;
         [SerializeField] private bool isGhostStation;
+        [SerializeField] private bool isHub;
         [SerializeField] private bool isPlayer;
         [SerializeField] private bool isWeaponDisplay;
         private bool isFirst = true;
@@ -35,7 +36,7 @@ namespace spawner
         private IEnumerator SpawnEnumerator(GameObject prefab, Vector3 position)
         {
             yield return new WaitForSeconds(spawnTimer);
-            if (loadedPosition != Vector3.zero)
+            if (loadedPosition != Vector3.zero && !isHub)
                 Instantiate(prefab, loadedPosition + new Vector3(0, 0.25f, 0) , Quaternion.identity);
             else
                 Instantiate(prefab, position, Quaternion.identity);

@@ -102,4 +102,8 @@ public class GameManager : MonoBehaviour
         playerUi.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
+    public void playEnemySound(AudioClip sound)
+    {
+
+    }
 }

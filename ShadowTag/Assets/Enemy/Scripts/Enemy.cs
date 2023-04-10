@@ -17,10 +17,9 @@ public class Enemy : Interactable
     private Material material;
     [Header("Audio")]
     [SerializeField] bool hasAudio;
-    [SerializeField] AudioClip triggerAudio;
-    [SerializeField] AudioClip hitAudio;
-    [SerializeField] AudioClip dieAudio;
-    AudioSource source;
+    [SerializeField] AudioManager.enemyAudio triggerAudio;
+    [SerializeField] AudioManager.enemyAudio hitAudio;
+    [SerializeField] AudioManager.enemyAudio dieAudio;
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,8 +33,7 @@ public class Enemy : Interactable
         }
         if (hasAudio)
         {
-            source = GetComponent<AudioSource>();
-            TriggerAudio(triggerAudio);
+            AudioManager.Instance.PlayAudio(triggerAudio);
         }
         StartCoroutine(Live());
     }
@@ -55,12 +53,12 @@ public class Enemy : Interactable
     }    
     public void Hit(int damage)
     {
-        if (hasAudio)TriggerAudio(hitAudio);
+        if (hasAudio) AudioManager.Instance.PlayAudio(hitAudio);
         health -= damage;
         if (health <= 0)
         {
             AddPoints();
-            if (hasAudio) TriggerAudio(dieAudio);
+            if (hasAudio) AudioManager.Instance.PlayAudio(dieAudio);
             Die();
         }   
     }
@@ -71,5 +69,4 @@ public class Enemy : Interactable
     }
     private void Die() => Destroy(gameObject);
     private void AddPoints() => PlayerUI.Instance.UpdateScore(points);
-    private void TriggerAudio(AudioClip clip) => source.PlayOneShot(clip);
 }

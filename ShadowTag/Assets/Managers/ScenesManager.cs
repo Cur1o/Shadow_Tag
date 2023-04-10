@@ -66,6 +66,7 @@ public class ScenesManager : MonoBehaviour
     {
         SaveManager.Instance.SaveGame();
         Time.timeScale = 1;
+        GameManager.Instance.OpenMenu();
         SceneManager.LoadScene(Scenes.Start.ToString());
         GameManager.Instance.SkipIntro();
     }

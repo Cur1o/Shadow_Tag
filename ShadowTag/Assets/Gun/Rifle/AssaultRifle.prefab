@@ -374,8 +374,8 @@ VisualEffect:
   m_GameObject: {fileID: 2375429156946613412}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 36ad8c72c5fa0b14792b0f62a4e2464e, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_ResourceVersion: 1
@@ -558,7 +558,7 @@ MonoBehaviour:
   gunVariant: 3
   weaponUnlocked: 0
   weaponActive: 0
-  Neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
+  neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
   damage: 15
   ammunition: 60
   ammunitionMax: 60

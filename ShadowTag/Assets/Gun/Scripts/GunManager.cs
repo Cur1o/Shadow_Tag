@@ -220,8 +220,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
         {
             hitPosition = gunHit.point;
         }
-        Debug.Log(gunHit.collider.isTrigger);
-        if (!gunHit.collider.isTrigger)
+        if (gunHit.collider != null && !gunHit.collider.isTrigger)
         {
             if (gunHit.normal == Vector3.up || gunHit.normal == Vector3.down)
                 Instantiate(gunHitVFX, hitPosition, Quaternion.identity);
@@ -264,8 +263,8 @@ public class GunManager : MonoBehaviour , IDataPersistance
             nextGunScript.weaponActive = true;
             currentActiveWeapon = unlockedWeapons[nextGun];
             currentGunScript = currentActiveWeapon.GetComponent<Gun>();
-            currentAnimator = currentActiveWeapon.GetComponent<Animator>(); ;
-            currentAudioSource = currentActiveWeapon.GetComponent<AudioSource>();
+            currentAnimator =  currentGunScript.animator; 
+            currentAudioSource = currentGunScript.audioSource; 
             currentActiveWeapon.SetActive(true);
             playerUI.UpdateAmmunition(currentGunScript.ammunition, currentGunScript.ammunitionMax);
             currentGunScript.ChangeColor();

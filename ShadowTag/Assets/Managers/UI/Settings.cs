@@ -30,10 +30,10 @@ public class Settings : MonoBehaviour
         yCSlider.value = 160f;
         cFOV.value = 60f;
         masterVolume.value = 0f;
-        musicVolume.value = 0f;
-        effectVolume.value = 0f;
-        ambienceVolume.value = 0f;
-        dialougeVolume.value = 0f;
+        musicVolume.value = -10f;
+        effectVolume.value = -10f;
+        ambienceVolume.value = -10f;
+        dialougeVolume.value = -10f;
         backButton.onClick.AddListener(deactivate);
         ChangeSensitivity(); 
     }

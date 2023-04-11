@@ -139,7 +139,7 @@ MonoBehaviour:
   gunVariant: 0
   weaponUnlocked: 1
   weaponActive: 0
-  Neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
+  neon: {fileID: 2100000, guid: 7632c34ef611ea94db505799ab93943c, type: 2}
   damage: 50
   ammunition: 20
   ammunitionMax: 20
@@ -181,7 +181,8 @@ AudioSource:
   m_GameObject: {fileID: 2441123104212435738}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2816715122710598319, guid: 48c8d6884ddb49a4abe318a399f45193,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -696,7 +697,7 @@ VisualEffect:
   m_GameObject: {fileID: 5960651958385820001}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 36ad8c72c5fa0b14792b0f62a4e2464e, type: 3}
-  m_InitialEventName: OnShoot
+  m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1

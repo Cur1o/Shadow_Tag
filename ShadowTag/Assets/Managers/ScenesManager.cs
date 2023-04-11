@@ -62,12 +62,13 @@ public class ScenesManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(Scenes.Menu.ToString());
     }
-    public void LoadHub()
+    public IEnumerator LoadHub()
     {
-        SaveManager.Instance.SaveGame();
         Time.timeScale = 1;
+        SaveManager.Instance.SaveGame();
         GameManager.Instance.OpenMenu();
         SceneManager.LoadScene(Scenes.Start.ToString());
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.SkipIntro();
     }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)

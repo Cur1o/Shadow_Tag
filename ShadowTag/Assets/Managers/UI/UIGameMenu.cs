@@ -24,7 +24,7 @@ public class UIGameMenu : MonoBehaviour
     }
     private void LoadHub()
     {
-        ScenesManager.Instance.LoadHub();
+        StartCoroutine(ScenesManager.Instance.LoadHub());
     }
     private void LoadMainMenu()
     {

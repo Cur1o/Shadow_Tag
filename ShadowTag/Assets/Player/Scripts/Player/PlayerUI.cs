@@ -25,29 +25,51 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
         SaveManager.Instance.dataPersistenceObjects.Add(this);  //Using foreach to find every object with IDataPrersistance Interface is bad for performance
         LoadData(SaveManager.Instance.gameData);    //The Data is Loaded
     }
+    /// <summary>
+    /// Updates the current player Score on UI
+    /// </summary>
+    /// <param name="newScoreText"> The current Score Text displayed on screen </param>
     public void UpdateScore(int newScoreText)
     {
         currentPoints += newScoreText;              //The new score is added to current score
         scoreText.text = "Score: "+ currentPoints;  //Update the text
     }
+    /// <summary>
+    /// Updates the Ammmunition Count on screen
+    /// </summary>
+    /// <param name="currentAmmunition"> The current Ammunition count from the current Gun</param>
+    /// <param name="MaxAmmunition"> The current Max Ammunition value from the current Gun</param>
     public void UpdateAmmunition(int currentAmmunition,int MaxAmmunition) => ammunitionText.text = currentAmmunition + " / " + MaxAmmunition;    //Update the text
+    /// <summary>
+    /// The Text in the moddle of the screen is shown tho guide the player.
+    /// </summary>
+    /// <param name="promptMessage"> Masage that is shown on screen to guide the player </param>
     public void UpdateText(string promptMessage) => promptText.text = promptMessage;  //Displays the message on the Screen
-          
+    /// <summary>
+    /// Updates the Current currentLabyrinthLevel
+    /// </summary>
     public void UpdateLevel()
     {
         this.currentLabyrinthLevel = SaveManager.Instance.gameData.currentLabyrinthLevel;
-        //Debug.Log(this.currentLabyrinthLevel);
         if (currentLabyrinthLevel == 0)
             currentLabyrinthText.text = "";
         else
-            currentLabyrinthText.text = "Ebene: "+ this.currentLabyrinthLevel; //Update the text
+            currentLabyrinthText.text = "Ebene: "+ (this.currentLabyrinthLevel -1); //Update the text
     }
     //Save and Load
+    /// <summary>
+    /// Inherited from IDataPersistance Saves the currentPoints and currentLabyrinthLevel to the gameData.
+    /// </summary>
+    /// <param name="data">The currentPoints and currentLabyrinthLevel</param>
     public void SaveData(ref SaveData data)
     {
         data.currentPoints = this.currentPoints;
         data.currentLabyrinthLevel = this.currentLabyrinthLevel;
     }
+    /// <summary>
+    /// Inherited from IDataPersistance Loads the game data. And updates the UI
+    /// </summary>
+    /// <param name="data">The currentPoints </param>
     public void LoadData(SaveData data) => UpdateScore(data.currentPoints);
     private void OnDisable() => SaveManager.Instance.dataPersistenceObjects.Remove(this);
 }

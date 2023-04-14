@@ -273,4 +273,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     //Save and Load the weapons
     public void SaveData(ref SaveData data) => data.unlockedWeapons = this.weaponUnlockSave;
     public void LoadData(SaveData data) => this.weaponUnlockSave = data.unlockedWeapons;
+    //Not necasarry for saving here
+    public void SaveSettings(ref SaveSettings settings){return;}
+    public void LoadSettings(SaveSettings settings){return;}
 }

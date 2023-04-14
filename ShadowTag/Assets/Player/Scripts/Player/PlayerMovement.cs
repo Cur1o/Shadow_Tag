@@ -81,6 +81,5 @@ public class PlayerMovement : MonoBehaviour, IDataPersistance
     public void SaveData(ref SaveData data) => data.playerPosition = this.transform.position;
     public void LoadData(SaveData data) => this.transform.position = data.playerPosition;
     private void OnDisable() => SaveManager.Instance.dataPersistenceObjects.Remove(this);
-    
 }
 

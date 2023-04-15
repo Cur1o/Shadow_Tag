@@ -71,6 +71,11 @@ public class ScenesManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameManager.Instance.SkipIntro();
     }
+    public void EndGameSequence()
+    {
+        LoadMainMenu();
+        UIMainMenu.Instance.Credits();
+    }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)
     {
         string sceneName = SceneManager.GetActiveScene().name;

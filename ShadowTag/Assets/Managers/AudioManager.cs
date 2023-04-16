@@ -9,11 +9,15 @@ public class AudioManager : MonoBehaviour
     public enum enemyAudio {hello = 0, hello2 = 1, GhostHit = 2, GhostDeath = 3, SkeletonHit = 4, SkeletonDeath = 5, SlimeHit = 6, SlimeDeath = 7, collectCoin = 8}
     public enemyAudio currentAudioToPlay;
     [SerializeField] private List<AudioClip> EnemyAudioList;
+    [SerializeField] private List<AudioClip> StoryAudioParts;
     [SerializeField] AudioMixer mixer;
     [SerializeField] AudioSource audioSource;
+    public AudioSource storyAudioSource;
+
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null || Instance == this) Destroy(gameObject);
+        else Instance = this;
     }
     public void SetAudio()
     {
@@ -27,5 +31,10 @@ public class AudioManager : MonoBehaviour
     {
         currentAudioToPlay = audioToPlay;
         audioSource.PlayOneShot(EnemyAudioList[(int)currentAudioToPlay]);
+    }
+    public void PlayStoryAudio(int clipIndex)
+    {
+        var currentStoryAudio = StoryAudioParts[clipIndex];
+        storyAudioSource.PlayOneShot(currentStoryAudio);
     }
 }

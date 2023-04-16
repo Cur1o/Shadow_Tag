@@ -110,6 +110,7 @@ MonoBehaviour:
   triggerAudio: 1
   hitAudio: 2
   dieAudio: 3
+  coinAudio: 8
 --- !u!64 &-8295703570256045141
 MeshCollider:
   m_ObjectHideFlags: 0

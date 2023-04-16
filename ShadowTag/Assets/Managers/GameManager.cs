@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
     public void SkipIntro()
     {
-        Debug.Log("Skip Intro");
+        //Debug.Log("Skip Intro");
         Destroy(cinemaCameraObj);
         player.SetActive(true);
         playerUi.SetActive(true);

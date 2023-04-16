@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: -6384952491042612564}
   - component: {fileID: 9209848008246929581}
   - component: {fileID: 7775959675495087151}
+  - component: {fileID: 9074516198373404768}
   m_Layer: 6
   m_Name: SniperDisplay
   m_TagString: Gun
@@ -389,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press E to pick up
   currentGun: 1
+  audioTrigger: {fileID: 9074516198373404768}
 --- !u!95 &9209848008246929581
 Animator:
   serializedVersion: 4
@@ -422,6 +424,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004536978, y: 0.09507171, z: 0.01}
   m_Center: {x: -0.00017343504, y: -0.025517099, z: -9.408921e-18}
+--- !u!114 &9074516198373404768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202589325276766379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b52f7795ae38b4e934b1722fe31873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipsStory: 1
+  triggerAudio: {fileID: 8300000, guid: db27443f1edf4a8479e6618ee389f672, type: 3}
+  source: {fileID: 0}
+  isPortal: 0
 --- !u!1 &5582611030847512474
 GameObject:
   m_ObjectHideFlags: 0

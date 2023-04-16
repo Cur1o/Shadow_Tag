@@ -62,7 +62,7 @@ public class UIMainMenu : MonoBehaviour
     private void LoadGame()
     {
         SaveManager.Instance.LoadGame();
-        ScenesManager.Scenes currentScene = (ScenesManager.Scenes)(SaveManager.Instance.gameData.currentLabyrinthLevel + 1);
+        ScenesManager.Scenes currentScene = (ScenesManager.Scenes)(SaveManager.Instance.gameData.currentLabyrinthLevel);
         ScenesManager.Instance.LoadScene(currentScene);
         PlayerUI.Instance.UpdateLevel();
         if (switcher) Cursor.lockState = CursorLockMode.Locked;

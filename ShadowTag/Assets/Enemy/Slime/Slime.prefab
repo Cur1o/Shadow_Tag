@@ -383,6 +383,7 @@ MonoBehaviour:
   triggerAudio: 1
   hitAudio: 6
   dieAudio: 7
+  coinAudio: 8
 --- !u!82 &2973320111099068768
 AudioSource:
   m_ObjectHideFlags: 0

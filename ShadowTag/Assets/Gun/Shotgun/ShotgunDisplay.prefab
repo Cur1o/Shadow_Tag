@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 7603063995650956094}
   - component: {fileID: 316527464325402626}
   - component: {fileID: 3188723351981056737}
+  - component: {fileID: 7762380983275191034}
   m_Layer: 6
   m_Name: ShotgunDisplay
   m_TagString: Gun
@@ -522,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press E to pick up
   currentGun: 2
+  audioTrigger: {fileID: 7762380983275191034}
 --- !u!95 &316527464325402626
 Animator:
   serializedVersion: 4
@@ -555,6 +557,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0011651263, y: 0.038770147, z: 0.004626383}
   m_Center: {x: 4.656613e-11, y: -0.006423174, z: -0.00053242134}
+--- !u!114 &7762380983275191034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835854648392686916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b52f7795ae38b4e934b1722fe31873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipsStory: 1
+  triggerAudio: {fileID: 8300000, guid: db27443f1edf4a8479e6618ee389f672, type: 3}
+  source: {fileID: 0}
+  isPortal: 0
 --- !u!1 &6073905568968824109
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,3 +22,6 @@ Dieser wurde mit einer KI generiert genauer mit https://app.scenario.com der Pro
 
 Logo:
 Das logo des spiels wursde auch mittels KI generiert auch mit https://app.scenario.com der prompt dafür war:
+
+Research:
+Wenn ich nach einer funktionsweise oder Ähnlichem gesucht Habe habe ich mich auf https://docs.unity3d.com/Manual/index.html umgesehen und auf basis davon meine funktionen Aufgebaut.

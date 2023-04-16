@@ -10,6 +10,8 @@ public class Portal : MonoBehaviour , IDataPersistance
     [SerializeField] ScenesManager.Scenes level;
     [SerializeField] ScenesManager.Scenes currentLevel;
     ScenesManager.Scenes hub;
+    [SerializeField] private bool hasAudio;
+    [SerializeField] AudioTrigger audioTrigger;
     private void Start()
     {
         hub = ScenesManager.Scenes.Start;

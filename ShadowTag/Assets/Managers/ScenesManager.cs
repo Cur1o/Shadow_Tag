@@ -75,6 +75,7 @@ public class ScenesManager : MonoBehaviour
     {
         LoadMainMenu();
         UIMainMenu.Instance.Credits();
+        Cursor.lockState = CursorLockMode.None;
     }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)
     {

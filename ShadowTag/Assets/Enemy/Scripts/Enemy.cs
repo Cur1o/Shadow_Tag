@@ -20,6 +20,7 @@ public class Enemy : Interactable
     [SerializeField] AudioManager.enemyAudio triggerAudio;
     [SerializeField] AudioManager.enemyAudio hitAudio;
     [SerializeField] AudioManager.enemyAudio dieAudio;
+    [SerializeField] AudioManager.enemyAudio coinAudio;
     // Start is called before the first frame update
     private void Start()
     {
@@ -58,13 +59,14 @@ public class Enemy : Interactable
         if (health <= 0)
         {
             AddPoints();
-            if (hasAudio) AudioManager.Instance.PlayAudio(dieAudio);
+            if (hasAudio) AudioManager.Instance.PlayAudio(coinAudio);
             Die();
         }   
     }
     private IEnumerator Live()
     {
         yield return new WaitForSeconds(lifeTime);
+        if (hasAudio) AudioManager.Instance.PlayAudio(dieAudio);
         Die();
     }
     private void Die() => Destroy(gameObject);

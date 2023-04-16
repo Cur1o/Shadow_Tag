@@ -1628,6 +1628,7 @@ GameObject:
   - component: {fileID: -7060866183962017195}
   - component: {fileID: 2459024899661062622}
   - component: {fileID: -2740155073170356986}
+  - component: {fileID: 5127255847656886137}
   m_Layer: 6
   m_Name: AssaultRifleDisplay
   m_TagString: Gun
@@ -1729,6 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press E to pick up
   currentGun: 3
+  audioTrigger: {fileID: 5127255847656886137}
 --- !u!95 &2459024899661062622
 Animator:
   serializedVersion: 4
@@ -1762,6 +1764,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0022594454, y: 0.05273693, z: 0.011551274}
   m_Center: {x: 0, y: -0.0076881265, z: 0.0003731402}
+--- !u!114 &5127255847656886137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798494821355928313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b52f7795ae38b4e934b1722fe31873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipsStory: 1
+  triggerAudio: {fileID: 8300000, guid: db27443f1edf4a8479e6618ee389f672, type: 3}
+  source: {fileID: 0}
+  isPortal: 0
 --- !u!1 &9128038199928418960
 GameObject:
   m_ObjectHideFlags: 0

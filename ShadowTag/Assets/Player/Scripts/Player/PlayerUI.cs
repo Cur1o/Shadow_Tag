@@ -31,6 +31,7 @@ public class PlayerUI : MonoBehaviour, IDataPersistance
     /// <param name="newScoreText"> The current Score Text displayed on screen </param>
     public void UpdateScore(int newScoreText)
     {
+        if (newScoreText == 0) currentPoints = 0;
         currentPoints += newScoreText;              //The new score is added to current score
         scoreText.text = "Score: "+ currentPoints;  //Update the text
     }

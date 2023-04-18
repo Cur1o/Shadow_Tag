@@ -36,6 +36,7 @@ public class SaveManager : MonoBehaviour
     {
         this.gameData = dataHandler.Load(); //Gets the saved Data from json file
         if (this.gameData == null) NewGame(); //If not exist starts a new Game 
+        if (gameData.currentLabyrinthLevel >= SceneManager.sceneCountInBuildSettings -1) gameData.currentLabyrinthLevel = 1;
     }
     ///<summary>
     ///Loads the saved settings data from the file, if it exists. If the data file does not exist, the standard settings are used.
@@ -69,6 +70,11 @@ public class SaveManager : MonoBehaviour
             {
                 dataPersistenceObj.SaveData(ref gameData);
             }
+            dataHandler.Save(gameData);
+        }
+        else if (sceneName == "Menu")
+        {
+            gameData = null;
             dataHandler.Save(gameData);
         }
     }

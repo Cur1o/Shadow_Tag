@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Credits : MonoBehaviour
 {
     public Button backButton;
+    [SerializeField] GameObject mainMenu;
     private void Awake()
     {
         backButton.onClick.AddListener(deactivate);
@@ -18,6 +19,7 @@ public class Credits : MonoBehaviour
     {
         Time.timeScale = 0;
         GameManager.Instance.inMenu = false;
+        if (mainMenu.activeInHierarchy == false) mainMenu.SetActive(true);
         obj.SetActive(false);
     }
 }

@@ -11,6 +11,7 @@ public class Dummy : Interactable
     [SerializeField] Animator animator;
     [Header("Audio")]
     [SerializeField] bool hasAudio;
+    [SerializeField] bool hasTrigger;
     [SerializeField] AudioClip triggerAudio;
     [SerializeField] AudioClip hitAudio;
     [SerializeField] AudioClip dieAudio;
@@ -21,7 +22,7 @@ public class Dummy : Interactable
         if (hasAudio)
         {
             source = GetComponent<AudioSource>();
-            TriggerAudio(triggerAudio);
+            if(hasTrigger) TriggerAudio(triggerAudio);
         }
     }
     public void Hit(int damage)

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class GunManager : MonoBehaviour , IDataPersistance
 {
@@ -251,6 +250,7 @@ public class GunManager : MonoBehaviour , IDataPersistance
     public void SwitchWeapon(int change)
     {
         if (noWeapon) return;
+        if (reloading) return;
         if (unlockedWeapons.Count == 1)return ;
         var nextGun = ((int)currentGun + change + unlockedWeapons.Count) % unlockedWeapons.Count;
         currentGunScript = currentActiveWeapon.GetComponent<Gun>();

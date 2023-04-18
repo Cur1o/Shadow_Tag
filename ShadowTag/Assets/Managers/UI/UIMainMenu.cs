@@ -49,7 +49,13 @@ public class UIMainMenu : MonoBehaviour
     }
     private void StartNewGame()
     {
-        SaveManager.Instance.NewGame();
+        SaveManager.Instance.gameData = null;
+        SaveManager.Instance.SaveGame();
+        SaveManager.Instance.LoadGame();
+        PlayerUI.Instance.LoadData(SaveManager.Instance.gameData);
+        PlayerUI.Instance.UpdateScore(SaveManager.Instance.gameData.currentPoints);
+        PlayerUI.Instance.UpdateAmmunition(0, 0);
+        PlayerUI.Instance.UpdateLevel();
         ScenesManager.Instance.LoadNewGame();
         gameObject.SetActive(false);
         SchowPopup();
@@ -63,6 +69,7 @@ public class UIMainMenu : MonoBehaviour
     {
         SaveManager.Instance.LoadGame();
         ScenesManager.Scenes currentScene = (ScenesManager.Scenes)(SaveManager.Instance.gameData.currentLabyrinthLevel);
+        if (currentScene == ScenesManager.Scenes.Menu) currentScene = ScenesManager.Scenes.Start;
         ScenesManager.Instance.LoadScene(currentScene);
         PlayerUI.Instance.UpdateLevel();
         if (switcher) Cursor.lockState = CursorLockMode.Locked;

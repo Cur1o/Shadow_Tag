@@ -73,9 +73,11 @@ public class ScenesManager : MonoBehaviour
     }
     public void EndGameSequence()
     {
-        LoadMainMenu();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(Scenes.Menu.ToString());
         UIMainMenu.Instance.Credits();
         Cursor.lockState = CursorLockMode.None;
+        
     }
     private void ChangePlayerUI(Scene scene,LoadSceneMode mode)
     {

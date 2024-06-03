@@ -6,10 +6,10 @@
 
 ### Table of Contents
 1. [Manager Components](#manager-components)
-    1. [Game Manager](#game-manager)
-    2. [Audio Manager](#audio-manager)
-    3. [Scenes Manager](#scenes-manager)
-    4. [UI Control and Settings](#ui-control-and-settings)
+    1.1 [Game Manager](#game-manager)
+    1.2 [Audio Manager](#audio-manager)
+    1.3 [Scenes Manager](#scenes-manager)
+    1.4 [UI Control and Settings](#ui-control-and-settings)
 2. [Player Components](#player-components)
     1. [Player Look](#player-look)
     2. [Player Movement](#player-movement)

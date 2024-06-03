@@ -6,7 +6,7 @@
 
 ### Table of Contents
 1. [Manager Components](#manager-components)
-    1. [Game Manager](#game-manager)
+    1. [Game Manager](##game-manager)
     2. [Audio Manager](#audio-manager)
     3. [Scenes Manager](#scenes-manager)
     4. [UI Control and Settings](#ui-control-and-settings)

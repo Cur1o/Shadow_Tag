@@ -47,7 +47,7 @@ The Game Manager is responsible for managing player settings such as mouse and c
   - Apply gamma correction to the volume object.
   - Skip the intro video and activate the player and UI.
 
-#### 1.2 Audio Manager
+#### Audio Manager
 The Audio Manager controls the game's audio settings, including volume and audio effects.
 
 - **Implementation**: Create a central AudioManager component in Unity.
@@ -57,7 +57,7 @@ The Audio Manager controls the game's audio settings, including volume and audio
   - Reference the AudioMixer object to mix audio effects.
   - Apply volume settings from the Settings script to the AudioMixer object.
 
-#### 1.3 Scenes Manager
+#### Scenes Manager
 The Scenes Manager handles scene transitions and management within the game.
 
 - **Implementation**: Create a central ScenesManager component in Unity.
@@ -68,9 +68,9 @@ The Scenes Manager handles scene transitions and management within the game.
   - Update audio and video settings upon scene load.
   - Change the player UI accordingly when a new scene is loaded.
 
-#### 1.4 UI Control and Settings
+#### UI Control and Settings
 
-##### 1.4.1 Settings
+##### Settings
 The Settings component provides various game options such as sensitivity, FOV, gamma correction, and audio settings.
 
 - **Implementation**: Create a Settings component in Unity.
@@ -80,7 +80,7 @@ The Settings component provides various game options such as sensitivity, FOV, g
   - Provide a back button to close the menu and return to the game.
   - Implement functions to deactivate the menu window when closed and pause the game when the menu is open.
 
-##### 1.4.2 Credits
+##### Credits
 The Credits component displays the credits and includes functionality to close the credits window.
 
 - **Implementation**: Create a Credits component in Unity.
@@ -88,7 +88,7 @@ The Credits component displays the credits and includes functionality to close t
   - Provide a method to deactivate the credits window when the close button is pressed.
   - Inform the GameManager that the game is no longer in menu mode.
 
-##### 1.4.3 UIMainMenu
+##### UIMainMenu
 The UIMainMenu script provides the main menu for starting, loading, and exiting the game, changing settings, and viewing credits.
 
 - **Implementation**: Create a UIMainMenu script in Unity.
@@ -97,7 +97,7 @@ The UIMainMenu script provides the main menu for starting, loading, and exiting 
   - Include buttons to start the game, load the game, change settings, exit the game, and view credits.
   - Manage audio settings and game loading.
 
-##### 1.4.4 UIGameMenu
+##### UIGameMenu
 The UIGameMenu script provides the in-game menu, allowing players to resume the game, load the main menu, save the game, and change settings.
 
 - **Implementation**: Create a UIGameMenu script in Unity.
@@ -110,7 +110,7 @@ The UIGameMenu script provides the in-game menu, allowing players to resume the 
 
 ### Player Components
 
-#### 2.1 Player Look
+#### Player Look
 The PlayerLook component allows the player to look around in the game world.
 
 - **Implementation**: Create a PlayerLook component in Unity.
@@ -120,7 +120,7 @@ The PlayerLook component allows the player to look around in the game world.
   - Change the player’s field of view.
   - Ensure the cursor is locked for an uninterrupted experience.
 
-#### 2.2 Player Movement
+#### Player Movement
 The PlayerMovement component manages the player's movement within the game.
 
 - **Implementation**: Create a PlayerMovement component in Unity.
@@ -130,7 +130,7 @@ The PlayerMovement component manages the player's movement within the game.
   - Allow the player to run, jump, crouch, and sprint.
   - Provide functionality to save and load the player’s position.
 
-#### 2.3 Player UI
+#### Player UI
 The PlayerUI class manages the player’s UI elements such as score, level, and messages.
 
 - **Implementation**: Create a PlayerUI class in Unity.
@@ -143,7 +143,7 @@ The PlayerUI class manages the player’s UI elements such as score, level, and 
   - Handle saving and loading of data.
   - Remove the object from the SaveManager’s list on disable.
 
-#### 2.4 Input Manager
+#### Input Manager
 The InputManager class handles all player input and maps it to appropriate actions.
 
 - **Implementation**: Create an InputManager class in Unity.
@@ -154,7 +154,7 @@ The InputManager class handles all player input and maps it to appropriate actio
   - Link player actions to appropriate functions in other scripts (e.g., PlayerMovement, PlayerLook, GunManager).
   - Implement a function to turn on the flashlight.
 
-#### 2.5 Player Interact
+#### Player Interact
 The PlayerInteract class allows the player to interact with objects in the game world.
 
 - **Implementation**: Create a PlayerInteract class in Unity.
@@ -170,7 +170,7 @@ The PlayerInteract class allows the player to interact with objects in the game 
 
 ### Interactable Components
 
-#### 3.1 Interactable Objects
+#### Interactable Objects
 Interactive objects in the game inherit from the Interactable class, providing specific interaction logic.
 
 - **Implementation**: Create an abstract Interactable class in Unity.
@@ -204,7 +204,7 @@ The Enemy class handles enemy behaviors and interactions.
 
 ### Save System
 
-#### 5.1 SaveManager
+#### SaveManager
 The SaveManager class manages saving and loading game states.
 
 - **Implementation**: Create a SaveManager class in Unity.
@@ -213,7 +213,7 @@ The SaveManager class manages saving and loading game states.
   - Start a new game, load a game, and save the current game state.
   - Automatically save the game when exiting.
 
-#### 5.2 SaveData
+#### SaveData
 The SaveData class represents the serialized game data.
 
 - **Implementation**: Create a SaveData class in Unity.
@@ -223,7 +223,7 @@ The SaveData class represents the serialized game data.
   - Provide a default constructor to initialize fields with default values.
   - Use [System.Serializable] attribute for serialization.
 
-#### 5.3 File
+#### File
 
 SaveDataHandler
 The FileSaveDataHandler class handles file operations for saving and loading data.
@@ -234,7 +234,7 @@ The FileSaveDataHandler class handles file operations for saving and loading dat
   - Methods to load data, save data, and delete save files.
   - Ensure the save directory exists.
 
-#### 5.4 IDataPersistence Interface
+#### IDataPersistence Interface
 The IDataPersistence interface defines methods for saving and loading data.
 
 - **Implementation**: Create an IDataPersistence interface in Unity.
@@ -246,7 +246,7 @@ The IDataPersistence interface defines methods for saving and loading data.
 
 ### Gun and Gun Manager
 
-#### 6.1 Gun Manager
+#### Gun Manager
 The GunManager class manages the player's weapons.
 
 - **Implementation**: Create a GunManager class in Unity.
@@ -255,7 +255,7 @@ The GunManager class manages the player's weapons.
   - Handle input for weapon interactions (e.g., reload, shoot).
   - Update animations and UI elements.
 
-#### 6.2 Gun
+#### Gun
 The Gun class represents individual weapons.
 
 - **Implementation**: Create a Gun class in Unity.
@@ -277,14 +277,14 @@ The Spawner class handles spawning of enemies and items.
 
 ### Portal
 
-#### 8.1 Hub Portals
+#### Hub Portals
 Hub portals allow the player to travel between the hub and other areas.
 
 - **Implementation**: Create a HubPortal class in Unity.
 - **Functions**:
   - Handle player interaction to teleport between the hub and other levels.
 
-#### 8.2 Labyrinth Portals
+#### Labyrinth Portals
 Labyrinth portals manage transitions within the labyrinth levels.
 
 - **Implementation**: Create a LabyrinthPortal class in Unity.

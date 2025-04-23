@@ -36,7 +36,7 @@
 
 ### Manager Components
 
-#### 1.1 Game Manager
+#### Game Manager
 The Game Manager is responsible for managing player settings such as mouse and controller sensitivity, FOV (Field of View), and gamma settings. It also controls the in-game menu for skipping cutscenes.
 
 - **Implementation**: Create a central GameManager component in Unity.
